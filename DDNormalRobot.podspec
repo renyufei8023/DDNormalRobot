@@ -21,4 +21,5 @@ TODO: Add long description of the pod here.
   s.dependency 'SDWebImage'
   s.dependency 'SocketRocket'
   s.dependency 'YBImageBrowser'
+  s.requires_arc = true
 end
