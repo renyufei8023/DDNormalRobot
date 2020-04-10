@@ -13,7 +13,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/renyufei8023/DDNormalRobot.git', :tag => s.version.to_s }
   
   s.platform     = :ios, "11.0"
-  s.deployment_target = '9.0'
+  s.ios.deployment_target = '9.0'
   s.source_files = 'DDNormalRobot/DDNormalRobot/**/*'
   s.dependency 'DDNetworkHelper'
   s.dependency 'Masonry'
