@@ -58,7 +58,7 @@
 
 - (UIImageView *)topImageBgView {
     if (!_topImageBgView) {
-        _topImageBgView = [[UIImageView alloc] initWithImage:UIImageMake(@"bg")];
+        _topImageBgView = [[UIImageView alloc] initWithImage:UIImageMake(@"chatTopbg")];
         _topImageBgView.userInteractionEnabled = YES;
     }
     return _topImageBgView;

@@ -76,9 +76,9 @@
 		876415AC24406452001B0714 /* 中评.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415A924406452001B0714 /* 中评.png */; };
 		876415AD24406452001B0714 /* 中评@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415AA24406452001B0714 /* 中评@2x.png */; };
 		876415AE24406452001B0714 /* 中评@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415AB24406452001B0714 /* 中评@3x.png */; };
-		876415B224406457001B0714 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415AF24406457001B0714 /* bg.png */; };
-		876415B324406457001B0714 /* bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415B024406457001B0714 /* bg@3x.png */; };
-		876415B424406457001B0714 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415B124406457001B0714 /* bg@2x.png */; };
+		876415B224406457001B0714 /* chatTopbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415AF24406457001B0714 /* chatTopbg.png */; };
+		876415B324406457001B0714 /* chatTopbg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415B024406457001B0714 /* chatTopbg@3x.png */; };
+		876415B424406457001B0714 /* chatTopbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415B124406457001B0714 /* chatTopbg@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,9 +175,9 @@
 		876415A924406452001B0714 /* 中评.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中评.png"; sourceTree = "<group>"; };
 		876415AA24406452001B0714 /* 中评@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中评@2x.png"; sourceTree = "<group>"; };
 		876415AB24406452001B0714 /* 中评@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中评@3x.png"; sourceTree = "<group>"; };
-		876415AF24406457001B0714 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
-		876415B024406457001B0714 /* bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@3x.png"; sourceTree = "<group>"; };
-		876415B124406457001B0714 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		876415AF24406457001B0714 /* chatTopbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatTopbg.png; sourceTree = "<group>"; };
+		876415B024406457001B0714 /* chatTopbg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatTopbg@3x.png"; sourceTree = "<group>"; };
+		876415B124406457001B0714 /* chatTopbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatTopbg@2x.png"; sourceTree = "<group>"; };
 		C83E347888C9011049BC1D23 /* Pods-DDNormalRobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.release.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.release.xcconfig"; sourceTree = "<group>"; };
 		EA3372BA62836DB56A9D012D /* libPods-DDNormalRobot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DDNormalRobot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -304,9 +304,9 @@
 		8764155A24406361001B0714 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				876415AF24406457001B0714 /* bg.png */,
-				876415B124406457001B0714 /* bg@2x.png */,
-				876415B024406457001B0714 /* bg@3x.png */,
+				876415AF24406457001B0714 /* chatTopbg.png */,
+				876415B124406457001B0714 /* chatTopbg@2x.png */,
+				876415B024406457001B0714 /* chatTopbg@3x.png */,
 				876415A924406452001B0714 /* 中评.png */,
 				876415AA24406452001B0714 /* 中评@2x.png */,
 				876415AB24406452001B0714 /* 中评@3x.png */,
@@ -445,7 +445,7 @@
 				876415072440081F001B0714 /* LaunchScreen.storyboard in Resources */,
 				876415AC24406452001B0714 /* 中评.png in Resources */,
 				8764159A24406441001B0714 /* 发送图片@2x.png in Resources */,
-				876415B424406457001B0714 /* bg@2x.png in Resources */,
+				876415B424406457001B0714 /* chatTopbg@2x.png in Resources */,
 				876415792440638A001B0714 /* thumbsup.png in Resources */,
 				8764157F2440638A001B0714 /* mask.png in Resources */,
 				8764159C24406441001B0714 /* 发送图片@3x.png in Resources */,
@@ -454,7 +454,7 @@
 				876415A72440644D001B0714 /* 评价.png in Resources */,
 				8764158F24406420001B0714 /* 表情.png in Resources */,
 				8764157B2440638A001B0714 /* sob.png in Resources */,
-				876415B324406457001B0714 /* bg@3x.png in Resources */,
+				876415B324406457001B0714 /* chatTopbg@3x.png in Resources */,
 				876415042440081F001B0714 /* Assets.xcassets in Resources */,
 				876415802440638A001B0714 /* clap.png in Resources */,
 				876415812440638A001B0714 /* joy.png in Resources */,
@@ -476,7 +476,7 @@
 				876415882440638A001B0714 /* heart_eyes.png in Resources */,
 				876415782440638A001B0714 /* sleeping.png in Resources */,
 				8764157E2440638A001B0714 /* cold_sweat.png in Resources */,
-				876415B224406457001B0714 /* bg.png in Resources */,
+				876415B224406457001B0714 /* chatTopbg.png in Resources */,
 				8764150224400817001B0714 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
