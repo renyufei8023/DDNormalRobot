@@ -11,10 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EmojTextUtil : NSObject
+@interface DDHelper : NSObject
 //云阁表情相关
 + (NSArray<QMUIEmotion *> *)ddEmotions;
 + (NSMutableAttributedString *)emojTextToAtt:(NSString *)string;
+
++ (UIImage *)imageWithName:(NSString *)name;
 @end
 
 NS_ASSUME_NONNULL_END

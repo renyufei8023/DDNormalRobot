@@ -12,7 +12,7 @@
 #import "DDChatCell.h"
 #import "ClientParamsModel.h"
 #import "MessageHub.h"
-#import "EmojTextUtil.h"
+#import "DDHelper.h"
 #import "BusinessItemModel.h"
 #import "ChooseQuestionTypeCell.h"
 #import "ChatQuestionResolveCell.h"
@@ -28,6 +28,7 @@
 #import "QMUIKit.h"
 #import "Masonry.h"
 #import "YYModel.h"
+#import "DDHelper.h"
 #import "SDWebImage.h"
 #import "YYCategories.h"
 #import "DDNetworkHelper.h"
@@ -58,7 +59,7 @@
 
 - (UIImageView *)topImageBgView {
     if (!_topImageBgView) {
-        _topImageBgView = [[UIImageView alloc] initWithImage:UIImageMake(@"chatTopbg")];
+        _topImageBgView = [[UIImageView alloc] initWithImage:[DDHelper imageWithName:@"chatTopbg"]];
         _topImageBgView.userInteractionEnabled = YES;
     }
     return _topImageBgView;
@@ -136,7 +137,7 @@
     if (!_emotionView) {
         _emotionView = [DDEmotionView new];
         _emotionView.qmui_borderPosition = QMUIViewBorderPositionTop;
-        _emotionView.emotions = [EmojTextUtil ddEmotions];
+        _emotionView.emotions = [DDHelper ddEmotions];
         _emotionView.backgroundColor = UIColorWhite;
     }
     return _emotionView;

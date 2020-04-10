@@ -33,52 +33,8 @@
 		8764154A2440085C001B0714 /* ClientParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415362440085C001B0714 /* ClientParamsModel.m */; };
 		8764154B2440085C001B0714 /* DDChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415372440085C001B0714 /* DDChatManager.m */; };
 		8764154C2440085C001B0714 /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415392440085C001B0714 /* WebSocketManager.m */; };
-		876415592440335D001B0714 /* EmojTextUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415582440335D001B0714 /* EmojTextUtil.m */; };
-		876415732440638A001B0714 /* kissing_closed_eyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764155B24406389001B0714 /* kissing_closed_eyes.png */; };
-		876415742440638A001B0714 /* sweat_smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764155C2440638A001B0714 /* sweat_smile.png */; };
-		876415752440638A001B0714 /* wink.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764155D2440638A001B0714 /* wink.png */; };
-		876415762440638A001B0714 /* flushed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764155E2440638A001B0714 /* flushed.png */; };
-		876415772440638A001B0714 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764155F2440638A001B0714 /* smile.png */; };
-		876415782440638A001B0714 /* sleeping.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415602440638A001B0714 /* sleeping.png */; };
-		876415792440638A001B0714 /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415612440638A001B0714 /* thumbsup.png */; };
-		8764157A2440638A001B0714 /* worried.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415622440638A001B0714 /* worried.png */; };
-		8764157B2440638A001B0714 /* sob.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415632440638A001B0714 /* sob.png */; };
-		8764157C2440638A001B0714 /* laughing.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415642440638A001B0714 /* laughing.png */; };
-		8764157D2440638A001B0714 /* scream.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415652440638A001B0714 /* scream.png */; };
-		8764157E2440638A001B0714 /* cold_sweat.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415662440638A001B0714 /* cold_sweat.png */; };
-		8764157F2440638A001B0714 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415672440638A001B0714 /* mask.png */; };
-		876415802440638A001B0714 /* clap.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415682440638A001B0714 /* clap.png */; };
-		876415812440638A001B0714 /* joy.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415692440638A001B0714 /* joy.png */; };
-		876415822440638A001B0714 /* blush.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764156A2440638A001B0714 /* blush.png */; };
-		876415832440638A001B0714 /* kissing_smiling_eyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764156B2440638A001B0714 /* kissing_smiling_eyes.png */; };
-		876415842440638A001B0714 /* angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764156C2440638A001B0714 /* angry.png */; };
-		876415852440638A001B0714 /* ok_hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764156D2440638A001B0714 /* ok_hand.png */; };
-		876415862440638A001B0714 /* grin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764156E2440638A001B0714 /* grin.png */; };
-		876415872440638A001B0714 /* smirk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764156F2440638A001B0714 /* smirk.png */; };
-		876415882440638A001B0714 /* heart_eyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415702440638A001B0714 /* heart_eyes.png */; };
-		876415892440638A001B0714 /* sunglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415712440638A001B0714 /* sunglasses.png */; };
-		8764158A2440638A001B0714 /* stuck_out_tongue_winking_eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415722440638A001B0714 /* stuck_out_tongue_winking_eye.png */; };
-		8764158E24406420001B0714 /* 表情@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764158B24406420001B0714 /* 表情@2x.png */; };
-		8764158F24406420001B0714 /* 表情.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764158C24406420001B0714 /* 表情.png */; };
-		8764159024406420001B0714 /* 表情@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764158D24406420001B0714 /* 表情@3x.png */; };
-		876415942440643B001B0714 /* 差评.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415912440643A001B0714 /* 差评.png */; };
-		876415952440643B001B0714 /* 差评@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415922440643B001B0714 /* 差评@2x.png */; };
-		876415962440643B001B0714 /* 差评@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415932440643B001B0714 /* 差评@3x.png */; };
-		8764159A24406441001B0714 /* 发送图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764159724406441001B0714 /* 发送图片@2x.png */; };
-		8764159B24406441001B0714 /* 发送图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764159824406441001B0714 /* 发送图片.png */; };
-		8764159C24406441001B0714 /* 发送图片@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764159924406441001B0714 /* 发送图片@3x.png */; };
-		876415A024406447001B0714 /* 好评.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764159D24406447001B0714 /* 好评.png */; };
-		876415A124406447001B0714 /* 好评@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764159E24406447001B0714 /* 好评@2x.png */; };
-		876415A224406447001B0714 /* 好评@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764159F24406447001B0714 /* 好评@3x.png */; };
-		876415A62440644D001B0714 /* 评价@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415A32440644D001B0714 /* 评价@2x.png */; };
-		876415A72440644D001B0714 /* 评价.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415A42440644D001B0714 /* 评价.png */; };
-		876415A82440644D001B0714 /* 评价@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415A52440644D001B0714 /* 评价@3x.png */; };
-		876415AC24406452001B0714 /* 中评.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415A924406452001B0714 /* 中评.png */; };
-		876415AD24406452001B0714 /* 中评@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415AA24406452001B0714 /* 中评@2x.png */; };
-		876415AE24406452001B0714 /* 中评@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415AB24406452001B0714 /* 中评@3x.png */; };
-		876415B224406457001B0714 /* chatTopbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415AF24406457001B0714 /* chatTopbg.png */; };
-		876415B324406457001B0714 /* chatTopbg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415B024406457001B0714 /* chatTopbg@3x.png */; };
-		876415B424406457001B0714 /* chatTopbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 876415B124406457001B0714 /* chatTopbg@2x.png */; };
+		876415592440335D001B0714 /* DDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415582440335D001B0714 /* DDHelper.m */; };
+		876415B624407A40001B0714 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876415B524407A40001B0714 /* Image.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,53 +87,9 @@
 		876415372440085C001B0714 /* DDChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatManager.m; sourceTree = "<group>"; };
 		876415382440085C001B0714 /* DDChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatManager.h; sourceTree = "<group>"; };
 		876415392440085C001B0714 /* WebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
-		876415572440335D001B0714 /* EmojTextUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojTextUtil.h; sourceTree = "<group>"; };
-		876415582440335D001B0714 /* EmojTextUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojTextUtil.m; sourceTree = "<group>"; };
-		8764155B24406389001B0714 /* kissing_closed_eyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kissing_closed_eyes.png; sourceTree = "<group>"; };
-		8764155C2440638A001B0714 /* sweat_smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweat_smile.png; sourceTree = "<group>"; };
-		8764155D2440638A001B0714 /* wink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wink.png; sourceTree = "<group>"; };
-		8764155E2440638A001B0714 /* flushed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flushed.png; sourceTree = "<group>"; };
-		8764155F2440638A001B0714 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
-		876415602440638A001B0714 /* sleeping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleeping.png; sourceTree = "<group>"; };
-		876415612440638A001B0714 /* thumbsup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsup.png; sourceTree = "<group>"; };
-		876415622440638A001B0714 /* worried.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worried.png; sourceTree = "<group>"; };
-		876415632440638A001B0714 /* sob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sob.png; sourceTree = "<group>"; };
-		876415642440638A001B0714 /* laughing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laughing.png; sourceTree = "<group>"; };
-		876415652440638A001B0714 /* scream.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scream.png; sourceTree = "<group>"; };
-		876415662440638A001B0714 /* cold_sweat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cold_sweat.png; sourceTree = "<group>"; };
-		876415672440638A001B0714 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
-		876415682440638A001B0714 /* clap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clap.png; sourceTree = "<group>"; };
-		876415692440638A001B0714 /* joy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joy.png; sourceTree = "<group>"; };
-		8764156A2440638A001B0714 /* blush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blush.png; sourceTree = "<group>"; };
-		8764156B2440638A001B0714 /* kissing_smiling_eyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kissing_smiling_eyes.png; sourceTree = "<group>"; };
-		8764156C2440638A001B0714 /* angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angry.png; sourceTree = "<group>"; };
-		8764156D2440638A001B0714 /* ok_hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok_hand.png; sourceTree = "<group>"; };
-		8764156E2440638A001B0714 /* grin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grin.png; sourceTree = "<group>"; };
-		8764156F2440638A001B0714 /* smirk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smirk.png; sourceTree = "<group>"; };
-		876415702440638A001B0714 /* heart_eyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_eyes.png; sourceTree = "<group>"; };
-		876415712440638A001B0714 /* sunglasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunglasses.png; sourceTree = "<group>"; };
-		876415722440638A001B0714 /* stuck_out_tongue_winking_eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stuck_out_tongue_winking_eye.png; sourceTree = "<group>"; };
-		8764158B24406420001B0714 /* 表情@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "表情@2x.png"; sourceTree = "<group>"; };
-		8764158C24406420001B0714 /* 表情.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "表情.png"; sourceTree = "<group>"; };
-		8764158D24406420001B0714 /* 表情@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "表情@3x.png"; sourceTree = "<group>"; };
-		876415912440643A001B0714 /* 差评.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "差评.png"; sourceTree = "<group>"; };
-		876415922440643B001B0714 /* 差评@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "差评@2x.png"; sourceTree = "<group>"; };
-		876415932440643B001B0714 /* 差评@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "差评@3x.png"; sourceTree = "<group>"; };
-		8764159724406441001B0714 /* 发送图片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发送图片@2x.png"; sourceTree = "<group>"; };
-		8764159824406441001B0714 /* 发送图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发送图片.png"; sourceTree = "<group>"; };
-		8764159924406441001B0714 /* 发送图片@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发送图片@3x.png"; sourceTree = "<group>"; };
-		8764159D24406447001B0714 /* 好评.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "好评.png"; sourceTree = "<group>"; };
-		8764159E24406447001B0714 /* 好评@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "好评@2x.png"; sourceTree = "<group>"; };
-		8764159F24406447001B0714 /* 好评@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "好评@3x.png"; sourceTree = "<group>"; };
-		876415A32440644D001B0714 /* 评价@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评价@2x.png"; sourceTree = "<group>"; };
-		876415A42440644D001B0714 /* 评价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评价.png"; sourceTree = "<group>"; };
-		876415A52440644D001B0714 /* 评价@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评价@3x.png"; sourceTree = "<group>"; };
-		876415A924406452001B0714 /* 中评.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中评.png"; sourceTree = "<group>"; };
-		876415AA24406452001B0714 /* 中评@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中评@2x.png"; sourceTree = "<group>"; };
-		876415AB24406452001B0714 /* 中评@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中评@3x.png"; sourceTree = "<group>"; };
-		876415AF24406457001B0714 /* chatTopbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatTopbg.png; sourceTree = "<group>"; };
-		876415B024406457001B0714 /* chatTopbg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatTopbg@3x.png"; sourceTree = "<group>"; };
-		876415B124406457001B0714 /* chatTopbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatTopbg@2x.png"; sourceTree = "<group>"; };
+		876415572440335D001B0714 /* DDHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDHelper.h; sourceTree = "<group>"; };
+		876415582440335D001B0714 /* DDHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDHelper.m; sourceTree = "<group>"; };
+		876415B524407A40001B0714 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		C83E347888C9011049BC1D23 /* Pods-DDNormalRobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.release.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.release.xcconfig"; sourceTree = "<group>"; };
 		EA3372BA62836DB56A9D012D /* libPods-DDNormalRobot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DDNormalRobot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -240,8 +152,8 @@
 				876415112440085B001B0714 /* Views */,
 				8764152B2440085C001B0714 /* WebSocketManager.h */,
 				876415392440085C001B0714 /* WebSocketManager.m */,
-				876415572440335D001B0714 /* EmojTextUtil.h */,
-				876415582440335D001B0714 /* EmojTextUtil.m */,
+				876415572440335D001B0714 /* DDHelper.h */,
+				876415582440335D001B0714 /* DDHelper.m */,
 			);
 			path = DDNormalRobot;
 			sourceTree = "<group>";
@@ -304,51 +216,7 @@
 		8764155A24406361001B0714 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				876415AF24406457001B0714 /* chatTopbg.png */,
-				876415B124406457001B0714 /* chatTopbg@2x.png */,
-				876415B024406457001B0714 /* chatTopbg@3x.png */,
-				876415A924406452001B0714 /* 中评.png */,
-				876415AA24406452001B0714 /* 中评@2x.png */,
-				876415AB24406452001B0714 /* 中评@3x.png */,
-				876415A42440644D001B0714 /* 评价.png */,
-				876415A32440644D001B0714 /* 评价@2x.png */,
-				876415A52440644D001B0714 /* 评价@3x.png */,
-				8764159D24406447001B0714 /* 好评.png */,
-				8764159E24406447001B0714 /* 好评@2x.png */,
-				8764159F24406447001B0714 /* 好评@3x.png */,
-				8764159824406441001B0714 /* 发送图片.png */,
-				8764159724406441001B0714 /* 发送图片@2x.png */,
-				8764159924406441001B0714 /* 发送图片@3x.png */,
-				876415912440643A001B0714 /* 差评.png */,
-				876415922440643B001B0714 /* 差评@2x.png */,
-				876415932440643B001B0714 /* 差评@3x.png */,
-				8764158C24406420001B0714 /* 表情.png */,
-				8764158B24406420001B0714 /* 表情@2x.png */,
-				8764158D24406420001B0714 /* 表情@3x.png */,
-				8764156C2440638A001B0714 /* angry.png */,
-				8764156A2440638A001B0714 /* blush.png */,
-				876415682440638A001B0714 /* clap.png */,
-				876415662440638A001B0714 /* cold_sweat.png */,
-				8764155E2440638A001B0714 /* flushed.png */,
-				8764156E2440638A001B0714 /* grin.png */,
-				876415702440638A001B0714 /* heart_eyes.png */,
-				876415692440638A001B0714 /* joy.png */,
-				8764155B24406389001B0714 /* kissing_closed_eyes.png */,
-				8764156B2440638A001B0714 /* kissing_smiling_eyes.png */,
-				876415642440638A001B0714 /* laughing.png */,
-				876415672440638A001B0714 /* mask.png */,
-				8764156D2440638A001B0714 /* ok_hand.png */,
-				876415652440638A001B0714 /* scream.png */,
-				876415602440638A001B0714 /* sleeping.png */,
-				8764155F2440638A001B0714 /* smile.png */,
-				8764156F2440638A001B0714 /* smirk.png */,
-				876415632440638A001B0714 /* sob.png */,
-				876415722440638A001B0714 /* stuck_out_tongue_winking_eye.png */,
-				876415712440638A001B0714 /* sunglasses.png */,
-				8764155C2440638A001B0714 /* sweat_smile.png */,
-				876415612440638A001B0714 /* thumbsup.png */,
-				8764155D2440638A001B0714 /* wink.png */,
-				876415622440638A001B0714 /* worried.png */,
+				876415B524407A40001B0714 /* Image.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -430,53 +298,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876415732440638A001B0714 /* kissing_closed_eyes.png in Resources */,
-				876415A62440644D001B0714 /* 评价@2x.png in Resources */,
-				876415762440638A001B0714 /* flushed.png in Resources */,
-				876415A024406447001B0714 /* 好评.png in Resources */,
-				8764159024406420001B0714 /* 表情@3x.png in Resources */,
-				876415A224406447001B0714 /* 好评@3x.png in Resources */,
-				876415832440638A001B0714 /* kissing_smiling_eyes.png in Resources */,
-				8764157A2440638A001B0714 /* worried.png in Resources */,
-				876415942440643B001B0714 /* 差评.png in Resources */,
-				8764157C2440638A001B0714 /* laughing.png in Resources */,
-				8764157D2440638A001B0714 /* scream.png in Resources */,
-				876415AD24406452001B0714 /* 中评@2x.png in Resources */,
 				876415072440081F001B0714 /* LaunchScreen.storyboard in Resources */,
-				876415AC24406452001B0714 /* 中评.png in Resources */,
-				8764159A24406441001B0714 /* 发送图片@2x.png in Resources */,
-				876415B424406457001B0714 /* chatTopbg@2x.png in Resources */,
-				876415792440638A001B0714 /* thumbsup.png in Resources */,
-				8764157F2440638A001B0714 /* mask.png in Resources */,
-				8764159C24406441001B0714 /* 发送图片@3x.png in Resources */,
-				876415752440638A001B0714 /* wink.png in Resources */,
-				876415872440638A001B0714 /* smirk.png in Resources */,
-				876415A72440644D001B0714 /* 评价.png in Resources */,
-				8764158F24406420001B0714 /* 表情.png in Resources */,
-				8764157B2440638A001B0714 /* sob.png in Resources */,
-				876415B324406457001B0714 /* chatTopbg@3x.png in Resources */,
 				876415042440081F001B0714 /* Assets.xcassets in Resources */,
-				876415802440638A001B0714 /* clap.png in Resources */,
-				876415812440638A001B0714 /* joy.png in Resources */,
-				8764158E24406420001B0714 /* 表情@2x.png in Resources */,
-				876415822440638A001B0714 /* blush.png in Resources */,
-				8764159B24406441001B0714 /* 发送图片.png in Resources */,
-				876415742440638A001B0714 /* sweat_smile.png in Resources */,
-				876415852440638A001B0714 /* ok_hand.png in Resources */,
-				876415AE24406452001B0714 /* 中评@3x.png in Resources */,
-				876415772440638A001B0714 /* smile.png in Resources */,
-				876415892440638A001B0714 /* sunglasses.png in Resources */,
-				876415952440643B001B0714 /* 差评@2x.png in Resources */,
-				876415A82440644D001B0714 /* 评价@3x.png in Resources */,
-				876415962440643B001B0714 /* 差评@3x.png in Resources */,
-				876415842440638A001B0714 /* angry.png in Resources */,
-				876415862440638A001B0714 /* grin.png in Resources */,
-				8764158A2440638A001B0714 /* stuck_out_tongue_winking_eye.png in Resources */,
-				876415A124406447001B0714 /* 好评@2x.png in Resources */,
-				876415882440638A001B0714 /* heart_eyes.png in Resources */,
-				876415782440638A001B0714 /* sleeping.png in Resources */,
-				8764157E2440638A001B0714 /* cold_sweat.png in Resources */,
-				876415B224406457001B0714 /* chatTopbg.png in Resources */,
+				876415B624407A40001B0714 /* Image.xcassets in Resources */,
 				8764150224400817001B0714 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,7 +378,7 @@
 				8764153B2440085C001B0714 /* EvaluationView.m in Sources */,
 				876414FF24400817001B0714 /* ViewController.m in Sources */,
 				876415432440085C001B0714 /* ChatQuestionResolveCell.m in Sources */,
-				876415592440335D001B0714 /* EmojTextUtil.m in Sources */,
+				876415592440335D001B0714 /* DDHelper.m in Sources */,
 				8764154A2440085C001B0714 /* ClientParamsModel.m in Sources */,
 				876415412440085C001B0714 /* DDChatCell.m in Sources */,
 				8764153D2440085C001B0714 /* TurnArtificalActionCell.m in Sources */,

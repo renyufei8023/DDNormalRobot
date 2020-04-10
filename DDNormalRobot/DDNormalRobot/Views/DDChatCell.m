@@ -8,7 +8,7 @@
 
 #import "DDChatCell.h"
 #import "ClientParamsModel.h"
-#import "EmojTextUtil.h"
+#import "DDHelper.h"
 #import "MessageItemModel.h"
 #import "Masonry.h"
 #import "QMUIKit.h"
@@ -150,7 +150,7 @@
         [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"点击问题或回复数字查看答案"]];
         self.contentLab.attributedText = att;
     }else {
-        self.contentLab.attributedText = [EmojTextUtil emojTextToAtt:model.Content];
+        self.contentLab.attributedText = [DDHelper emojTextToAtt:model.Content];
     }
 }
 
