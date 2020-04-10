@@ -1,0 +1,25 @@
+platform :ios, '11.0'
+inhibit_all_warnings!
+target 'DDNormalRobot' do
+  pod 'Bugly'
+    pod 'Masonry'
+    pod 'MJRefresh'
+    pod 'SDCycleScrollView', '~>1.80'
+    pod 'YYModel'
+    pod 'YYCategories'
+    pod 'YYText'
+    pod 'IQKeyboardManager'
+    pod 'QMUIKit'
+    pod 'LookinServer', :configurations => ['Debug']
+    pod 'PPBadgeView'
+    pod 'DZNEmptyDataSet'
+    pod 'JXCategoryView'
+    pod 'Weibo_SDK'
+    pod 'KSGuaidView'
+    pod 'TZImagePickerController'
+    pod 'ReactiveObjC', '~> 3.1.1'
+    pod 'SDWebImage'
+    pod 'SocketRocket'
+    pod 'YBImageBrowser','~>3.0.8'
+    pod 'DDNetworkHelper'
+end
