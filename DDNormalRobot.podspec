@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'DDNormalRobot'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = '嘟嘟聊天机器人'
 
   s.description      = <<-DESC
