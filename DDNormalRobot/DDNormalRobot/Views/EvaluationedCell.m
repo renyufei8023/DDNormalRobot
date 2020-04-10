@@ -9,8 +9,8 @@
 #import "EvaluationedCell.h"
 #import "AttributedStringTool.h"
 #import "MessageItemModel.h"
-#import <QMUIKit.h>
-#import <Masonry.h>
+#import "QMUIKit.h"
+#import "Masonry.h"
 
 @interface EvaluationedCell ()
 @property(nonatomic, strong) UILabel *contentLab;

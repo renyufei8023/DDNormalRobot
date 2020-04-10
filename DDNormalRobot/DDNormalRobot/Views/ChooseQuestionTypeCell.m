@@ -9,9 +9,9 @@
 #import "ChooseQuestionTypeCell.h"
 #import "BusinessItemModel.h"
 #import "MessageItemModel.h"
-#import <YYText.h>
-#import <QMUIKit.h>
-#import <Masonry.h>
+#import "YYText.h"
+#import "QMUIKit.h"
+#import "Masonry.h"
 
 @interface ChooseQuestionTypeCell ()
 @property(nonatomic, strong) YYLabel *contentLab;

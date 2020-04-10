@@ -8,8 +8,8 @@
 
 #import "LineUpView.h"
 #import "MessageItemModel.h"
-#import <QMUIKit.h>
-#import <Masonry.h>
+#import "QMUIKit.h"
+#import "Masonry.h"
 
 @interface LineUpView ()
 @property(nonatomic, strong) UILabel *numberLab;

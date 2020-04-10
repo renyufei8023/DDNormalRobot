@@ -8,9 +8,9 @@
 
 #import "MessageItemModel.h"
 #import "ClientParamsModel.h"
-#import <YYCategories/YYCategories.h>
-#import <YYModel/YYModel.h>
-#import <QMUIKit/QMUIKit.h>
+#import "YYCategories.h"
+#import "YYModel.h"
+#import "QMUIKit.h"
 
 @implementation MessageItemModel
 

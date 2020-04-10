@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'DDNormalRobot'
-  s.version          = '1.0.0'
+  s.version          = '0.1.0'
   s.summary          = '嘟嘟聊天机器人'
 
   s.description      = <<-DESC
@@ -12,7 +12,6 @@ TODO: Add long description of the pod here.
   s.author           = { 'dudu' => '872943400@qq.com' }
   s.source           = { :git => 'https://github.com/renyufei8023/DDNormalRobot.git', :tag => s.version.to_s }
 
-  s.platform         = :ios, "9.0"
   s.source_files = 'DDNormalRobot/DDNormalRobot/**/*'
   s.dependency 'DDNetworkHelper'
   s.dependency 'Masonry'

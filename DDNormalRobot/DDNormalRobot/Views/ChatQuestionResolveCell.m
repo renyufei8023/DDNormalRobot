@@ -8,9 +8,9 @@
 
 #import "ChatQuestionResolveCell.h"
 #import "MessageItemModel.h"
-#import <QMUIKit.h>
-#import <Masonry.h>
-#import <YYCategories.h>
+#import "QMUIKit.h"
+#import "Masonry.h"
+#import "YYCategories.h"
 
 @interface ChatQuestionResolveCell ()
 @property(nonatomic, strong) QMUILabel *contentLab;

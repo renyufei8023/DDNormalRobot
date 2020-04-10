@@ -7,7 +7,7 @@
 //
 
 #import "EmojTextUtil.h"
-#import <YYText.h>
+#import "YYText.h"
 
 NSString *const QMUIEmotionString = @"smile;laughing;blush;heart_eyes;smirk;flushed;grin;kissing_smiling_eyes;wink;kissing_closed_eyes;stuck_out_tongue_winking_eye;sleeping;worried;sweat_smile;cold_sweat;joy;sob;angry;mask;scream;sunglasses;thumbsup;clap;ok_hand";
 

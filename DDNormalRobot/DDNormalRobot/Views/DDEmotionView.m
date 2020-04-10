@@ -7,7 +7,7 @@
 //
 
 #import "DDEmotionView.h"
-#import <Masonry.h>
+#import "Masonry.h"
 
 @interface DDEmotionItemView : UICollectionViewCell
 @property(nonatomic, strong) QMUIButton *itemBtn;

@@ -7,9 +7,9 @@
 //
 
 #import "TurnArtificalActionCell.h"
-#import <QMUIKit.h>
-#import <Masonry.h>
-#import <YYCategories.h>
+#import "QMUIKit.h"
+#import "Masonry.h"
+#import "YYCategories.h"
 
 @implementation TurnArtificalActionCell
 

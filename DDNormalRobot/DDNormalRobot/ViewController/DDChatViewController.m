@@ -25,12 +25,12 @@
 #import "EvaluationedCell.h"
 #import "SmartTipsView.h"
 #import "MessageItemModel.h"
-#import <QMUIKit.h>
-#import <Masonry.h>
-#import <YYModel.h>
-#import <SDWebImage.h>
-#import <YYCategories.h>
-#import <DDNetworkHelper.h>
+#import "QMUIKit.h"
+#import "Masonry.h"
+#import "YYModel.h"
+#import "SDWebImage.h"
+#import "YYCategories.h"
+#import "DDNetworkHelper.h"
 
 @interface DDChatViewController () <UITableViewDelegate,UITableViewDataSource,DDChatDelegate>
 @property(nonatomic, strong) UIImageView *topImageBgView;

@@ -10,10 +10,10 @@
 #import "ClientParamsModel.h"
 #import "EmojTextUtil.h"
 #import "MessageItemModel.h"
-#import <Masonry.h>
-#import <QMUIKit.h>
-#import <YYText.h>
-#import <YYCategories.h>
+#import "Masonry.h"
+#import "QMUIKit.h"
+#import "YYText.h"
+#import "YYCategories.h"
 
 @interface DDChatCell ()
 @property(nonatomic, strong) UILabel *nameLab;

@@ -23,10 +23,10 @@
 #import "MessageHub.h"
 #import "MessageItemModel.h"
 #import "ClientParamsModel.h"
-#import <QMUIKit.h>
-#import <YYModel/YYModel.h>
-#import <AFNetworking.h>
-#import <DDNetworkHelper.h>
+#import "QMUIKit.h"
+#import "YYModel.h"
+#import "AFNetworking.h"
+#import "DDNetworkHelper.h"
 
 @interface WebSocketManager () <SRWebSocketDelegate>
 @property (nonatomic, strong) NSTimer *heartBeatTimer; //心跳定时器

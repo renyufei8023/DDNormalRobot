@@ -7,8 +7,8 @@
 //
 
 #import "SmartTipsView.h"
-#import <QMUIKit.h>
-#import <Masonry.h>
+#import "QMUIKit.h"
+#import "Masonry.h"
 
 @interface SmartTipsView () <UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;

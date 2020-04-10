@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SocketRocket/SRWebSocket.h>
+#import "SRWebSocket.h"
 
 typedef NS_ENUM(NSUInteger,WebSocketConnectType){
     WebSocketDefault = 0, //初始状态,未连接

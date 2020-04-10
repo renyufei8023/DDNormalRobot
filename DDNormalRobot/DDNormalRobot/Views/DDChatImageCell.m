@@ -9,12 +9,12 @@
 #import "DDChatImageCell.h"
 #import "ClientParamsModel.h"
 #import "MessageItemModel.h"
-#import <QMUIKit.h>
-#import <YYCategories.h>
-#import <Masonry.h>
-#import <QMUIKit.h>
-#import <SDWebImage.h>
-#import <YBImageBrowser/YBImageBrowser.h>
+#import "QMUIKit.h"
+#import "YYCategories.h"
+#import "Masonry.h"
+#import "QMUIKit.h"
+#import "SDWebImage.h"
+#import "YBImageBrowser/YBImageBrowser.h"
 
 @interface DDChatImageCell ()
 @property(nonatomic, strong) UILabel *nameLab;
