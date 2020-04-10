@@ -11,7 +11,8 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'dudu' => '872943400@qq.com' }
   s.source           = { :git => 'https://github.com/renyufei8023/DDNormalRobot.git', :tag => s.version.to_s }
-
+  
+  s.platform     = :ios, "11.0"
   s.source_files = 'DDNormalRobot/DDNormalRobot/**/*'
   s.dependency 'DDNetworkHelper'
   s.dependency 'Masonry'
