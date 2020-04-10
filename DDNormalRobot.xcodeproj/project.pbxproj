@@ -33,7 +33,6 @@
 		8764154A2440085C001B0714 /* ClientParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415362440085C001B0714 /* ClientParamsModel.m */; };
 		8764154B2440085C001B0714 /* DDChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415372440085C001B0714 /* DDChatManager.m */; };
 		8764154C2440085C001B0714 /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415392440085C001B0714 /* WebSocketManager.m */; };
-		876415522440126D001B0714 /* AttributedStringTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415502440126D001B0714 /* AttributedStringTool.m */; };
 		876415592440335D001B0714 /* EmojTextUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415582440335D001B0714 /* EmojTextUtil.m */; };
 		876415732440638A001B0714 /* kissing_closed_eyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764155B24406389001B0714 /* kissing_closed_eyes.png */; };
 		876415742440638A001B0714 /* sweat_smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8764155C2440638A001B0714 /* sweat_smile.png */; };
@@ -132,8 +131,6 @@
 		876415372440085C001B0714 /* DDChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatManager.m; sourceTree = "<group>"; };
 		876415382440085C001B0714 /* DDChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatManager.h; sourceTree = "<group>"; };
 		876415392440085C001B0714 /* WebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
-		876415502440126D001B0714 /* AttributedStringTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStringTool.m; sourceTree = "<group>"; };
-		876415512440126D001B0714 /* AttributedStringTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringTool.h; sourceTree = "<group>"; };
 		876415572440335D001B0714 /* EmojTextUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojTextUtil.h; sourceTree = "<group>"; };
 		876415582440335D001B0714 /* EmojTextUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojTextUtil.m; sourceTree = "<group>"; };
 		8764155B24406389001B0714 /* kissing_closed_eyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kissing_closed_eyes.png; sourceTree = "<group>"; };
@@ -218,8 +215,6 @@
 		876414F624400817001B0714 /* DDNormalRobot */ = {
 			isa = PBXGroup;
 			children = (
-				876415512440126D001B0714 /* AttributedStringTool.h */,
-				876415502440126D001B0714 /* AttributedStringTool.m */,
 				8764151024400847001B0714 /* DDNormalRobot */,
 				876414F724400817001B0714 /* AppDelegate.h */,
 				876414F824400817001B0714 /* AppDelegate.m */,
@@ -559,7 +554,6 @@
 				8764153B2440085C001B0714 /* EvaluationView.m in Sources */,
 				876414FF24400817001B0714 /* ViewController.m in Sources */,
 				876415432440085C001B0714 /* ChatQuestionResolveCell.m in Sources */,
-				876415522440126D001B0714 /* AttributedStringTool.m in Sources */,
 				876415592440335D001B0714 /* EmojTextUtil.m in Sources */,
 				8764154A2440085C001B0714 /* ClientParamsModel.m in Sources */,
 				876415412440085C001B0714 /* DDChatCell.m in Sources */,

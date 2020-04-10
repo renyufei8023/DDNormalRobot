@@ -7,7 +7,6 @@
 //
 
 #import "EvaluationedCell.h"
-#import "AttributedStringTool.h"
 #import "MessageItemModel.h"
 #import "QMUIKit.h"
 #import "Masonry.h"
@@ -52,7 +51,9 @@
         default:
             break;
     }
-    _contentLab.attributedText = [AttributedStringTool attributeWithColor:color range:NSMakeRange(5, text.length) string:[@"您已评价：" stringByAppendingString:text]];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:[@"您已评价：" stringByAppendingString:text]];
+    [str addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(5, text.length)];
+    _contentLab.attributedText = str;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
