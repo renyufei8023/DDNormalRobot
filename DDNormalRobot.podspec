@@ -11,8 +11,8 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'dudu' => '872943400@qq.com' }
   s.source           = { :git => 'https://github.com/renyufei8023/DDNormalRobot.git', :tag => s.version.to_s }
-  
-  resources = 'DDNormalRobot/DDNormalRobot/**/*'
+ 
+  resources = "DDNormalRobot/DDNormalRobot/Resources/*.{png,bundle}"
   s.platform     = :ios, "11.0"
   s.ios.deployment_target = '9.0'
   s.source_files = 'DDNormalRobot/DDNormalRobot/**/*'
