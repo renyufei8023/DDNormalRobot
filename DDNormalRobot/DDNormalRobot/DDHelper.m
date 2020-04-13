@@ -38,7 +38,7 @@ static NSArray<QMUIEmotion *> *QMUIEmotionArray;
 + (void)asyncLoadImages:(NSArray<QMUIEmotion *> *)emotions {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         for (QMUIEmotion *e in emotions) {
-            e.image = UIImageMake(e.identifier);
+            e.image = [DDHelper imageWithName:e.identifier];
         }
     });
 }
