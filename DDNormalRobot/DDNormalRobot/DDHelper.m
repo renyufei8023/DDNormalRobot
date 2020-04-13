@@ -71,7 +71,7 @@ static NSArray<QMUIEmotion *> *QMUIEmotionArray;
     static NSBundle *resourceBundle = nil;
     if (!resourceBundle) {
         NSBundle *mainBundle = [NSBundle bundleForClass:self];
-        NSString *resourcePath = [mainBundle pathForResource:@"DDResources" ofType:@"bundle"];
+        NSString *resourcePath = [mainBundle pathForResource:@"DDNormalRobot" ofType:@"bundle"];
         resourceBundle = [NSBundle bundleWithPath:resourcePath] ?: mainBundle;
     }
     UIImage *image = [UIImage imageNamed:name inBundle:resourceBundle compatibleWithTraitCollection:nil];
