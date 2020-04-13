@@ -12,6 +12,7 @@
 #import "Masonry.h"
 #import "DDNetworkHelper.h"
 #import "YYCategories.h"
+#import "DDHelper.h"
 #import "TZImagePickerController/TZImagePickerController.h"
 
 @interface DDInputToolBar () <QMUITextViewDelegate>
@@ -107,7 +108,7 @@
         if (i == 2) {
             btn.hidden = YES;
         }
-        [btn setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
+        [btn setImage:[DDHelper imageWithName:images[i]] forState:UIControlStateNormal];
         [self.toolBarView addSubview:btn];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             if (i == 0) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BED98799E3508A2A5FE2D72 /* libPods-DDNormalRobot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3372BA62836DB56A9D012D /* libPods-DDNormalRobot.a */; };
+		8700D5B12443F533002DD406 /* DDResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8700D5B02443F533002DD406 /* DDResources.bundle */; };
 		876414F924400817001B0714 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 876414F824400817001B0714 /* AppDelegate.m */; };
 		876414FF24400817001B0714 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876414FE24400817001B0714 /* ViewController.m */; };
 		8764150224400817001B0714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8764150024400817001B0714 /* Main.storyboard */; };
@@ -34,11 +35,11 @@
 		8764154B2440085C001B0714 /* DDChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415372440085C001B0714 /* DDChatManager.m */; };
 		8764154C2440085C001B0714 /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415392440085C001B0714 /* WebSocketManager.m */; };
 		876415592440335D001B0714 /* DDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415582440335D001B0714 /* DDHelper.m */; };
-		876415B624407A40001B0714 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876415B524407A40001B0714 /* Image.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A8C4FFAB626F8B90C5F4A39 /* Pods-DDNormalRobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.debug.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.debug.xcconfig"; sourceTree = "<group>"; };
+		8700D5B02443F533002DD406 /* DDResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DDResources.bundle; sourceTree = "<group>"; };
 		876414F424400817001B0714 /* DDNormalRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDNormalRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876414F724400817001B0714 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		876414F824400817001B0714 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		876415392440085C001B0714 /* WebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
 		876415572440335D001B0714 /* DDHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDHelper.h; sourceTree = "<group>"; };
 		876415582440335D001B0714 /* DDHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDHelper.m; sourceTree = "<group>"; };
-		876415B524407A40001B0714 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		C83E347888C9011049BC1D23 /* Pods-DDNormalRobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.release.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.release.xcconfig"; sourceTree = "<group>"; };
 		EA3372BA62836DB56A9D012D /* libPods-DDNormalRobot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DDNormalRobot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -216,7 +216,7 @@
 		8764155A24406361001B0714 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				876415B524407A40001B0714 /* Image.xcassets */,
+				8700D5B02443F533002DD406 /* DDResources.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 			files = (
 				876415072440081F001B0714 /* LaunchScreen.storyboard in Resources */,
 				876415042440081F001B0714 /* Assets.xcassets in Resources */,
-				876415B624407A40001B0714 /* Image.xcassets in Resources */,
+				8700D5B12443F533002DD406 /* DDResources.bundle in Resources */,
 				8764150224400817001B0714 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
