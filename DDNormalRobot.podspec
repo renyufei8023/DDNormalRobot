@@ -15,7 +15,7 @@ TODO: Add long description of the pod here.
   resources = "DDNormalRobot/DDNormalRobot/Resources/*.{png,bundle}"
   s.platform     = :ios, "11.0"
   s.ios.deployment_target = '9.0'
-  s.source_files = 'DDNormalRobot/DDNormalRobot/*.{h,m}'
+  s.source_files = 'DDNormalRobot/DDNormalRobot/**/*.{h,m}'
   s.dependency 'DDNetworkHelper'
   s.dependency 'Masonry'
   s.dependency 'YYText'
