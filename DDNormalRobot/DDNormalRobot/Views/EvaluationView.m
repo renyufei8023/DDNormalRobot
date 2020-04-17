@@ -67,6 +67,7 @@
 }
 
 - (void)initSubViews {
+    self.backgroundColor = UIColorMask;
     UIView *contentView = [UIView new];
     contentView.backgroundColor = UIColorWhite;
     contentView.layer.cornerRadius = 5;
@@ -93,9 +94,7 @@
         make.right.top.equalTo(contentView).inset(16);
     }];
     [closeBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        if (weakSelf.closeBlock) {
-            weakSelf.closeBlock();
-        }
+        [weakSelf removeFromSuperview];
     }];
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
@@ -144,6 +143,7 @@
         if (weakSelf.submitBlock) {
             NSIndexPath *selectIndexPath = [weakSelf.collectionView indexPathsForSelectedItems].firstObject;
             weakSelf.submitBlock([NSString stringWithFormat:@"%@",@(selectIndexPath.row + 1)], weakSelf.textView.text);
+            [weakSelf removeFromSuperview];
         }
     }];
 }

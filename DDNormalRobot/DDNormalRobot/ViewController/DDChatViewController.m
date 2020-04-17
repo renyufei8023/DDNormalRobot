@@ -215,16 +215,8 @@
     
     //评价按钮的回调
     self.inputToolBar.evalutionBlock = ^{
-        QMUIModalPresentationViewController *modalVC = [QMUIModalPresentationViewController new];
         EvaluationView *evaluationView = [[EvaluationView alloc] initWithFrame:weakSelf.view.bounds];
-        modalVC.contentView = evaluationView;
-        modalVC.contentViewMargins = UIEdgeInsetsZero;
-        [modalVC showWithAnimated:YES completion:^(BOOL finished) {
-            
-        }];
-        evaluationView.closeBlock = ^{
-            [modalVC hideWithAnimated:YES completion:NULL];
-        };
+        [[UIApplication sharedApplication].keyWindow addSubview:evaluationView];
         evaluationView.submitBlock = ^(NSString * _Nonnull type, NSString * _Nonnull content) {
             [weakSelf evaluationWithType:type memo:content];
         };
@@ -512,14 +504,8 @@
                         [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
                     }
                 }else if (message.DialogType == 3) {//收到邀请评价
-                    QMUIModalPresentationViewController *modalVC = [QMUIModalPresentationViewController new];
                     EvaluationView *evaluationView = [[EvaluationView alloc] initWithFrame:self.view.bounds];
-                    modalVC.contentView = evaluationView;
-                    modalVC.contentViewMargins = UIEdgeInsetsZero;
-                    [modalVC showWithAnimated:YES completion:NULL];
-                    evaluationView.closeBlock = ^{
-                        [modalVC hideWithAnimated:YES completion:NULL];
-                    };
+                    [[UIApplication sharedApplication].keyWindow addSubview:evaluationView];
                     evaluationView.submitBlock = ^(NSString * _Nonnull type, NSString * _Nonnull content) {
                         [self evaluationWithType:type memo:content];
                     };
