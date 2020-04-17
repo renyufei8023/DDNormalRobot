@@ -497,6 +497,9 @@
                         //这里接入人工成功了
                         self.inputToolBar.showHideGiftBtn = YES;
                         self.turnToArtificial.hidden = YES;
+                    }else {
+                        self.inputToolBar.showHideGiftBtn = false;
+                        self.turnToArtificial.hidden = false;
                     }
                     [[NSUserDefaults standardUserDefaults] setObject:robotDetail.ServiceType forKey:@"serviceType"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
