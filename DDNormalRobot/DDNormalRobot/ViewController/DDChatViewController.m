@@ -522,13 +522,20 @@
                         [self scrollToBottom:YES];
                     }
                 }else if (message.DialogType == 8) {//排队
-                    QMUIModalPresentationViewController *modalVC = [QMUIModalPresentationViewController new];
-                    _lineUpModalVC = modalVC;
-                    LineUpView *waitingView = [[LineUpView alloc] initWithFrame:self.view.bounds];
-                    waitingView.model = message;
-                    modalVC.contentView = waitingView;
-                    modalVC.contentViewMargins = UIEdgeInsetsZero;
-                    [modalVC showInView:self.view animated:YES completion:NULL];
+                    NSDictionary *datas = [NSJSONSerialization JSONObjectWithData:[message.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                    if ([datas[@"show"] isEqualToString:@"false"]) {
+                        if (_lineUpModalVC.isVisible) {
+                            [_lineUpModalVC hideWithAnimated:YES completion:NULL];
+                        }
+                    }else {
+                        QMUIModalPresentationViewController *modalVC = [QMUIModalPresentationViewController new];
+                        _lineUpModalVC = modalVC;
+                        LineUpView *waitingView = [[LineUpView alloc] initWithFrame:self.view.bounds];
+                        waitingView.model = message;
+                        modalVC.contentView = waitingView;
+                        modalVC.contentViewMargins = UIEdgeInsetsZero;
+                        [modalVC showInView:self.view animated:YES completion:NULL];
+                    }
                 }else if (message.DialogType == 7) {//结束会话
                     [self DialogOver];
                     if ([QMUIModalPresentationViewController isAnyModalPresentationViewControllerVisible]) {
