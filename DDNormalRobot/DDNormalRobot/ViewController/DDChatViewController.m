@@ -45,6 +45,7 @@
 @property(nonatomic, strong) DDEmotionView *emotionView;
 @property(nonatomic, strong) SmartTipsView *tipsView;
 @property(nonatomic, strong) QMUIKeyboardManager *keyboardManager;
+@property(nonatomic, weak) QMUIModalPresentationViewController *lineUpModalVC;
 
 @end
 
@@ -494,6 +495,9 @@
                     self.detailLab.text = robotDetail.Motto;
                     [RobotDetailModel saveRobotDetail:robotDetail];
                     if (message.ServiceType.integerValue == 2) { //如果是人工客服，隐藏转人工按钮
+                        if (_lineUpModalVC.isVisible) {
+                            [_lineUpModalVC hideWithAnimated:YES completion:NULL];
+                        }
                         //这里接入人工成功了
                         self.inputToolBar.showHideGiftBtn = YES;
                         self.turnToArtificial.hidden = YES;
@@ -519,6 +523,7 @@
                     }
                 }else if (message.DialogType == 8) {//排队
                     QMUIModalPresentationViewController *modalVC = [QMUIModalPresentationViewController new];
+                    _lineUpModalVC = modalVC;
                     LineUpView *waitingView = [[LineUpView alloc] initWithFrame:self.view.bounds];
                     waitingView.model = message;
                     modalVC.contentView = waitingView;
