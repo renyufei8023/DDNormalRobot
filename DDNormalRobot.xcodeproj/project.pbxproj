@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1BED98799E3508A2A5FE2D72 /* libPods-DDNormalRobot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3372BA62836DB56A9D012D /* libPods-DDNormalRobot.a */; };
 		8700D5B12443F533002DD406 /* DDNormalRobot.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8700D5B02443F533002DD406 /* DDNormalRobot.bundle */; };
+		874CE7B82455601000D6622F /* UserToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 874CE7B72455601000D6622F /* UserToken.m */; };
 		876414F924400817001B0714 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 876414F824400817001B0714 /* AppDelegate.m */; };
 		876414FF24400817001B0714 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876414FE24400817001B0714 /* ViewController.m */; };
 		8764150224400817001B0714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8764150024400817001B0714 /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 /* Begin PBXFileReference section */
 		3A8C4FFAB626F8B90C5F4A39 /* Pods-DDNormalRobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.debug.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.debug.xcconfig"; sourceTree = "<group>"; };
 		8700D5B02443F533002DD406 /* DDNormalRobot.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DDNormalRobot.bundle; sourceTree = "<group>"; };
+		874CE7B62455601000D6622F /* UserToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserToken.h; sourceTree = "<group>"; };
+		874CE7B72455601000D6622F /* UserToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserToken.m; sourceTree = "<group>"; };
 		876414F424400817001B0714 /* DDNormalRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDNormalRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876414F724400817001B0714 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		876414F824400817001B0714 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				876415302440085C001B0714 /* MessageItemModel.m */,
 				8764152F2440085C001B0714 /* RobotDetailModel.h */,
 				876415342440085C001B0714 /* RobotDetailModel.m */,
+				874CE7B62455601000D6622F /* UserToken.h */,
+				874CE7B72455601000D6622F /* UserToken.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				876415452440085C001B0714 /* DDChatViewController.m in Sources */,
 				8764153A2440085C001B0714 /* ChooseQuestionTypeCell.m in Sources */,
 				8764153C2440085C001B0714 /* DDChatImageCell.m in Sources */,
+				874CE7B82455601000D6622F /* UserToken.m in Sources */,
 				876415482440085C001B0714 /* RobotDetailModel.m in Sources */,
 				8764154B2440085C001B0714 /* DDChatManager.m in Sources */,
 				876414F924400817001B0714 /* AppDelegate.m in Sources */,

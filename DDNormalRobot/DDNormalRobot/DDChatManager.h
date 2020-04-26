@@ -28,6 +28,7 @@ typedef void(^CompleteBlcok)(MessageItemModel *message);
 - (void)sendImageMessageWithImageUrl:(NSString *)imageUrl isRobot:(BOOL)isRobot WithComplete:(CompleteBlcok)completeBlock;
 - (void)startNewSession;//开始新会话
 - (void)endSession;//结束会话
+- (void)startOrderSession;//开始订单聊天
 
 @end
 
