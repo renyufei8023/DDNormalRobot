@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (4.0.0):
-    - AFNetworking/NSURLSession (= 4.0.0)
-    - AFNetworking/Reachability (= 4.0.0)
-    - AFNetworking/Security (= 4.0.0)
-    - AFNetworking/Serialization (= 4.0.0)
-    - AFNetworking/UIKit (= 4.0.0)
-  - AFNetworking/NSURLSession (4.0.0):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (4.0.0)
-  - AFNetworking/Security (4.0.0)
-  - AFNetworking/Serialization (4.0.0)
-  - AFNetworking/UIKit (4.0.0):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Bugly (2.5.2)
   - DDNetworkHelper (1.0.0):
@@ -20,11 +20,11 @@ PODS:
     - YYCache (~> 1.0.4)
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (6.5.5)
-  - JXCategoryView (1.5.3)
+  - JXCategoryView (1.5.5)
   - KSGuaidView (0.0.5)
   - LookinServer (1.0.0)
   - Masonry (1.1.0)
-  - MJRefresh (3.3.1)
+  - MJRefresh (3.4.1)
   - PPBadgeView (3.1.0)
   - QMUIKit (4.1.1):
     - QMUIKit/QMUIComponents (= 4.1.1)
@@ -332,9 +332,9 @@ PODS:
   - ReactiveObjC (3.1.1)
   - SDCycleScrollView (1.80):
     - SDWebImage (>= 5.0.0)
-  - SDWebImage (5.7.0):
-    - SDWebImage/Core (= 5.7.0)
-  - SDWebImage/Core (5.7.0)
+  - SDWebImage (5.7.3):
+    - SDWebImage/Core (= 5.7.3)
+  - SDWebImage/Core (5.7.3)
   - SocketRocket (0.5.1)
   - TZImagePickerController (3.3.1)
   - Weibo_SDK (3.2.7)
@@ -404,21 +404,21 @@ SPEC REPOS:
     - YYText
 
 SPEC CHECKSUMS:
-  AFNetworking: d9fdf484a3c723ec3c558a41cc5754c7e845ee77
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Bugly: dbac48b55ad469a97cc4321045cd50df8f63d44f
   DDNetworkHelper: 734b4b0dea3a62379a3d4917341d4210545b985b
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
-  JXCategoryView: 64fbdf3d1bbc8087ebd0443dd3b49855000aca6e
+  JXCategoryView: 0293fcb356f10a5c2e679dac0a1a5f1899ee0c87
   KSGuaidView: 8a208b7df4140db1c86a8bc1eb170f91b0aabf19
   LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
+  MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
   PPBadgeView: b50a223638970fd0781e8753250385864b6dd2fe
   QMUIKit: 5a1a39630f404bd34824d0769ffac9531744602c
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
-  SDWebImage: a99471f452bdfa0ca52ddf5b1adf2b61cab1d1eb
+  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   Weibo_SDK: 5a4d08f7e1fedbb635435e4585c8c0439c7da089

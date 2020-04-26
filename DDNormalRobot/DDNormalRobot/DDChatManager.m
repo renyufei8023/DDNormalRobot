@@ -233,7 +233,7 @@
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_group_enter(group);
-        [DDNetworkHelper GET:@"http://order.dd373.com/Api/OrderChat/UserCenter/GetUserToken?Type=1" parameters:nil headers:nil success:^(id responseObject) {
+        [DDNetworkHelper GET:@"http://order.dd373.com/Api/OrderChat/UserCenter/GetUserToken?Type=1" parameters:@{@"Authorization":[NSString stringWithFormat:@"Bearer %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]} headers:nil success:^(id responseObject) {
             model = [UserToken yy_modelWithDictionary:responseObject[@"StatusData"][@"ResultData"]];
             [UserToken saveUserToken:model];
             dispatch_group_leave(group);
