@@ -218,7 +218,7 @@
                 if (match.count > 0) {
                     NSString *lastMatch = [match[match.count - 2] stringByAppendingString:@"]"];
                     NSArray *prefixMatch = [lastMatch componentsSeparatedByString:@"[/"];
-                    if (prefixMatch.count > 0) {
+                    if (prefixMatch.count > 1) {
                         NSString *matchResult = [@"[/" stringByAppendingString:prefixMatch.lastObject];
                         NSRange matchRange = [textView.text rangeOfString:matchResult];
                         NSString *newText = [textView.text stringByReplacingCharactersInRange:matchRange withString:@""];
