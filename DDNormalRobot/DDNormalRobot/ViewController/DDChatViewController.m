@@ -523,7 +523,7 @@
                     }
                 }else if (message.DialogType == 8) {//排队
                     NSDictionary *datas = [NSJSONSerialization JSONObjectWithData:[message.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                    if ([datas[@"show"] isEqualToString:@"false"]) {
+                    if ([datas[@"show"] boolValue] == false) {
                         if (_lineUpModalVC.isVisible) {
                             [_lineUpModalVC hideWithAnimated:YES completion:NULL];
                         }
