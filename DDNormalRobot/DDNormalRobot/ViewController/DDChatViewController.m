@@ -405,6 +405,7 @@
 }
 
 - (void)chatManagerDidReceiveMessageWithMessageItem:(MessageItemModel *)message {
+    __weak __typeof(self)weakSelf = self;
     NSLog(@"---接收到消息%@",[message yy_modelDescription]);
     if (message.SenderType != 0) {//这里判断下是不是用户发的消息，不是的话把之前记录的上个问题的id清空
         if (message.DialogType != 3) {//这个是智能提示
@@ -514,7 +515,7 @@
                     EvaluationView *evaluationView = [[EvaluationView alloc] initWithFrame:self.view.bounds];
                     [[UIApplication sharedApplication].keyWindow addSubview:evaluationView];
                     evaluationView.submitBlock = ^(NSString * _Nonnull type, NSString * _Nonnull content) {
-                        [self evaluationWithType:type memo:content];
+                        [weakSelf evaluationWithType:type memo:content];
                     };
                 }else if (message.DialogType == 5) {//之前没有聊天的时候回返回这个，
                     if ([message.Content length] > 0) {
@@ -607,6 +608,7 @@
 - (void)evaluationWithType:(NSString *)type memo:(NSString *)memo {
     [QMUITips showLoadingInView:DefaultTipsParentView];
     [DDNetworkHelper GET:[NSString stringWithFormat:@"http://consult.dd373.com/AppraiseApi/AppraiseResult?userId=%@&dialogId=%@&type=%@&memo=%@",[ClientParamsModel getClientParams].CustomerId,[ClientParamsModel getClientParams].DialogId,type,memo] parameters:nil headers:nil success:^(id responseObject) {
+        [QMUITips hideAllTips];
         if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
             MessageItemModel *model = [MessageItemModel new];
             model.messageType = MessageTypeEvalution;
