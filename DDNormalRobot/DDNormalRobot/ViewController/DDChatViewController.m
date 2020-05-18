@@ -549,7 +549,6 @@
                     self.inputToolBar.showHideGiftBtn = false;
                 }else if (message.DialogType == 6) {//评价消息
                     message.messageType = MessageTypeEvalution;
-                    [self.dataSource addObject:message];
                     [self scrollToBottom:YES];
                 }
             }
