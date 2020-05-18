@@ -607,18 +607,23 @@
 
 - (void)evaluationWithType:(NSString *)type memo:(NSString *)memo {
     [QMUITips showLoadingInView:DefaultTipsParentView];
-    [DDNetworkHelper GET:[NSString stringWithFormat:@"http://consult.dd373.com/AppraiseApi/AppraiseResult?userId=%@&dialogId=%@&type=%@&memo=%@",[ClientParamsModel getClientParams].CustomerId,[ClientParamsModel getClientParams].DialogId,type,memo] parameters:nil headers:nil success:^(id responseObject) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"userId"] = [ClientParamsModel getClientParams].CustomerId;
+    params[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
+    params[@"type"] = type;
+    params[@"memo"] = memo;
+    [DDNetworkHelper GET:@"http://consult.dd373.com/AppraiseApi/AppraiseResult" parameters:params headers:nil success:^(id responseObject) {
         [QMUITips hideAllTips];
-        if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
-            MessageItemModel *model = [MessageItemModel new];
-            model.messageType = MessageTypeEvalution;
-            model.AdditionContent = [@{@"AppraiseReselt":type} yy_modelToJSONString];
-            [self.dataSource addObject:model];
-            [self scrollToBottom:YES];
-            [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
-        }else {
-            [QMUITips showWithText:responseObject[@"msg"]];
-        }
+               if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
+                   MessageItemModel *model = [MessageItemModel new];
+                   model.messageType = MessageTypeEvalution;
+                   model.AdditionContent = [@{@"AppraiseReselt":type} yy_modelToJSONString];
+                   [self.dataSource addObject:model];
+                   [self scrollToBottom:YES];
+                   [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
+               }else {
+                   [QMUITips showWithText:responseObject[@"msg"]];
+               }
     } failure:^(NSError *error) {
         [QMUITips showError:@"您的网络好像不太给力，请稍后重试" inView:DefaultTipsParentView hideAfterDelay:2.0];
     }];
