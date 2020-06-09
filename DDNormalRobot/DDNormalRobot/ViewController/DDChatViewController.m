@@ -176,7 +176,12 @@
             NSString *additionContent;
             if (saveContent) {
                 if ([saveContent isKindOfClass:[NSArray class]]) {
-                    additionContent = saveContent[content.integerValue > [saveContent count] ? 0 : content.integerValue];
+                    if (content.integerValue <= [saveContent count] && content.integerValue > 0) {
+                        additionContent = saveContent[content.integerValue - 1];
+                        additionContent = [additionContent stringByAppendingString:@"#"];
+                    }else {
+                        additionContent = saveContent;
+                    }
                 }else {
                     additionContent = saveContent;
                 }
@@ -613,16 +618,16 @@
     params[@"memo"] = memo;
     [DDNetworkHelper GET:@"http://consult.dd373.com/AppraiseApi/AppraiseResult" parameters:params headers:nil success:^(id responseObject) {
         [QMUITips hideAllTips];
-               if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
-                   MessageItemModel *model = [MessageItemModel new];
-                   model.messageType = MessageTypeEvalution;
-                   model.AdditionContent = [@{@"AppraiseReselt":type} yy_modelToJSONString];
-                   [self.dataSource addObject:model];
-                   [self scrollToBottom:YES];
-                   [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
-               }else {
-                   [QMUITips showWithText:responseObject[@"msg"]];
-               }
+        if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
+            MessageItemModel *model = [MessageItemModel new];
+            model.messageType = MessageTypeEvalution;
+            model.AdditionContent = [@{@"AppraiseReselt":type} yy_modelToJSONString];
+            [self.dataSource addObject:model];
+            [self scrollToBottom:YES];
+            [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
+        }else {
+            [QMUITips showWithText:responseObject[@"msg"]];
+        }
     } failure:^(NSError *error) {
         [QMUITips showError:@"您的网络好像不太给力，请稍后重试" inView:DefaultTipsParentView hideAfterDelay:2.0];
     }];
