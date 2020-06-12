@@ -180,7 +180,7 @@
                         additionContent = saveContent[content.integerValue - 1];
                         additionContent = [additionContent stringByAppendingString:@"#"];
                     }else {
-                        additionContent = saveContent;
+                        additionContent = @"0";
                     }
                 }else {
                     additionContent = saveContent;
