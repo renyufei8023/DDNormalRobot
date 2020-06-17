@@ -292,7 +292,7 @@
 }
 
 - (void)sendCompanyInfo {
-    [DDNetworkHelper POST:@"http://consult.dd373.com/UserMessageApi/UserMetaData" parameters:nil headers:nil success:^(id responseObject) {
+    [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/UserMetaData" parameters:nil headers:nil success:^(id responseObject) {
         if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
             [QMUITips showWithText:responseObject[@"StatusData"][@"ResultMsg"]];
         }

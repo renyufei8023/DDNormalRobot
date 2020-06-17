@@ -353,7 +353,7 @@
             params[@"userId"] = [ClientParamsModel getClientParams].CustomerId;
             params[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
             params[@"business"] = businessModel.Id;
-            [DDNetworkHelper GET:@"http://consult.dd373.com/TransferCustomerServiceApi/TransferPeople" parameters:params headers:nil success:^(id responseObject) {
+            [DDNetworkHelper GET:@"https://consult.dd373.com/TransferCustomerServiceApi/TransferPeople" parameters:params headers:nil success:^(id responseObject) {
                 if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
                     
                 }else {
@@ -567,7 +567,7 @@
 
 #pragma mark - 转人工第一步先调用接口
 - (void)turnArtificalClick {
-    [DDNetworkHelper GET:@"http://consult.dd373.com/CustomerBusinessTypeConfigApi/GetBusinessTypeConfigList" parameters:nil headers:nil success:^(id responseObject) {
+    [DDNetworkHelper GET:@"https://consult.dd373.com/CustomerBusinessTypeConfigApi/GetBusinessTypeConfigList" parameters:nil headers:nil success:^(id responseObject) {
         if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
             NSArray *datas = [NSArray yy_modelArrayWithClass:[BusinessItemModel class] json:responseObject[@"StatusData"][@"ResultData"]];
             //创建一个空的model放到数组里面
@@ -588,7 +588,7 @@
 - (void)delQueue {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([[userDefaults objectForKey:@"serviceType"] integerValue] != 2 && [[userDefaults objectForKey:@"isQueue"] integerValue] == 1) {
-        [DDNetworkHelper GET:[NSString stringWithFormat:@"http://consult.dd373.com/TransferCustomerServiceApi/RemovePaidui?userId=%@&dialogId=%@",[ClientParamsModel getClientParams].CustomerId,[ClientParamsModel getClientParams].DialogId] parameters:nil headers:nil success:^(id responseObject) {
+        [DDNetworkHelper GET:[NSString stringWithFormat:@"https://consult.dd373.com/TransferCustomerServiceApi/RemovePaidui?userId=%@&dialogId=%@",[ClientParamsModel getClientParams].CustomerId,[ClientParamsModel getClientParams].DialogId] parameters:nil headers:nil success:^(id responseObject) {
             if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
                 [QMUITips showWithText:responseObject[@"msg"]];
             }
@@ -600,7 +600,7 @@
 
 #pragma mark - 结束会话
 - (void)DialogOver {
-    [DDNetworkHelper POST:@"http://consult.dd373.com/UserMessageApi/DialogOver" parameters:nil headers:nil success:^(id responseObject) {
+    [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/DialogOver" parameters:nil headers:nil success:^(id responseObject) {
         if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
             [QMUITips showWithText:responseObject[@"msg"]];
         }
@@ -616,7 +616,7 @@
     params[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
     params[@"type"] = type;
     params[@"memo"] = memo;
-    [DDNetworkHelper GET:@"http://consult.dd373.com/AppraiseApi/AppraiseResult" parameters:params headers:nil success:^(id responseObject) {
+    [DDNetworkHelper GET:@"https://consult.dd373.com/AppraiseApi/AppraiseResult" parameters:params headers:nil success:^(id responseObject) {
         [QMUITips hideAllTips];
         if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
             MessageItemModel *model = [MessageItemModel new];

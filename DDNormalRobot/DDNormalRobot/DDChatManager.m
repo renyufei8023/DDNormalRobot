@@ -180,7 +180,7 @@
     parameters[@"connectionToken"] = [MessageHub getMessageHub].ConnectionToken;
     parameters[@"connectionData"] = [@[@{@"name":@"implushub"}] yy_modelToJSONString];
     parameters[@"_"] = [NSNumber numberWithLongLong:(long long)[[NSDate date] timeIntervalSince1970] * 1000];
-    [DDNetworkHelper GET:@"http://implus.dd373.com/cors/start?transport=webSockets" parameters:parameters headers:nil success:^(id responseObject) {
+    [DDNetworkHelper GET:@"https://implus.dd373.com/cors/start?transport=webSockets" parameters:parameters headers:nil success:^(id responseObject) {
         [QMUITips hideAllTips];
         [self getRobotDetail];
         [self getHistoryMessageWithComplete:^(MessageItemModel * _Nonnull message) {
@@ -199,7 +199,7 @@
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_group_enter(group);
-        [DDNetworkHelper GET:@"http://consult.dd373.com/UserMessageApi/UserFirstVisit" parameters:nil headers:nil success:^(id responseObject) {
+        [DDNetworkHelper GET:@"https://consult.dd373.com/UserMessageApi/UserFirstVisit" parameters:nil headers:nil success:^(id responseObject) {
             model = [ClientParamsModel yy_modelWithDictionary:responseObject[@"StatusData"][@"ResultData"]];
             [ClientParamsModel saveClientParams:model];
             dispatch_group_leave(group);
@@ -217,7 +217,7 @@
         parameters[@"serviceType"] = @"1";
         parameters[@"connectionData"] = [@[@{@"name":@"implushub"}] yy_modelToJSONString];
         parameters[@"_"] = [NSNumber numberWithLongLong:(long long)[[NSDate date] timeIntervalSince1970] * 1000];
-        [DDNetworkHelper GET:@"http://implus.dd373.com/cors/negotiate" parameters:parameters headers:nil success:^(id responseObject) {
+        [DDNetworkHelper GET:@"https://implus.dd373.com/cors/negotiate" parameters:parameters headers:nil success:^(id responseObject) {
             MessageHub *hub = [MessageHub yy_modelWithJSON:responseObject];
             [MessageHub saveMessageHubWithHub:hub];
             [[WebSocketManager sharedManager] connectServerIsRobot:YES];
@@ -233,7 +233,7 @@
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_group_enter(group);
-        [DDNetworkHelper GET:@"http://order.dd373.com/Api/OrderChat/UserCenter/GetUserToken?Type=1" parameters:@{@"Authorization":[NSString stringWithFormat:@"Bearer %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]} headers:nil success:^(id responseObject) {
+        [DDNetworkHelper GET:@"https://order.dd373.com/Api/OrderChat/UserCenter/GetUserToken?Type=1" parameters:@{@"Authorization":[NSString stringWithFormat:@"Bearer %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]} headers:nil success:^(id responseObject) {
             model = [UserToken yy_modelWithDictionary:responseObject[@"StatusData"][@"ResultData"]];
             [UserToken saveUserToken:model];
             dispatch_group_leave(group);
@@ -247,7 +247,7 @@
         parameters[@"userToken"] = model.UserToken;
         parameters[@"connectionData"] = [@[@{@"name":@"implushub"}] yy_modelToJSONString];
         parameters[@"_"] = [NSNumber numberWithLongLong:(long long)[[NSDate date] timeIntervalSince1970] * 1000];
-        [DDNetworkHelper GET:@"http://imservice.dd373.com/cors/negotiate" parameters:parameters headers:nil success:^(id responseObject) {
+        [DDNetworkHelper GET:@"https://imservice.dd373.com/cors/negotiate" parameters:parameters headers:nil success:^(id responseObject) {
             MessageHub *hub = [MessageHub yy_modelWithJSON:responseObject];
             [MessageHub saveMessageHubWithHub:hub];
             [[WebSocketManager sharedManager] connectServerIsRobot:false];

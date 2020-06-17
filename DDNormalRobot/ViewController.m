@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
-    [view sd_setImageWithURL:[NSURL URLWithString:@"http://publicimg.dd373.com/Upload/SitePic/2020-01-02/54dfaa21-fcc7-40b6-8288-d305177ae344.gif"]];
+    [view sd_setImageWithURL:[NSURL URLWithString:@"https://publicimg.dd373.com/Upload/SitePic/2020-01-02/54dfaa21-fcc7-40b6-8288-d305177ae344.gif"]];
     [self.view addSubview:view];
     // Do any additional setup after loading the view.
 }
