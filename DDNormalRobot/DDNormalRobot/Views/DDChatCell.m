@@ -93,6 +93,15 @@
         make.left.right.equalTo(self.chatBubbleImage).inset(15);
         make.top.bottom.equalTo(self.chatBubbleImage).inset(10);
     }];
+    __weak __typeof(self)weakSelf = self;
+    self.contentLab.textLongPressAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+        [weakSelf becomeFirstResponder];
+        UIMenuController *menuController = [UIMenuController sharedMenuController];
+        UIMenuItem *copyMenuItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyString:)];
+        [[UIMenuController sharedMenuController] setMenuItems:@[copyMenuItem]];
+        [menuController setTargetRect:containerView.frame inView:containerView.superview];
+        [menuController setMenuVisible:YES animated:YES];
+    };
 }
 
 - (void)setModel:(MessageItemModel *)model {
@@ -131,6 +140,7 @@
         NSDictionary *data = [NSJSONSerialization JSONObjectWithData:[model.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *question = data[@"RelatedQuestion"];
         NSString *content = [model.Content isNotBlank] ? [model.Content stringByAppendingString:@"\n"] : nil;
+        content = [self htmlEntityDecode:content];
         NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:content];
         att.yy_font = UIFontMake(14);
         att.yy_lineSpacing = 5;
@@ -148,16 +158,64 @@
             [att appendAttributedString:att1];
         }
         [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"点击问题或回复数字查看答案"]];
+        [self resolveUrlWithAtt:att];
         self.contentLab.attributedText = att;
     }else {
-        self.contentLab.attributedText = [DDHelper emojTextToAtt:model.Content];
+        NSMutableAttributedString *att = [DDHelper emojTextToAtt:model.Content];
+        [self resolveUrlWithAtt:att];
+        self.contentLab.attributedText = att;
     }
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)copyString:(id)sender {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    NSString *stringToCopy = _contentLab.text;
+    pasteboard.string = stringToCopy;
+}
 
-    // Configure the view for the selected state
+- (void)resolveUrlWithAtt:(NSMutableAttributedString *)att {
+    NSString *regulaStr = @"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    NSArray *arrayOfAllMatches = [regex matchesInString:att.string options:0 range:NSMakeRange(0, [att length])];
+    for (NSTextCheckingResult *match in arrayOfAllMatches) {
+        [att yy_setTextHighlightRange:match.range color:UIColorMakeWithRGBA(33, 99, 170, 1.0) backgroundColor:nil tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[text.string substringWithRange:range]] options:@{} completionHandler:nil];
+        }];
+    }
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if ([self canBecomeFirstResponder]) {
+        return action == @selector(copyString:);
+    }
+    return NO;
+}
+
+- (NSString *)filterHtmlWithStr:(NSString *)str {
+    NSScanner * scanner = [NSScanner scannerWithString:str];
+    NSString * text = nil;
+    while([scanner isAtEnd] == NO) {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&text];
+        str = [str stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
+    }
+    return str;
+}
+
+- (NSString *)htmlEntityDecode:(NSString *)string {
+    string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+    string = [string stringByReplacingOccurrencesOfString:@"&apos;" withString:@"'"];
+    string = [string stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+    string = [string stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+    string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"]; // Do this last so that, e.g. @"&amp;lt;" goes to @"&lt;" not @"<"
+    
+    return string;
 }
 
 @end

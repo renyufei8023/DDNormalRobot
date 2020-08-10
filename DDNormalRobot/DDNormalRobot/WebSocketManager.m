@@ -28,6 +28,7 @@
 #import "AFNetworking.h"
 #import "DDNetworkHelper.h"
 #import "UserToken.h"
+#import <YYCategories.h>
 
 @interface WebSocketManager () <SRWebSocketDelegate>
 @property (nonatomic, strong) NSTimer *heartBeatTimer; //心跳定时器
@@ -71,9 +72,9 @@
     ClientParamsModel *clientParams = [ClientParamsModel getClientParams];
     MessageHub *hub = [MessageHub getMessageHub];
     if (isRobot) {
-        wbUrl = [NSString stringWithFormat:@"ws://implus.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&tag=0&appid=00c90442c2a3446d89eb80744bf88f73&&dialogId=%@&senderId=%@&serviceType=null&connectionToken=%@&connectionData=%@&tid=6",clientParams.DialogId,clientParams.CustomerId,[self URLEncodedString:hub.ConnectionToken], [self URLEncodedString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
+        wbUrl = [NSString stringWithFormat:@"wss://implus.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&tag=0&appid=00c90442c2a3446d89eb80744bf88f73&&dialogId=%@&senderId=%@&serviceType=null&connectionToken=%@&connectionData=%@&tid=6",clientParams.DialogId,clientParams.CustomerId,[self URLEncodedString:hub.ConnectionToken], [self URLEncodedString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
     }else {
-        wbUrl = [NSString stringWithFormat:@"ws://imservice.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&userToken=%@&connectionToken=%@&connectionData=%@&tid=3",[UserToken getUserToken].UserToken,[self URLEncodedString:hub.ConnectionToken], [self URLEncodedString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
+        wbUrl = [NSString stringWithFormat:@"wss://imservice.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&userToken=%@&connectionToken=%@&connectionData=%@&tid=3",[UserToken getUserToken].UserToken,[self URLEncodedString:hub.ConnectionToken], [self URLEncodedString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
     }
     
     self.webSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:wbUrl]];

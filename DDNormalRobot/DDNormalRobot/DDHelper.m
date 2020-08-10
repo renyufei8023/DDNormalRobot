@@ -8,6 +8,7 @@
 
 #import "DDHelper.h"
 #import "YYText.h"
+#import "YYCategories.h"
 
 NSString *const QMUIEmotionString = @"smile;laughing;blush;heart_eyes;smirk;flushed;grin;kissing_smiling_eyes;wink;kissing_closed_eyes;stuck_out_tongue_winking_eye;sleeping;worried;sweat_smile;cold_sweat;joy;sob;angry;mask;scream;sunglasses;thumbsup;clap;ok_hand";
 
@@ -48,9 +49,15 @@ static NSArray<QMUIEmotion *> *QMUIEmotionArray;
     if (!string) {
         return [NSMutableAttributedString new];
     }
-    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithString:string];
-    [result addAttributes:@{NSFontAttributeName:UIFontMake(13)} range:NSMakeRange(0, string.length)];
+    string = [self htmlEntityDecode:string];
+    string = [self filterHtmlWithStr:string];
     
+    NSMutableAttributedString *result =  [[NSMutableAttributedString alloc] initWithData:[string dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding)} documentAttributes:nil error:nil];
+    if (!result.string.isNotBlank) {
+        result = [[NSMutableAttributedString alloc] initWithString:string];
+    }
+    [result addAttributes:@{NSFontAttributeName:UIFontMake(13)} range:NSMakeRange(0, result.string.length)];
+ 
     //所有表情数组
     NSArray<QMUIEmotion *> *expressionList = [self ddEmotions];
     int i = 0;
@@ -77,4 +84,27 @@ static NSArray<QMUIEmotion *> *QMUIEmotionArray;
     UIImage *image = [UIImage imageNamed:name inBundle:resourceBundle compatibleWithTraitCollection:nil];
     return image;
 }
+
++ (NSString *)htmlEntityDecode:(NSString *)string {
+    string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+    string = [string stringByReplacingOccurrencesOfString:@"&apos;" withString:@"'"];
+    string = [string stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+    string = [string stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+    string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"]; // Do this last so that, e.g. @"&amp;lt;" goes to @"&lt;" not @"<"
+    
+    return string;
+}
+
++ (NSString *)filterHtmlWithStr:(NSString *)str {
+    NSString *lastStr = str;
+    NSScanner *scanner = [NSScanner scannerWithString:str];
+    NSString *text = nil;
+    while ([scanner isAtEnd] == NO) {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&text];
+        lastStr = [lastStr stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
+    }
+    return lastStr.isNotBlank ? lastStr : str;
+}
+
 @end

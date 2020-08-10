@@ -42,7 +42,7 @@
     [datas addEntriesFromDictionary:otherArgus];
     NSString *messageStr = [[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:datas options:NSJSONWritingSortedKeys error:nil] encoding:NSUTF8StringEncoding];
     NSLog(@"发出消息：%@",[messageStr yy_modelDescription]);
-    return messageStr;
+    return [datas yy_modelToJSONString];
 }
 
 @end
