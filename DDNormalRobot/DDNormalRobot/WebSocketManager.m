@@ -28,7 +28,6 @@
 #import "AFNetworking.h"
 #import "DDNetworkHelper.h"
 #import "UserToken.h"
-#import <YYCategories.h>
 
 @interface WebSocketManager () <SRWebSocketDelegate>
 @property (nonatomic, strong) NSTimer *heartBeatTimer; //心跳定时器
