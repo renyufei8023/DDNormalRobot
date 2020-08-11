@@ -94,14 +94,14 @@
         make.top.bottom.equalTo(self.chatBubbleImage).inset(10);
     }];
     __weak __typeof(self)weakSelf = self;
-    self.contentLab.textLongPressAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+    [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         [weakSelf becomeFirstResponder];
         UIMenuController *menuController = [UIMenuController sharedMenuController];
         UIMenuItem *copyMenuItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyString:)];
         [[UIMenuController sharedMenuController] setMenuItems:@[copyMenuItem]];
-        [menuController setTargetRect:containerView.frame inView:containerView.superview];
+        [menuController setTargetRect:weakSelf.contentLab.frame inView:weakSelf.contentLab.superview];
         [menuController setMenuVisible:YES animated:YES];
-    };
+    }]];
 }
 
 - (void)setModel:(MessageItemModel *)model {
@@ -198,9 +198,9 @@
 }
 
 - (NSString *)filterHtmlWithStr:(NSString *)str {
-    NSScanner * scanner = [NSScanner scannerWithString:str];
-    NSString * text = nil;
-    while([scanner isAtEnd] == NO) {
+    NSScanner *scanner = [NSScanner scannerWithString:str];
+    NSString *text = nil;
+    while ([scanner isAtEnd] == NO) {
         [scanner scanUpToString:@"<" intoString:nil];
         [scanner scanUpToString:@">" intoString:&text];
         str = [str stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
@@ -213,8 +213,7 @@
     string = [string stringByReplacingOccurrencesOfString:@"&apos;" withString:@"'"];
     string = [string stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
     string = [string stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
-    string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"]; // Do this last so that, e.g. @"&amp;lt;" goes to @"&lt;" not @"<"
-    
+    string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
     return string;
 }
 
