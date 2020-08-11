@@ -17,6 +17,7 @@
 #import "DDNetworkHelper.h"
 #import "YYModel.h"
 #import "UserToken.h"
+#import "NSString+Emoji.h"
 
 @interface DDChatManager () <WebSocketManagerDelegate>
 
@@ -98,7 +99,7 @@
 - (void)sendNormalMessage:(NSString *)messageContent additionContent:(NSString *)additionContent isRobot:(BOOL)isRobot WithComplete:(CompleteBlcok)completeBlock {
     MessageItemModel *messageItem = [MessageItemModel new];
     messageItem.AppType = isRobot ? 2 : 1;
-    messageItem.Content = messageContent;
+    messageItem.Content = [messageContent stringContainsEmoji] ? [messageContent emojiEncode] : messageContent;
     messageItem.ContentType = 1;
     messageItem.AdditionContent = additionContent.isNotBlank ? additionContent : @"0";
     messageItem.DialogType = 1;

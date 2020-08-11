@@ -10,10 +10,11 @@
 #import "MessageItemModel.h"
 #import "QMUIKit.h"
 #import "Masonry.h"
+#import "YYText.h"
 #import "YYCategories.h"
 
 @interface ChatQuestionResolveCell ()
-@property(nonatomic, strong) QMUILabel *contentLab;
+@property(nonatomic, strong) YYLabel *contentLab;
 @property(nonatomic, strong) UIView *chatBubbleImage;//气泡
 
 @end
@@ -30,11 +31,14 @@
     return _chatBubbleImage;
 }
 
-- (UILabel *)contentLab {
+- (YYLabel *)contentLab {
     if (!_contentLab) {
-        _contentLab = [[QMUILabel alloc] qmui_initWithFont:UIFontMake(13) textColor:UIColorMakeWithHex(@"333333")];
+        _contentLab = [YYLabel new];
+        _contentLab.font = UIFontMake(14);
+        _contentLab.textColor = UIColorMakeWithHex(@"333333");
         _contentLab.numberOfLines = 0;
-//        _contentLab.canPerformCopyAction = YES;
+        _contentLab.userInteractionEnabled = YES;
+        _contentLab.preferredMaxLayoutWidth = SCREEN_WIDTH - 100 - 16 - 30;
     }
     return _contentLab;
 }
@@ -111,13 +115,23 @@
 
 - (void)setModel:(MessageItemModel *)model {
     _model = model;
-    self.contentLab.text = model.Content;
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:model.Content];
+    [self resolveUrlWithAtt:att];
+    self.contentLab.attributedText = att;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)resolveUrlWithAtt:(NSMutableAttributedString *)att {
+    NSString *regulaStr = @"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    NSArray *arrayOfAllMatches = [regex matchesInString:att.string options:0 range:NSMakeRange(0, [att length])];
+    for (NSTextCheckingResult *match in arrayOfAllMatches) {
+        [att yy_setTextHighlightRange:match.range color:UIColorMakeWithRGBA(33, 99, 170, 1.0) backgroundColor:nil tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[text.string substringWithRange:range]] options:@{} completionHandler:nil];
+        }];
+    }
 }
+
 
 @end

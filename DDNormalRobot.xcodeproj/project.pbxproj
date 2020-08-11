@@ -36,6 +36,7 @@
 		8764154B2440085C001B0714 /* DDChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415372440085C001B0714 /* DDChatManager.m */; };
 		8764154C2440085C001B0714 /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415392440085C001B0714 /* WebSocketManager.m */; };
 		876415592440335D001B0714 /* DDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415582440335D001B0714 /* DDHelper.m */; };
+		87B6C78224E25CF1003CB7DB /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B6C78124E25CF1003CB7DB /* NSString+Emoji.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,8 @@
 		876415392440085C001B0714 /* WebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
 		876415572440335D001B0714 /* DDHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDHelper.h; sourceTree = "<group>"; };
 		876415582440335D001B0714 /* DDHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDHelper.m; sourceTree = "<group>"; };
+		87B6C78024E25CF1003CB7DB /* NSString+Emoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		87B6C78124E25CF1003CB7DB /* NSString+Emoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		C83E347888C9011049BC1D23 /* Pods-DDNormalRobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.release.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.release.xcconfig"; sourceTree = "<group>"; };
 		EA3372BA62836DB56A9D012D /* libPods-DDNormalRobot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DDNormalRobot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,6 +160,8 @@
 				876415392440085C001B0714 /* WebSocketManager.m */,
 				876415572440335D001B0714 /* DDHelper.h */,
 				876415582440335D001B0714 /* DDHelper.m */,
+				87B6C78024E25CF1003CB7DB /* NSString+Emoji.h */,
+				87B6C78124E25CF1003CB7DB /* NSString+Emoji.m */,
 			);
 			path = DDNormalRobot;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				876414F924400817001B0714 /* AppDelegate.m in Sources */,
 				876415472440085C001B0714 /* MessageItemModel.m in Sources */,
 				876415492440085C001B0714 /* BusinessItemModel.m in Sources */,
+				87B6C78224E25CF1003CB7DB /* NSString+Emoji.m in Sources */,
 				876415462440085C001B0714 /* MessageHub.m in Sources */,
 				8764150A2440081F001B0714 /* main.m in Sources */,
 				8764153F2440085C001B0714 /* DDInputToolBar.m in Sources */,
