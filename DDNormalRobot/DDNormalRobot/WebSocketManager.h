@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger,WebSocketConnectType){
 @protocol WebSocketManagerDelegate <NSObject>
 
 - (void)webSocketManagerDidReceiveMessageWithString:(NSString *_Nullable)string;
-- (void)webSocketDidOpenIsRobot:(BOOL)isRobot;
+- (void)webSocketDidOpen;
 @end
 
 NS_ASSUME_NONNULL_BEGIN
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) WebSocketConnectType connectType;
 
 + (instancetype)sharedManager;
-- (void)connectServerIsRobot:(BOOL)isRobot;//建立长连接
+- (void)connectServer;//建立长连接
 - (void)reConnectServer;//重新连接
 - (void)closeSocket;//关闭长连接
 - (void)sendDataToServer:(NSString *)data;//发送数据给服务器

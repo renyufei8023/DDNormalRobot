@@ -16,7 +16,6 @@
 #import "YYCategories.h"
 #import "DDNetworkHelper.h"
 #import "YYModel.h"
-#import "UserToken.h"
 #import "NSString+Emoji.h"
 
 @interface DDChatManager () <WebSocketManagerDelegate>
@@ -166,17 +165,13 @@
     }
 }
 
-- (void)webSocketDidOpenIsRobot:(BOOL)isRobot {
+- (void)webSocketDidOpen {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (isRobot) {
-        parameters[@"tag"] = @"0";
-        parameters[@"appid"] = @"00c90442c2a3446d89eb80744bf88f73";
-        parameters[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
-        parameters[@"senderId"] = [ClientParamsModel getClientParams].CustomerId;
-        parameters[@"serviceType"] = @"1";
-    }else {
-        parameters[@"userToken"] = [UserToken getUserToken].UserToken;
-    }
+    parameters[@"tag"] = @"0";
+    parameters[@"appid"] = @"00c90442c2a3446d89eb80744bf88f73";
+    parameters[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
+    parameters[@"senderId"] = [ClientParamsModel getClientParams].CustomerId;
+    parameters[@"serviceType"] = @"1";
     parameters[@"clientProtocol"] = @"1.5";
     parameters[@"connectionToken"] = [MessageHub getMessageHub].ConnectionToken;
     parameters[@"connectionData"] = [@[@{@"name":@"implushub"}] yy_modelToJSONString];
@@ -221,7 +216,7 @@
         [DDNetworkHelper GET:@"https://implus.dd373.com/cors/negotiate" parameters:parameters headers:nil success:^(id responseObject) {
             MessageHub *hub = [MessageHub yy_modelWithJSON:responseObject];
             [MessageHub saveMessageHubWithHub:hub];
-            [[WebSocketManager sharedManager] connectServerIsRobot:YES];
+            [[WebSocketManager sharedManager] connectServer];
             [WebSocketManager sharedManager].delegate = self;
         } failure:^(NSError *error) {
             
@@ -230,33 +225,18 @@
 }
 
 - (void)startOrderSession {
-    __block UserToken *model;
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_group_enter(group);
-        [DDNetworkHelper GET:@"https://order.dd373.com/Api/OrderChat/UserCenter/GetUserToken?Type=1" parameters:@{@"Authorization":[NSString stringWithFormat:@"Bearer %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]} headers:nil success:^(id responseObject) {
-            model = [UserToken yy_modelWithDictionary:responseObject[@"StatusData"][@"ResultData"]];
-            [UserToken saveUserToken:model];
-            dispatch_group_leave(group);
-        } failure:^(NSError *error) {
-            
-        }];
-    });
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        parameters[@"clientProtocol"] = @"1.5";
-        parameters[@"userToken"] = model.UserToken;
-        parameters[@"connectionData"] = [@[@{@"name":@"implushub"}] yy_modelToJSONString];
-        parameters[@"_"] = [NSNumber numberWithLongLong:(long long)[[NSDate date] timeIntervalSince1970] * 1000];
-        [DDNetworkHelper GET:@"https://imservice.dd373.com/cors/negotiate" parameters:parameters headers:nil success:^(id responseObject) {
-            MessageHub *hub = [MessageHub yy_modelWithJSON:responseObject];
-            [MessageHub saveMessageHubWithHub:hub];
-            [[WebSocketManager sharedManager] connectServerIsRobot:false];
-            [WebSocketManager sharedManager].delegate = self;
-        } failure:^(NSError *error) {
-            
-        }];
-    });
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"clientProtocol"] = @"1.5";
+    parameters[@"connectionData"] = [@[@{@"name":@"implushub"}] yy_modelToJSONString];
+    parameters[@"_"] = [NSNumber numberWithLongLong:(long long)[[NSDate date] timeIntervalSince1970] * 1000];
+    [DDNetworkHelper GET:@"https://imservice.dd373.com/cors/negotiate" parameters:parameters headers:nil success:^(id responseObject) {
+        MessageHub *hub = [MessageHub yy_modelWithJSON:responseObject];
+        [MessageHub saveMessageHubWithHub:hub];
+        [[WebSocketManager sharedManager] connectServer];
+        [WebSocketManager sharedManager].delegate = self;
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end

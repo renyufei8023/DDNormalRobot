@@ -9,6 +9,7 @@
 #import "SmartTipsView.h"
 #import "QMUIKit.h"
 #import "Masonry.h"
+#import "UIView+Shadow.h"
 
 @interface SmartTipsView () <UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
@@ -19,7 +20,6 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = UIColorWhite;
-        self.clipsToBounds = YES;
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -32,6 +32,8 @@
         [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
         }];
+        self.shadowPosition = ViewShadowPositionAll;
+        self.layer.cornerRadius = 10;
     }
     return self;
 }
@@ -49,9 +51,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[_dataSource[indexPath.row] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding)} documentAttributes:nil error:nil];
-    [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, attributedString.length)];
-    cell.textLabel.attributedText = attributedString;
+    NSError *error;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[_dataSource[indexPath.row] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding)} documentAttributes:nil error:&error];
+    if (!error) {
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, attributedString.length)];
+        cell.textLabel.attributedText = attributedString;
+    }
     return cell;
 }
 
@@ -60,16 +65,6 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         _didSelectBlock(cell.textLabel.text);
     }
-}
-
-- (void)setHidden:(BOOL)hidden {
-    [super setHidden:hidden];
-//    self.layer.shadowLayer.hidden = hidden;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-//    [self.layer setRoundCornerShadowColor:[UIColor.blackColor colorWithAlphaComponent:.5] shadowWidth:5 radius:10 offset:CGSizeMake(0, 1)];
 }
 
 - (CGSize)intrinsicContentSize {

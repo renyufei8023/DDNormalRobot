@@ -27,7 +27,6 @@
 #import "YYModel.h"
 #import "AFNetworking.h"
 #import "DDNetworkHelper.h"
-#import "UserToken.h"
 
 @interface WebSocketManager () <SRWebSocketDelegate>
 @property (nonatomic, strong) NSTimer *heartBeatTimer; //心跳定时器
@@ -59,23 +58,16 @@
 }
 
 //建立长连接
-- (void)connectServerIsRobot:(BOOL)isRobot {
+- (void)connectServer {
     self.isActivelyClose = NO;
-    self.isRobot = isRobot;
     if (_webSocket) {
         _webSocket.delegate = nil;
         [self.webSocket close];
         _webSocket = nil;
     }
-    NSString *wbUrl;
     ClientParamsModel *clientParams = [ClientParamsModel getClientParams];
     MessageHub *hub = [MessageHub getMessageHub];
-    if (isRobot) {
-        wbUrl = [NSString stringWithFormat:@"wss://implus.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&tag=0&appid=00c90442c2a3446d89eb80744bf88f73&&dialogId=%@&senderId=%@&serviceType=null&connectionToken=%@&connectionData=%@&tid=6",clientParams.DialogId,clientParams.CustomerId,[self URLEncodedString:hub.ConnectionToken], [self URLEncodedString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
-    }else {
-        wbUrl = [NSString stringWithFormat:@"wss://imservice.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&userToken=%@&connectionToken=%@&connectionData=%@&tid=3",[UserToken getUserToken].UserToken,[self URLEncodedString:hub.ConnectionToken], [self URLEncodedString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
-    }
-    
+    NSString *wbUrl = [NSString stringWithFormat:@"wss://implus.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&tag=0&appid=00c90442c2a3446d89eb80744bf88f73&&dialogId=%@&senderId=%@&serviceType=null&connectionToken=%@&connectionData=%@&tid=6",clientParams.DialogId,clientParams.CustomerId,[self URLEncodedString:hub.ConnectionToken], [self URLEncodedString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
     self.webSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:wbUrl]];
     self.webSocket.delegate = self;
     [self.webSocket open];
@@ -90,8 +82,8 @@
 ///开始连接
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
     NSLog(@"连接成功");
-    if (self.delegate && [self.delegate respondsToSelector:@selector(webSocketDidOpenIsRobot:)]) {
-        [self.delegate webSocketDidOpenIsRobot:_isRobot];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(webSocketDidOpen)]) {
+        [self.delegate webSocketDidOpen];
     }
     _connectIndex++;
     if (_connectIndex == 1) {
@@ -183,7 +175,7 @@
         if (weakSelf.webSocket.readyState == SR_OPEN && weakSelf.webSocket.readyState == SR_CONNECTING) {
             return;
         }
-        [weakSelf connectServerIsRobot:weakSelf.isRobot];
+        [weakSelf connectServer];
         if (weakSelf.reConnectTime == 0){  //重连时间2的指数级增长
             weakSelf.reConnectTime = 2;
         }else{
@@ -286,7 +278,7 @@
                 [self reConnectServer];
             }
         }else {
-            [self connectServerIsRobot:_isRobot]; //连接服务器
+            [self connectServer]; //连接服务器
         }
     }
 }

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)emojiEncode;
 - (NSString *)emojiDecode;
 - (BOOL)stringContainsEmoji;
+
 @end
 
 NS_ASSUME_NONNULL_END
