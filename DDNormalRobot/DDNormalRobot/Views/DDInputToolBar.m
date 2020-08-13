@@ -126,6 +126,8 @@
                 }
             }else if (i == 1) {
                 TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:nil];
+                imagePicker.allowTakeVideo = false;
+                imagePicker.allowPickingVideo = false;
                 imagePicker.didFinishPickingPhotosHandle = ^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
                     [DDNetworkHelper uploadImagesWithURL:@"https://newupload.dd373.com/Upload/UploadFile" parameters:@{@"fileInfoType":@"5"} headers:nil name:@"fileInfoType" images:photos fileNames:nil imageScale:0.5 imageType:@"jpg" progress:^(NSProgress *progress) {
                         
