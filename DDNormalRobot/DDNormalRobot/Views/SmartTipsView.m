@@ -51,12 +51,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSError *error;
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[_dataSource[indexPath.row] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding)} documentAttributes:nil error:&error];
-    if (!error) {
-        [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, attributedString.length)];
-        cell.textLabel.attributedText = attributedString;
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+       NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[_dataSource[indexPath.row] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding)} documentAttributes:nil error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.textLabel.attributedText = attributedString;
+        });
+    });
+
     return cell;
 }
 
