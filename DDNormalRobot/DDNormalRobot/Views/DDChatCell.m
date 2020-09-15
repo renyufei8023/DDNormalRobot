@@ -162,6 +162,7 @@
         self.contentLab.attributedText = att;
     }else {
         NSMutableAttributedString *att = [DDHelper emojTextToAtt:model.Content];
+        att.yy_lineSpacing = 5;
         [self resolveUrlWithAtt:att];
         self.contentLab.attributedText = att;
     }
@@ -174,7 +175,7 @@
 }
 
 - (void)resolveUrlWithAtt:(NSMutableAttributedString *)att {
-    NSString *regulaStr = @"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
+    NSString *regulaStr = @"((http|ftp|https)://)(([a-zA-Z0-9\\._-]+\\.[a-zA-Z]{2,6})|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\\&%_\\./-~-]*)?";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:nil];

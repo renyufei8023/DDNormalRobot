@@ -13,6 +13,7 @@
 
 @interface SmartTipsView () <UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
+@property(atomic, strong) NSMutableArray *attItems;
 
 @end
 @implementation SmartTipsView
@@ -34,30 +35,36 @@
         }];
         self.shadowPosition = ViewShadowPositionAll;
         self.layer.cornerRadius = 10;
+        _attItems = [NSMutableArray array];
     }
     return self;
 }
 
 - (void)setDataSource:(NSArray *)dataSource {
     _dataSource = dataSource;
-    [_tableView reloadData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableArray *tmp = [NSMutableArray array];
+        [dataSource enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[obj dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding)} documentAttributes:nil error:nil];
+            [tmp addObject:attributedString];
+        }];
+        _attItems = tmp;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //为了第一次显示出来
+            [_tableView reloadData];
+        });
+    });
     [self invalidateIntrinsicContentSize];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataSource.count;
+    return _attItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-       NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[_dataSource[indexPath.row] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding)} documentAttributes:nil error:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.textLabel.attributedText = attributedString;
-        });
-    });
-
+    cell.textLabel.attributedText = _attItems[indexPath.row];
     return cell;
 }
 

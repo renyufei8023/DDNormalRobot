@@ -546,6 +546,7 @@
 			baseConfigurationReference = 3A8C4FFAB626F8B90C5F4A39 /* Pods-DDNormalRobot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z626456P4P;
 				GCC_PREFIX_HEADER = "";
@@ -566,6 +567,7 @@
 			baseConfigurationReference = C83E347888C9011049BC1D23 /* Pods-DDNormalRobot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z626456P4P;
 				GCC_PREFIX_HEADER = "";
