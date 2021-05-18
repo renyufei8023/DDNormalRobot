@@ -8,7 +8,7 @@
 
 #import "DDChatCell.h"
 #import "ClientParamsModel.h"
-#import "DDHelper.h"
+#import "YHZEmotionsHelper.h"
 #import "MessageItemModel.h"
 #import "Masonry.h"
 #import "QMUIKit.h"
@@ -161,7 +161,7 @@
         [self resolveUrlWithAtt:att];
         self.contentLab.attributedText = att;
     }else {
-        NSMutableAttributedString *att = [DDHelper emojTextToAtt:model.Content];
+        NSMutableAttributedString *att = [YHZEmotionsHelper generateAttributeWithEmojText:model.Content];
         att.yy_lineSpacing = 5;
         [self resolveUrlWithAtt:att];
         self.contentLab.attributedText = att;

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BED98799E3508A2A5FE2D72 /* libPods-DDNormalRobot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3372BA62836DB56A9D012D /* libPods-DDNormalRobot.a */; };
-		8700D5B12443F533002DD406 /* DDNormalRobot.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8700D5B02443F533002DD406 /* DDNormalRobot.bundle */; };
+		8700D5B12443F533002DD406 /* YHZRobotChat.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8700D5B02443F533002DD406 /* YHZRobotChat.bundle */; };
 		876414F924400817001B0714 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 876414F824400817001B0714 /* AppDelegate.m */; };
 		876414FF24400817001B0714 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876414FE24400817001B0714 /* ViewController.m */; };
 		8764150224400817001B0714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8764150024400817001B0714 /* Main.storyboard */; };
@@ -19,29 +19,29 @@
 		8764153B2440085C001B0714 /* EvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415152440085B001B0714 /* EvaluationView.m */; };
 		8764153C2440085C001B0714 /* DDChatImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415162440085B001B0714 /* DDChatImageCell.m */; };
 		8764153D2440085C001B0714 /* TurnArtificalActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764151A2440085B001B0714 /* TurnArtificalActionCell.m */; };
-		8764153E2440085C001B0714 /* LineUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764151B2440085B001B0714 /* LineUpView.m */; };
-		8764153F2440085C001B0714 /* DDInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764151D2440085B001B0714 /* DDInputToolBar.m */; };
-		876415402440085C001B0714 /* SmartTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415212440085B001B0714 /* SmartTipsView.m */; };
+		8764153E2440085C001B0714 /* QueueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764151B2440085B001B0714 /* QueueView.m */; };
+		8764153F2440085C001B0714 /* RobotChatInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764151D2440085B001B0714 /* RobotChatInputToolBar.m */; };
+		876415402440085C001B0714 /* SmartAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415212440085B001B0714 /* SmartAlertView.m */; };
 		876415412440085C001B0714 /* DDChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415242440085B001B0714 /* DDChatCell.m */; };
 		876415422440085C001B0714 /* DDEmotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415252440085B001B0714 /* DDEmotionView.m */; };
 		876415432440085C001B0714 /* ChatQuestionResolveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415262440085B001B0714 /* ChatQuestionResolveCell.m */; };
 		876415442440085C001B0714 /* EvaluationedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415272440085B001B0714 /* EvaluationedCell.m */; };
-		876415452440085C001B0714 /* DDChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764152A2440085B001B0714 /* DDChatViewController.m */; };
+		876415452440085C001B0714 /* YHZRobotChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764152A2440085B001B0714 /* YHZRobotChatViewController.m */; };
 		876415462440085C001B0714 /* MessageHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764152D2440085C001B0714 /* MessageHub.m */; };
 		876415472440085C001B0714 /* MessageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415302440085C001B0714 /* MessageItemModel.m */; };
 		876415482440085C001B0714 /* RobotDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415342440085C001B0714 /* RobotDetailModel.m */; };
 		876415492440085C001B0714 /* BusinessItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415352440085C001B0714 /* BusinessItemModel.m */; };
 		8764154A2440085C001B0714 /* ClientParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415362440085C001B0714 /* ClientParamsModel.m */; };
-		8764154B2440085C001B0714 /* DDChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415372440085C001B0714 /* DDChatManager.m */; };
-		8764154C2440085C001B0714 /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415392440085C001B0714 /* WebSocketManager.m */; };
-		876415592440335D001B0714 /* DDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415582440335D001B0714 /* DDHelper.m */; };
+		8764154B2440085C001B0714 /* YHZChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415372440085C001B0714 /* YHZChatManager.m */; };
+		8764154C2440085C001B0714 /* YHZSocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415392440085C001B0714 /* YHZSocketClientManager.m */; };
+		876415592440335D001B0714 /* YHZEmotionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 876415582440335D001B0714 /* YHZEmotionsHelper.m */; };
 		87B6C78224E25CF1003CB7DB /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B6C78124E25CF1003CB7DB /* NSString+Emoji.m */; };
 		87F2687824E4D3530019562A /* UIView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2687724E4D3530019562A /* UIView+Shadow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A8C4FFAB626F8B90C5F4A39 /* Pods-DDNormalRobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.debug.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.debug.xcconfig"; sourceTree = "<group>"; };
-		8700D5B02443F533002DD406 /* DDNormalRobot.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DDNormalRobot.bundle; sourceTree = "<group>"; };
+		8700D5B02443F533002DD406 /* YHZRobotChat.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YHZRobotChat.bundle; sourceTree = "<group>"; };
 		876414F424400817001B0714 /* DDNormalRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDNormalRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876414F724400817001B0714 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		876414F824400817001B0714 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,30 +53,30 @@
 		876415082440081F001B0714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		876415092440081F001B0714 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		876415122440085B001B0714 /* ChooseQuestionTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseQuestionTypeCell.m; sourceTree = "<group>"; };
-		876415132440085B001B0714 /* DDInputToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInputToolBar.h; sourceTree = "<group>"; };
-		876415142440085B001B0714 /* SmartTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTipsView.h; sourceTree = "<group>"; };
+		876415132440085B001B0714 /* RobotChatInputToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotChatInputToolBar.h; sourceTree = "<group>"; };
+		876415142440085B001B0714 /* SmartAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartAlertView.h; sourceTree = "<group>"; };
 		876415152440085B001B0714 /* EvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationView.m; sourceTree = "<group>"; };
 		876415162440085B001B0714 /* DDChatImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatImageCell.m; sourceTree = "<group>"; };
 		876415172440085B001B0714 /* ChatQuestionResolveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatQuestionResolveCell.h; sourceTree = "<group>"; };
 		876415182440085B001B0714 /* DDEmotionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEmotionView.h; sourceTree = "<group>"; };
 		876415192440085B001B0714 /* DDChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatCell.h; sourceTree = "<group>"; };
 		8764151A2440085B001B0714 /* TurnArtificalActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnArtificalActionCell.m; sourceTree = "<group>"; };
-		8764151B2440085B001B0714 /* LineUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineUpView.m; sourceTree = "<group>"; };
+		8764151B2440085B001B0714 /* QueueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueView.m; sourceTree = "<group>"; };
 		8764151C2440085B001B0714 /* EvaluationedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationedCell.h; sourceTree = "<group>"; };
-		8764151D2440085B001B0714 /* DDInputToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInputToolBar.m; sourceTree = "<group>"; };
+		8764151D2440085B001B0714 /* RobotChatInputToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotChatInputToolBar.m; sourceTree = "<group>"; };
 		8764151E2440085B001B0714 /* ChooseQuestionTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseQuestionTypeCell.h; sourceTree = "<group>"; };
 		8764151F2440085B001B0714 /* DDChatImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatImageCell.h; sourceTree = "<group>"; };
 		876415202440085B001B0714 /* EvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationView.h; sourceTree = "<group>"; };
-		876415212440085B001B0714 /* SmartTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartTipsView.m; sourceTree = "<group>"; };
-		876415222440085B001B0714 /* LineUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineUpView.h; sourceTree = "<group>"; };
+		876415212440085B001B0714 /* SmartAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartAlertView.m; sourceTree = "<group>"; };
+		876415222440085B001B0714 /* QueueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueView.h; sourceTree = "<group>"; };
 		876415232440085B001B0714 /* TurnArtificalActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnArtificalActionCell.h; sourceTree = "<group>"; };
 		876415242440085B001B0714 /* DDChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatCell.m; sourceTree = "<group>"; };
 		876415252440085B001B0714 /* DDEmotionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEmotionView.m; sourceTree = "<group>"; };
 		876415262440085B001B0714 /* ChatQuestionResolveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatQuestionResolveCell.m; sourceTree = "<group>"; };
 		876415272440085B001B0714 /* EvaluationedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationedCell.m; sourceTree = "<group>"; };
-		876415292440085B001B0714 /* DDChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatViewController.h; sourceTree = "<group>"; };
-		8764152A2440085B001B0714 /* DDChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatViewController.m; sourceTree = "<group>"; };
-		8764152B2440085C001B0714 /* WebSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketManager.h; sourceTree = "<group>"; };
+		876415292440085B001B0714 /* YHZRobotChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHZRobotChatViewController.h; sourceTree = "<group>"; };
+		8764152A2440085B001B0714 /* YHZRobotChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHZRobotChatViewController.m; sourceTree = "<group>"; };
+		8764152B2440085C001B0714 /* YHZSocketClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHZSocketClientManager.h; sourceTree = "<group>"; };
 		8764152D2440085C001B0714 /* MessageHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHub.m; sourceTree = "<group>"; };
 		8764152E2440085C001B0714 /* BusinessItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessItemModel.h; sourceTree = "<group>"; };
 		8764152F2440085C001B0714 /* RobotDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotDetailModel.h; sourceTree = "<group>"; };
@@ -87,11 +87,11 @@
 		876415342440085C001B0714 /* RobotDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotDetailModel.m; sourceTree = "<group>"; };
 		876415352440085C001B0714 /* BusinessItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessItemModel.m; sourceTree = "<group>"; };
 		876415362440085C001B0714 /* ClientParamsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientParamsModel.m; sourceTree = "<group>"; };
-		876415372440085C001B0714 /* DDChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatManager.m; sourceTree = "<group>"; };
-		876415382440085C001B0714 /* DDChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatManager.h; sourceTree = "<group>"; };
-		876415392440085C001B0714 /* WebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
-		876415572440335D001B0714 /* DDHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDHelper.h; sourceTree = "<group>"; };
-		876415582440335D001B0714 /* DDHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDHelper.m; sourceTree = "<group>"; };
+		876415372440085C001B0714 /* YHZChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHZChatManager.m; sourceTree = "<group>"; };
+		876415382440085C001B0714 /* YHZChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHZChatManager.h; sourceTree = "<group>"; };
+		876415392440085C001B0714 /* YHZSocketClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHZSocketClientManager.m; sourceTree = "<group>"; };
+		876415572440335D001B0714 /* YHZEmotionsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHZEmotionsHelper.h; sourceTree = "<group>"; };
+		876415582440335D001B0714 /* YHZEmotionsHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YHZEmotionsHelper.m; sourceTree = "<group>"; };
 		87B6C78024E25CF1003CB7DB /* NSString+Emoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		87B6C78124E25CF1003CB7DB /* NSString+Emoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		87F2687624E4D3530019562A /* UIView+Shadow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Shadow.h"; sourceTree = "<group>"; };
@@ -151,16 +151,16 @@
 			isa = PBXGroup;
 			children = (
 				87F2687524E4D3050019562A /* Category */,
-				8700D5B02443F533002DD406 /* DDNormalRobot.bundle */,
-				876415382440085C001B0714 /* DDChatManager.h */,
-				876415372440085C001B0714 /* DDChatManager.m */,
+				8700D5B02443F533002DD406 /* YHZRobotChat.bundle */,
+				876415382440085C001B0714 /* YHZChatManager.h */,
+				876415372440085C001B0714 /* YHZChatManager.m */,
 				8764152C2440085C001B0714 /* Model */,
 				876415282440085B001B0714 /* ViewController */,
 				876415112440085B001B0714 /* Views */,
-				8764152B2440085C001B0714 /* WebSocketManager.h */,
-				876415392440085C001B0714 /* WebSocketManager.m */,
-				876415572440335D001B0714 /* DDHelper.h */,
-				876415582440335D001B0714 /* DDHelper.m */,
+				8764152B2440085C001B0714 /* YHZSocketClientManager.h */,
+				876415392440085C001B0714 /* YHZSocketClientManager.m */,
+				876415572440335D001B0714 /* YHZEmotionsHelper.h */,
+				876415582440335D001B0714 /* YHZEmotionsHelper.m */,
 			);
 			path = DDNormalRobot;
 			sourceTree = "<group>";
@@ -178,16 +178,16 @@
 				876415162440085B001B0714 /* DDChatImageCell.m */,
 				876415182440085B001B0714 /* DDEmotionView.h */,
 				876415252440085B001B0714 /* DDEmotionView.m */,
-				876415132440085B001B0714 /* DDInputToolBar.h */,
-				8764151D2440085B001B0714 /* DDInputToolBar.m */,
+				876415132440085B001B0714 /* RobotChatInputToolBar.h */,
+				8764151D2440085B001B0714 /* RobotChatInputToolBar.m */,
 				8764151C2440085B001B0714 /* EvaluationedCell.h */,
 				876415272440085B001B0714 /* EvaluationedCell.m */,
 				876415202440085B001B0714 /* EvaluationView.h */,
 				876415152440085B001B0714 /* EvaluationView.m */,
-				876415222440085B001B0714 /* LineUpView.h */,
-				8764151B2440085B001B0714 /* LineUpView.m */,
-				876415142440085B001B0714 /* SmartTipsView.h */,
-				876415212440085B001B0714 /* SmartTipsView.m */,
+				876415222440085B001B0714 /* QueueView.h */,
+				8764151B2440085B001B0714 /* QueueView.m */,
+				876415142440085B001B0714 /* SmartAlertView.h */,
+				876415212440085B001B0714 /* SmartAlertView.m */,
 				876415232440085B001B0714 /* TurnArtificalActionCell.h */,
 				8764151A2440085B001B0714 /* TurnArtificalActionCell.m */,
 			);
@@ -197,8 +197,8 @@
 		876415282440085B001B0714 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				876415292440085B001B0714 /* DDChatViewController.h */,
-				8764152A2440085B001B0714 /* DDChatViewController.m */,
+				876415292440085B001B0714 /* YHZRobotChatViewController.h */,
+				8764152A2440085B001B0714 /* YHZRobotChatViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 			files = (
 				876415072440081F001B0714 /* LaunchScreen.storyboard in Resources */,
 				876415042440081F001B0714 /* Assets.xcassets in Resources */,
-				8700D5B12443F533002DD406 /* DDNormalRobot.bundle in Resources */,
+				8700D5B12443F533002DD406 /* YHZRobotChat.bundle in Resources */,
 				8764150224400817001B0714 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,22 +381,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8764154C2440085C001B0714 /* WebSocketManager.m in Sources */,
-				876415402440085C001B0714 /* SmartTipsView.m in Sources */,
+				8764154C2440085C001B0714 /* YHZSocketClientManager.m in Sources */,
+				876415402440085C001B0714 /* SmartAlertView.m in Sources */,
 				876415442440085C001B0714 /* EvaluationedCell.m in Sources */,
 				876415422440085C001B0714 /* DDEmotionView.m in Sources */,
 				8764153B2440085C001B0714 /* EvaluationView.m in Sources */,
 				876414FF24400817001B0714 /* ViewController.m in Sources */,
 				876415432440085C001B0714 /* ChatQuestionResolveCell.m in Sources */,
-				876415592440335D001B0714 /* DDHelper.m in Sources */,
+				876415592440335D001B0714 /* YHZEmotionsHelper.m in Sources */,
 				8764154A2440085C001B0714 /* ClientParamsModel.m in Sources */,
 				876415412440085C001B0714 /* DDChatCell.m in Sources */,
 				8764153D2440085C001B0714 /* TurnArtificalActionCell.m in Sources */,
-				876415452440085C001B0714 /* DDChatViewController.m in Sources */,
+				876415452440085C001B0714 /* YHZRobotChatViewController.m in Sources */,
 				8764153A2440085C001B0714 /* ChooseQuestionTypeCell.m in Sources */,
 				8764153C2440085C001B0714 /* DDChatImageCell.m in Sources */,
 				876415482440085C001B0714 /* RobotDetailModel.m in Sources */,
-				8764154B2440085C001B0714 /* DDChatManager.m in Sources */,
+				8764154B2440085C001B0714 /* YHZChatManager.m in Sources */,
 				876414F924400817001B0714 /* AppDelegate.m in Sources */,
 				87F2687824E4D3530019562A /* UIView+Shadow.m in Sources */,
 				876415472440085C001B0714 /* MessageItemModel.m in Sources */,
@@ -404,8 +404,8 @@
 				87B6C78224E25CF1003CB7DB /* NSString+Emoji.m in Sources */,
 				876415462440085C001B0714 /* MessageHub.m in Sources */,
 				8764150A2440081F001B0714 /* main.m in Sources */,
-				8764153F2440085C001B0714 /* DDInputToolBar.m in Sources */,
-				8764153E2440085C001B0714 /* LineUpView.m in Sources */,
+				8764153F2440085C001B0714 /* RobotChatInputToolBar.m in Sources */,
+				8764153E2440085C001B0714 /* QueueView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z626456P4P;
+				DEVELOPMENT_TEAM = C78VS796BF;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = DDNormalRobot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -568,8 +568,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z626456P4P;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = DDNormalRobot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -579,6 +579,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dudu.DDNormalRobot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

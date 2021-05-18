@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "DDChatViewController.h"
+#import "YHZRobotChatViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    QMUINavigationController *nav = [[QMUINavigationController alloc] initWithRootViewController:[DDChatViewController new]];
+    QMUINavigationController *nav = [[QMUINavigationController alloc] initWithRootViewController:[YHZRobotChatViewController new]];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     return YES;

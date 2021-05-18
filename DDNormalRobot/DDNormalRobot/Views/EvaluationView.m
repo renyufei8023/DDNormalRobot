@@ -9,7 +9,7 @@
 #import "EvaluationView.h"
 #import "QMUIKit.h"
 #import "Masonry.h"
-#import "DDHelper.h"
+#import "YHZEmotionsHelper.h"
 #import "YYCategories.h"
 
 @interface EvaluationItemCell : UICollectionViewCell
@@ -155,7 +155,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     EvaluationItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     [cell.evaluationBtn setTitle:_imageNames[indexPath.row] forState:UIControlStateNormal];
-    [cell.evaluationBtn setImage:[DDHelper imageWithName:_imageNames[indexPath.row]] forState:UIControlStateNormal];
+    [cell.evaluationBtn setImage:[YHZEmotionsHelper generateImageFromBundleWithName:_imageNames[indexPath.row]] forState:UIControlStateNormal];
     return cell;
 }
 
