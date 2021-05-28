@@ -239,4 +239,19 @@
     }];
 }
 
+- (void)yhz_getUnReadMessageCountWithComplete:(void(^)(NSString *count))completeBlock {
+    ClientParamsModel *model = [ClientParamsModel getClientParams];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"Appid"] = @"00c90442c2a3446d89eb80744bf88f73";
+    params[@"DialogId"] = model.DialogId;
+    params[@"ReceiverId"] = model.CustomerId;
+    [DDNetworkHelper GET:@"https://implus.dd373.com/DialogRecordApi/GetTotalUnReadMsgs" parameters:params headers:nil success:^(id responseObject) {
+        if ([responseObject[@"StatusCode"] isEqualToString:@"0"]) {
+            completeBlock(responseObject[@"StatusData"][@"ResultData"][@"Total"]);
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 @end

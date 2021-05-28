@@ -29,6 +29,7 @@ typedef void(^CompleteBlcok)(MessageItemModel *message);
 - (void)yhz_startNewSession;//开始新会话
 - (void)yhz_endSession;//结束会话
 - (void)yhz_startOrderSession;//开始订单聊天
+- (void)yhz_getUnReadMessageCountWithComplete:(void(^)(NSString *count))completeBlock;//获取未消息数
 
 @end
 
