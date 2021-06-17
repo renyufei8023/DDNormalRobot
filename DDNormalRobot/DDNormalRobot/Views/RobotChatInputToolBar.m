@@ -18,6 +18,7 @@
 @interface RobotChatInputToolBar () <QMUITextViewDelegate>
 @property(nonatomic, strong) UIView *yhz_toolBarView;
 @property(nonatomic, strong) QMUITextView *userInputView;
+@property(nonatomic, strong) QMUIButton *endSessionBtn;
 @property(nonatomic, strong) QMUIButton *sendMessageBtn;
 @property(nonatomic, strong) YYLabel *endSessionLabel;
 
@@ -43,6 +44,18 @@
     return _userInputView;
 }
 
+- (QMUIButton *)endSessionBtn {
+    if (!_endSessionBtn) {
+        _endSessionBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        _endSessionBtn.titleLabel.font = UIFontMake(13);
+        [_endSessionBtn setTitle:@"结束会话" forState:UIControlStateNormal];
+        [_endSessionBtn setTitleColor:UIColorMakeWithHex(@"333333") forState:UIControlStateNormal];
+        _endSessionBtn.hidden = YES;
+        [_endSessionBtn addTarget:self action:@selector(endSession) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _endSessionBtn;
+}
+
 - (QMUIButton *)sendMessageBtn {
     if (!_sendMessageBtn) {
         _sendMessageBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
@@ -53,6 +66,7 @@
         [_sendMessageBtn setTitleColor:UIColorWhite forState:UIControlStateNormal];
         [_sendMessageBtn setBackgroundImage:[UIImage imageWithColor:UIColorMakeWithRGBA(234, 102, 44, 1.0)] forState:UIControlStateNormal];
         _sendMessageBtn.enabled = false;
+        [_sendMessageBtn addTarget:self action:@selector(sendMessageClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sendMessageBtn;
 }
@@ -98,7 +112,12 @@
         make.size.mas_offset(CGSizeMake(60, 28));
     }];
     
-    [self.sendMessageBtn addTarget:self action:@selector(sendMessageClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.endSessionBtn];
+    [self.endSessionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.sendMessageBtn.mas_left).inset(12);
+        make.centerY.equalTo(self.sendMessageBtn);
+    }];
+    
     __weak __typeof(self)weakSelf = self;
     NSMutableArray *images = @[@"表情",@"发送图片",@"评价"].mutableCopy;
     UIView *lastView = self.yhz_toolBarView;
@@ -182,6 +201,12 @@
     [self cleatInputView];
 }
 
+- (void)endSession {
+    if (self.endSessionCallBack) {
+        self.endSessionCallBack();
+    }
+}
+
 - (void)cleatInputView {
     self.userInputView.text = nil;
     [self.userInputView endEditing:YES];
@@ -201,6 +226,11 @@
 - (void)setHideEndSessionView:(BOOL)showHideEndSessionView {
     _hideEndSessionView = showHideEndSessionView;
     self.endSessionLabel.hidden = !showHideEndSessionView;
+}
+
+- (void)setHideEndSessionBtn:(BOOL)hideEndSessionBtn {
+    _hideEndSessionBtn = hideEndSessionBtn;
+    self.endSessionBtn.hidden = !hideEndSessionBtn;
 }
 
 #pragma mark - QMUITextViewDelegate

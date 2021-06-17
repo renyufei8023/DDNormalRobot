@@ -228,6 +228,17 @@
         };
     };
     
+    self.inputToolBar.endSessionCallBack = ^{
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[@"userId"] = [ClientParamsModel getClientParams].CustomerId;
+        params[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
+        [DDNetworkHelper GET:@"https://consult.dd373.com/AppraiseApi/DialogEndByUser" parameters:params headers:nil success:^(id responseObject) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    };
+    
     //新对话回调
     self.inputToolBar.newSessionCallBack = ^{
         [chatManager yhz_startNewSession];
@@ -315,6 +326,7 @@
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"serviceType"] integerValue] == 2) {
         self.inputToolBar.hideGiftBtn = YES;
+        self.inputToolBar.hideEndSessionBtn = YES;
     }
 }
 
@@ -504,9 +516,11 @@
                         }
                         //这里接入人工成功了
                         self.inputToolBar.hideGiftBtn = YES;
+                        self.inputToolBar.hideEndSessionBtn = YES;
                         self.onlineButton.hidden = YES;
                     }else {
                         self.inputToolBar.hideGiftBtn = false;
+                        self.inputToolBar.hideEndSessionBtn = false;
                         self.onlineButton.hidden = false;
                     }
                     [[NSUserDefaults standardUserDefaults] setObject:robotDetail.ServiceType forKey:@"serviceType"];
@@ -550,6 +564,7 @@
                     self.inputToolBar.hideEndSessionView = YES;
                     self.tipsView.hidden = YES;
                     self.inputToolBar.hideGiftBtn = false;
+                    self.inputToolBar.hideEndSessionBtn = false;
                 }else if (message.DialogType == 6) {//评价消息
                     message.messageType = MessageTypeEvalution;
                     [self scrollToBottom:YES];
