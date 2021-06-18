@@ -195,7 +195,8 @@
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_group_enter(group);
-        [DDNetworkHelper GET:@"https://consult.dd373.com/UserMessageApi/UserFirstVisit" parameters:nil headers:nil success:^(id responseObject) {
+        NSString *name = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+        [DDNetworkHelper GET:[NSString stringWithFormat:@"https://consult.dd373.com/UserMessageApi/UserFirstVisit?SourcePageTitle=%@&SourcePageUrl=iOS",[[self transform:name] stringByReplacingOccurrencesOfString:@" " withString:@""]] parameters:nil headers:nil success:^(id responseObject) {
             model = [ClientParamsModel yy_modelWithDictionary:responseObject[@"StatusData"][@"ResultData"]];
             [ClientParamsModel saveClientParams:model];
             dispatch_group_leave(group);
@@ -252,6 +253,16 @@
     } failure:^(NSError *error) {
         
     }];
+}
+
+- (NSString *)transform:(NSString *)chinese {
+    if (!chinese.isNotBlank) {
+        return @"";
+    }
+    NSMutableString *pinyin = [chinese mutableCopy];
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
+    return [pinyin uppercaseString];
 }
 
 @end

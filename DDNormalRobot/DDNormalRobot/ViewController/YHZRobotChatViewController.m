@@ -442,7 +442,9 @@
                     }
                     if (obj.DialogType == 6) {
                         obj.messageType = MessageTypeEvalution;
-                        [self.messageDatas addObject:obj];
+                        if ([obj.ServiceType isEqualToString:@"1"]) {
+                            [self.messageDatas addObject:obj];
+                        }
                         [self scrollToBottom:YES];
                     }
                 }else {
