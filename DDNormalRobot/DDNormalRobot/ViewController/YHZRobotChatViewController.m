@@ -229,14 +229,7 @@
     };
     
     self.inputToolBar.endSessionCallBack = ^{
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        params[@"userId"] = [ClientParamsModel getClientParams].CustomerId;
-        params[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
-        [DDNetworkHelper GET:@"https://consult.dd373.com/AppraiseApi/DialogEndByUser" parameters:params headers:nil success:^(id responseObject) {
-            
-        } failure:^(NSError *error) {
-            
-        }];
+        [weakSelf endSession];
     };
     
     //新对话回调
@@ -640,11 +633,25 @@
             [self.messageDatas addObject:model];
             [self scrollToBottom:YES];
             [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
+            [self endSession];
         }else {
-            [QMUITips showWithText:responseObject[@"msg"]];
+            if ([responseObject[@"msg"] isNotBlank]) {
+                [QMUITips showWithText:responseObject[@"msg"]];
+            }
         }
     } failure:^(NSError *error) {
         [QMUITips showError:@"您的网络好像不太给力，请稍后重试" inView:DefaultTipsParentView hideAfterDelay:2.0];
+    }];
+}
+
+- (void)endSession {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"userId"] = [ClientParamsModel getClientParams].CustomerId;
+    params[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
+    [DDNetworkHelper GET:@"https://consult.dd373.com/AppraiseApi/DialogEndByUser" parameters:params headers:nil success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
     }];
 }
 
