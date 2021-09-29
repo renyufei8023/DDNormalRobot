@@ -8,7 +8,6 @@
 
 #import "YHZEmotionsHelper.h"
 #import "YYText.h"
-#import "YYCategories.h"
 #import "NSString+Emoji.h"
 
 NSString *const YHZEmotionString = @"smile;laughing;blush;heart_eyes;smirk;flushed;grin;kissing_smiling_eyes;wink;kissing_closed_eyes;stuck_out_tongue_winking_eye;sleeping;worried;sweat_smile;cold_sweat;joy;sob;angry;mask;scream;sunglasses;thumbsup;clap;ok_hand";
@@ -52,7 +51,7 @@ static NSArray<QMUIEmotion *> *YouHaoZhuEmotionArray;
     }
     string = [self htmlEntityDecode:string];
     string = [self removeHtmlLabelsWithStr:string];
-    string = [string emojiDecode].isNotBlank ? [string emojiDecode] : string;
+    string = [string emojiDecode].dd_isNotBlank ? [string emojiDecode] : string;
     
     NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithString:string];
     [result addAttributes:@{NSFontAttributeName:UIFontMake(13)} range:NSMakeRange(0, result.string.length)];
@@ -103,7 +102,7 @@ static NSArray<QMUIEmotion *> *YouHaoZhuEmotionArray;
         [scanner scanUpToString:@">" intoString:&text];
         lastStr = [lastStr stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
     }
-    return lastStr.isNotBlank ? lastStr : str;
+    return lastStr.dd_isNotBlank ? lastStr : str;
 }
 
 @end

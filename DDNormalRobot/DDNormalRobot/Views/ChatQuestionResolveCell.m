@@ -11,7 +11,6 @@
 #import "QMUIKit.h"
 #import "Masonry.h"
 #import "YYText.h"
-#import "YYCategories.h"
 
 @interface ChatQuestionResolveCell ()
 @property(nonatomic, strong) YYLabel *contentLab;
@@ -74,30 +73,14 @@
         make.height.mas_offset(0.5);
     }];
     
-    __weak __typeof(self)weakSelf = self;
     NSArray *titles = @[@"解决",@"未解决"];
     for (int i = 0; i < titles.count; i++) {
         QMUIButton *resolveBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        resolveBtn.tag = 100 + i;
         [resolveBtn setTitle:titles[i] forState:UIControlStateNormal];
         resolveBtn.titleLabel.font = UIFontMake(13);
         [resolveBtn setTitleColor:UIColorMakeWithRGBA(33, 99, 170, 1.0) forState:UIControlStateNormal];
-        [resolveBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(QMUIButton * _Nonnull sender) {
-            [self.chatBubbleImage.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([obj isKindOfClass:[QMUIButton class]]) {
-                    obj.hidden = YES;
-                }
-            }];
-            UILabel *tipLab = [[UILabel alloc] qmui_initWithFont:UIFontMake(12) textColor:UIColorMakeWithHex(@"666666")];
-            tipLab.text = @"已反馈";
-            [self.chatBubbleImage addSubview:tipLab];
-            [tipLab mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(self.chatBubbleImage);
-                make.centerY.equalTo(sender);
-            }];
-            if (weakSelf.chooseBlock) {
-                weakSelf.chooseBlock(weakSelf.model,i == 0);
-            }
-        }];
+        [resolveBtn addTarget:self action:@selector(resolveClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.chatBubbleImage addSubview:resolveBtn];
         [resolveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.chatBubbleImage);
@@ -130,6 +113,24 @@
         [att yy_setTextHighlightRange:match.range color:UIColorMakeWithRGBA(33, 99, 170, 1.0) backgroundColor:nil tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[text.string substringWithRange:range]] options:@{} completionHandler:nil];
         }];
+    }
+}
+
+- (void)resolveClick:(QMUIButton *)sender {
+    [self.chatBubbleImage.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[QMUIButton class]]) {
+            obj.hidden = YES;
+        }
+    }];
+    UILabel *tipLab = [[UILabel alloc] qmui_initWithFont:UIFontMake(12) textColor:UIColorMakeWithHex(@"666666")];
+    tipLab.text = @"已反馈";
+    [self.chatBubbleImage addSubview:tipLab];
+    [tipLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.chatBubbleImage);
+        make.centerY.equalTo(sender);
+    }];
+    if (self.chooseBlock) {
+        self.chooseBlock(self.model,sender.tag == 100);
     }
 }
 

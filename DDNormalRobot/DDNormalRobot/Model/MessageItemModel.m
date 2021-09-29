@@ -8,9 +8,9 @@
 
 #import "MessageItemModel.h"
 #import "ClientParamsModel.h"
-#import "YYCategories.h"
 #import "YYModel.h"
 #import "QMUIKit.h"
+#import "NSString+Emoji.h"
 
 @implementation MessageItemModel
 
@@ -22,16 +22,16 @@
         datas[@"H"] = @"implushub";
     }
     datas[@"M"] = methodName;
-    if (!messageItem.AppId.isNotBlank) {
+    if (!messageItem.AppId.dd_isNotBlank) {
         messageItem.AppId = @"00c90442c2a3446d89eb80744bf88f73";
     }
-    if (!messageItem.DialogId.isNotBlank) {
+    if (!messageItem.DialogId.dd_isNotBlank) {
         messageItem.DialogId = [ClientParamsModel getClientParams].DialogId;
     }
-    if (!messageItem.SenderId.isNotBlank) {
+    if (!messageItem.SenderId.dd_isNotBlank) {
         messageItem.SenderId = [ClientParamsModel getClientParams].CustomerId;
     }
-    if (!messageItem.SenderName.isNotBlank) {
+    if (!messageItem.SenderName.dd_isNotBlank) {
         messageItem.SenderName = [ClientParamsModel getClientParams].CustomerName;
     }
     NSDate *date = [NSDate date];

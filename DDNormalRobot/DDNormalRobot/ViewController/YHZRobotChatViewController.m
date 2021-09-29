@@ -30,8 +30,8 @@
 #import "YYModel.h"
 #import "YHZEmotionsHelper.h"
 #import "SDWebImage.h"
-#import "YYCategories.h"
 #import "DDNetworkHelper.h"
+#import "NSString+Emoji.h"
 
 @interface YHZRobotChatViewController () <UITableViewDelegate,UITableViewDataSource,DDChatDelegate>
 @property(nonatomic, strong) UIImageView *topContainerView;
@@ -250,15 +250,13 @@
         }];
     };
     
-    [self.onlineButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        [weakSelf turnArtificalClick];
-    }];
+    [self.onlineButton addTarget:self action:@selector(customerServiceClick) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)updateRobotInfo {
     if ([RobotDetailModel getRobotDetail]) {
         RobotDetailModel *robotDetail = [RobotDetailModel getRobotDetail];
-        [self.serviceIcon sd_setImageWithURL:[NSURL URLWithString:robotDetail.Avatar] placeholderImage:[UIImage imageWithColor:[UIColor qmui_randomColor]]];
+        [self.serviceIcon sd_setImageWithURL:[NSURL URLWithString:robotDetail.Avatar] placeholderImage:[UIImage qmui_imageWithColor:[UIColor qmui_randomColor]]];
         self.serviceName.text = robotDetail.NickName;
         self.tipLab.text = robotDetail.Motto;
     }
@@ -363,7 +361,7 @@
                     QMUIAlertController *alertVC = [QMUIAlertController alertControllerWithTitle:responseObject[@"StatusData"][@"ResultMsg"] message:nil preferredStyle:QMUIAlertControllerStyleAlert];
                     QMUIAlertAction *sureAction = [QMUIAlertAction actionWithTitle:@"好的" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
                     }];
-                    [sureAction.button setBackgroundImage:[UIImage imageWithColor:UIColorMakeWithHex(@"#FF5B01")] forState:UIControlStateNormal];
+                    [sureAction.button setBackgroundImage:[UIImage qmui_imageWithColor:UIColorMakeWithHex(@"#FF5B01")] forState:UIControlStateNormal];
                     [alertVC addAction:sureAction];
                     [alertVC showWithAnimated:YES];
                 }
@@ -448,9 +446,9 @@
             
         }else {
             if (message.AppType == 1) {
-                if ([message.AdditionContent isNotBlank]) {
+                if ([message.AdditionContent dd_isNotBlank]) {
                     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:[message.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                    if ([data containsObjectForKey:@"Pid"]) {
+                    if ([[data allKeys] containsObject:@"Pid"]) {
                         [[NSUserDefaults standardUserDefaults] setObject:data[@"Pid"] forKey:@"Pid"];
                         [[NSUserDefaults standardUserDefaults] synchronize];
                     }
@@ -474,12 +472,12 @@
                     
                 }else {
                     NSDictionary *data;
-                    if ([message.AdditionContent isNotBlank]) {
+                    if ([message.AdditionContent dd_isNotBlank]) {
                         data = [NSJSONSerialization JSONObjectWithData:[message.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
                     }
                     
                     id content;
-                    if ([data containsObjectForKey:@"Pid"]) {
+                    if ([[data allKeys] containsObject:@"Pid"]) {
                         if ([data[@"Pid"] isKindOfClass:[NSArray class]]) {
                             NSMutableArray *datas = [data[@"Pid"] mutableCopy];
                             [datas enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -501,7 +499,7 @@
                 if (message.DialogType == 1) {
                     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:[message.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
                     RobotDetailModel *robotDetail = [RobotDetailModel yy_modelWithDictionary:data];
-                    [self.serviceIcon sd_setImageWithURL:[NSURL URLWithString:robotDetail.Avatar] placeholderImage:[UIImage imageWithColor:[UIColor qmui_randomColor]]];
+                    [self.serviceIcon sd_setImageWithURL:[NSURL URLWithString:robotDetail.Avatar] placeholderImage:[UIImage qmui_imageWithColor:[UIColor qmui_randomColor]]];
                     self.serviceName.text = robotDetail.NickName;
                     self.tipLab.text = robotDetail.Motto;
                     [RobotDetailModel saveRobotDetail:robotDetail];
@@ -573,6 +571,10 @@
     [self updateRobotInfo];
 }
 
+- (void)customerServiceClick {
+    [self turnArtificalClick];
+}
+
 #pragma mark - 转人工第一步先调用接口
 - (void)turnArtificalClick {
     [DDNetworkHelper GET:@"https://consult.dd373.com/CustomerBusinessTypeConfigApi/GetBusinessTypeConfigList" parameters:nil headers:nil success:^(id responseObject) {
@@ -635,7 +637,7 @@
             [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
             [self endSession];
         }else {
-            if ([responseObject[@"msg"] isNotBlank]) {
+            if ([responseObject[@"msg"] dd_isNotBlank]) {
                 [QMUITips showWithText:responseObject[@"msg"]];
             }
         }

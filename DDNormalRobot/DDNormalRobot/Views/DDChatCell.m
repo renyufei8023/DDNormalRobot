@@ -13,7 +13,7 @@
 #import "Masonry.h"
 #import "QMUIKit.h"
 #import "YYText.h"
-#import "YYCategories.h"
+#import "NSString+Emoji.h"
 
 @interface DDChatCell ()
 @property(nonatomic, strong) UILabel *nameLab;
@@ -93,15 +93,8 @@
         make.left.right.equalTo(self.chatBubbleImage).inset(15);
         make.top.bottom.equalTo(self.chatBubbleImage).inset(10);
     }];
-    __weak __typeof(self)weakSelf = self;
-    [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-        [weakSelf becomeFirstResponder];
-        UIMenuController *menuController = [UIMenuController sharedMenuController];
-        UIMenuItem *copyMenuItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyString:)];
-        [[UIMenuController sharedMenuController] setMenuItems:@[copyMenuItem]];
-        [menuController setTargetRect:weakSelf.contentLab.frame inView:weakSelf.contentLab.superview];
-        [menuController setMenuVisible:YES animated:YES];
-    }]];
+
+    [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(copyClick)]];
 }
 
 - (void)setModel:(MessageItemModel *)model {
@@ -139,7 +132,7 @@
         self.contentLab.text = model.AdditionContent;
         NSDictionary *data = [NSJSONSerialization JSONObjectWithData:[model.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *question = data[@"RelatedQuestion"];
-        NSString *content = [model.Content isNotBlank] ? [model.Content stringByAppendingString:@"\n"] : nil;
+        NSString *content = [model.Content dd_isNotBlank] ? [model.Content stringByAppendingString:@"\n"] : nil;
         content = [self htmlEntityDecode:content];
         NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:content];
         att.yy_font = UIFontMake(14);
@@ -172,6 +165,15 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     NSString *stringToCopy = _contentLab.text;
     pasteboard.string = stringToCopy;
+}
+
+- (void)copyClick {
+    [self becomeFirstResponder];
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    UIMenuItem *copyMenuItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyString:)];
+    [[UIMenuController sharedMenuController] setMenuItems:@[copyMenuItem]];
+    [menuController setTargetRect:self.contentLab.frame inView:self.contentLab.superview];
+    [menuController setMenuVisible:YES animated:YES];
 }
 
 - (void)resolveUrlWithAtt:(NSMutableAttributedString *)att {

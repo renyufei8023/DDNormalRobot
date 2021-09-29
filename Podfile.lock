@@ -18,14 +18,9 @@ PODS:
   - DDNetworkHelper (1.0.0):
     - AFNetworking (~> 4.0.0)
     - YYCache (~> 1.0.4)
-  - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (6.5.5)
-  - JXCategoryView (1.5.5)
-  - KSGuaidView (0.0.5)
   - LookinServer (1.0.0)
   - Masonry (1.1.0)
-  - MJRefresh (3.4.1)
-  - PPBadgeView (3.1.0)
   - QMUIKit (4.1.1):
     - QMUIKit/QMUIComponents (= 4.1.1)
     - QMUIKit/QMUICore (= 4.1.1)
@@ -329,24 +324,17 @@ PODS:
     - QMUIKit/QMUICore
     - QMUIKit/QMUILog
   - QMUIKit/QMUIWeakObjectContainer (4.1.1)
-  - ReactiveObjC (3.1.1)
-  - SDCycleScrollView (1.80):
-    - SDWebImage (>= 5.0.0)
   - SDWebImage (5.7.3):
     - SDWebImage/Core (= 5.7.3)
   - SDWebImage/Core (5.7.3)
   - SocketRocket (0.5.1)
   - TZImagePickerController (3.3.1)
-  - Weibo_SDK (3.2.7)
   - YBImageBrowser (3.0.9):
     - YBImageBrowser/Core (= 3.0.9)
   - YBImageBrowser/Core (3.0.9):
     - SDWebImage (>= 5.0.0)
     - YYImage
   - YYCache (1.0.4)
-  - YYCategories (1.0.4):
-    - YYCategories/no-arc (= 1.0.4)
-  - YYCategories/no-arc (1.0.4)
   - YYImage (1.0.4):
     - YYImage/Core (= 1.0.4)
   - YYImage/Core (1.0.4)
@@ -356,23 +344,14 @@ PODS:
 DEPENDENCIES:
   - Bugly
   - DDNetworkHelper
-  - DZNEmptyDataSet
   - IQKeyboardManager
-  - JXCategoryView
-  - KSGuaidView
   - LookinServer
   - Masonry
-  - MJRefresh
-  - PPBadgeView
   - QMUIKit
-  - ReactiveObjC (~> 3.1.1)
-  - SDCycleScrollView (~> 1.80)
   - SDWebImage
   - SocketRocket
   - TZImagePickerController
-  - Weibo_SDK
   - YBImageBrowser (~> 3.0.8)
-  - YYCategories
   - YYModel
   - YYText
 
@@ -381,24 +360,15 @@ SPEC REPOS:
     - AFNetworking
     - Bugly
     - DDNetworkHelper
-    - DZNEmptyDataSet
     - IQKeyboardManager
-    - JXCategoryView
-    - KSGuaidView
     - LookinServer
     - Masonry
-    - MJRefresh
-    - PPBadgeView
     - QMUIKit
-    - ReactiveObjC
-    - SDCycleScrollView
     - SDWebImage
     - SocketRocket
     - TZImagePickerController
-    - Weibo_SDK
     - YBImageBrowser
     - YYCache
-    - YYCategories
     - YYImage
     - YYModel
     - YYText
@@ -407,28 +377,19 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Bugly: dbac48b55ad469a97cc4321045cd50df8f63d44f
   DDNetworkHelper: 734b4b0dea3a62379a3d4917341d4210545b985b
-  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
-  JXCategoryView: 0293fcb356f10a5c2e679dac0a1a5f1899ee0c87
-  KSGuaidView: 8a208b7df4140db1c86a8bc1eb170f91b0aabf19
   LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
-  PPBadgeView: b50a223638970fd0781e8753250385864b6dd2fe
   QMUIKit: 5a1a39630f404bd34824d0769ffac9531744602c
-  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
   SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
-  Weibo_SDK: 5a4d08f7e1fedbb635435e4585c8c0439c7da089
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
-  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 46f99a76ca6288f24e00539e2760d813a136c76c
+PODFILE CHECKSUM: 4f7c05e3e97a8a6110792cd2f3143f01aceb6004
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.11.2

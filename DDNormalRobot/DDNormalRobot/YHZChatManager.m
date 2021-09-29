@@ -13,7 +13,6 @@
 #import "RobotDetailModel.h"
 #import "ClientParamsModel.h"
 #import "QMUIKit.h"
-#import "YYCategories.h"
 #import "DDNetworkHelper.h"
 #import "YYModel.h"
 #import "NSString+Emoji.h"
@@ -100,7 +99,7 @@
     messageItem.AppType = isRobot ? 2 : 1;
     messageItem.Content = [messageContent stringContainsEmoji] ? [messageContent emojiEncode] : messageContent;
     messageItem.ContentType = 1;
-    messageItem.AdditionContent = additionContent.isNotBlank ? additionContent : @"0";
+    messageItem.AdditionContent = additionContent.dd_isNotBlank ? additionContent : @"0";
     messageItem.DialogType = 1;
     messageItem.ReceiveId = @"";
     messageItem.ServiceType = isRobot ? @"1" : @"2";
@@ -256,7 +255,7 @@
 }
 
 - (NSString *)transform:(NSString *)chinese {
-    if (!chinese.isNotBlank) {
+    if (!chinese.dd_isNotBlank) {
         return @"";
     }
     NSMutableString *pinyin = [chinese mutableCopy];

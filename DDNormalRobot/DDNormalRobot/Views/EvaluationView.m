@@ -10,7 +10,6 @@
 #import "QMUIKit.h"
 #import "Masonry.h"
 #import "YHZEmotionsHelper.h"
-#import "YYCategories.h"
 
 @interface EvaluationItemCell : UICollectionViewCell
 @property(nonatomic, strong) QMUIButton *evaluationBtn;
@@ -93,9 +92,7 @@
     [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.top.equalTo(contentView).inset(16);
     }];
-    [closeBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        [weakSelf removeFromSuperview];
-    }];
+    [closeBtn addTarget:self action:@selector(closeClick) forControlEvents:UIControlEventTouchUpInside];
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.itemSize = CGSizeMake(60, 70);
@@ -130,21 +127,15 @@
     submitBtn.clipsToBounds = YES;
     [submitBtn setTitle:@"提交" forState:UIControlStateNormal];
     [submitBtn setTitleColor:UIColorWhite forState:UIControlStateNormal];
-    [submitBtn setBackgroundImage:[UIImage imageWithColor:UIColorMakeWithHex(@"#FF5B01")] forState:UIControlStateNormal];
+    [submitBtn setBackgroundImage:[UIImage qmui_imageWithColor:UIColorMakeWithHex(@"#FF5B01")] forState:UIControlStateNormal];
     submitBtn.titleLabel.font = UIFontMake(16);
+    [submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:submitBtn];
     [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_textView);
         make.top.equalTo(_textView.mas_bottom).offset(15);
         make.height.mas_offset(44);
         make.bottom.equalTo(contentView).offset(-20);
-    }];
-    [submitBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        if (weakSelf.submitBlock) {
-            NSIndexPath *selectIndexPath = [weakSelf.collectionView indexPathsForSelectedItems].firstObject;
-            weakSelf.submitBlock([NSString stringWithFormat:@"%@",@(selectIndexPath.row + 1)], weakSelf.textView.text);
-            [weakSelf removeFromSuperview];
-        }
     }];
 }
 
@@ -157,6 +148,18 @@
     [cell.evaluationBtn setTitle:_imageNames[indexPath.row] forState:UIControlStateNormal];
     [cell.evaluationBtn setImage:[YHZEmotionsHelper generateImageFromBundleWithName:_imageNames[indexPath.row]] forState:UIControlStateNormal];
     return cell;
+}
+
+- (void)closeClick {
+    [self removeFromSuperview];
+}
+
+- (void)submitClick {
+    if (self.submitBlock) {
+        NSIndexPath *selectIndexPath = [self.collectionView indexPathsForSelectedItems].firstObject;
+        self.submitBlock([NSString stringWithFormat:@"%@",@(selectIndexPath.row + 1)], self.textView.text);
+        [self removeFromSuperview];
+    }
 }
 
 @end

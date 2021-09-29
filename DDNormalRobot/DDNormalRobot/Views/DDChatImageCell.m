@@ -10,7 +10,6 @@
 #import "ClientParamsModel.h"
 #import "MessageItemModel.h"
 #import "QMUIKit.h"
-#import "YYCategories.h"
 #import "Masonry.h"
 #import "QMUIKit.h"
 #import "SDWebImage.h"
@@ -66,19 +65,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self initSubViews];
-        __weak __typeof(self)weakSelf = self;
-        [self.content addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            NSMutableArray *datas = [NSMutableArray array];
-            YBIBImageData *data = [YBIBImageData new];
-            data.imageURL = [NSURL URLWithString:weakSelf.model.Content];
-            [datas addObject:data];
-            YBImageBrowser *browser = [YBImageBrowser new];
-            browser.defaultToolViewHandler.topView.operationButton.hidden = YES;
-            browser.distanceBetweenPages = SCREEN_WIDTH / 2.0;
-            browser.dataSourceArray = datas;
-            browser.currentPage = 0;
-            [browser show];
-        }]];
+        [self.content addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showImage)]];
     }
     return self;
 }
@@ -139,6 +126,19 @@
         }];
     }
     [self.content sd_setImageWithURL:[NSURL URLWithString:model.Content]];
+}
+
+- (void)showImage {
+    NSMutableArray *datas = [NSMutableArray array];
+    YBIBImageData *data = [YBIBImageData new];
+    data.imageURL = [NSURL URLWithString:self.model.Content];
+    [datas addObject:data];
+    YBImageBrowser *browser = [YBImageBrowser new];
+    browser.defaultToolViewHandler.topView.operationButton.hidden = YES;
+    browser.distanceBetweenPages = SCREEN_WIDTH / 2.0;
+    browser.dataSourceArray = datas;
+    browser.currentPage = 0;
+    [browser show];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

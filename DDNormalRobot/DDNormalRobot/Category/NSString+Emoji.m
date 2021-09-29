@@ -48,4 +48,15 @@
     return returnValue;
 }
 
+- (BOOL)dd_isNotBlank {
+    NSCharacterSet *blank = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    for (NSInteger i = 0; i < self.length; ++i) {
+        unichar c = [self characterAtIndex:i];
+        if (![blank characterIsMember:c]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

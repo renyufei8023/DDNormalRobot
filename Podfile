@@ -4,7 +4,6 @@ target 'DDNormalRobot' do
   pod 'Bugly'
     pod 'Masonry'
     pod 'YYModel'
-    pod 'YYCategories'
     pod 'YYText'
     pod 'IQKeyboardManager'
     pod 'QMUIKit'

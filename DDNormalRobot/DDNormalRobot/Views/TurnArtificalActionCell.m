@@ -9,7 +9,6 @@
 #import "TurnArtificalActionCell.h"
 #import "QMUIKit.h"
 #import "Masonry.h"
-#import "YYCategories.h"
 
 @implementation TurnArtificalActionCell
 
@@ -20,18 +19,19 @@
         [artiBtn setTitle:@"转人工" forState:UIControlStateNormal];
         artiBtn.titleLabel.font = UIFontMake(13);
         [artiBtn setTitleColor:UIColorMakeWithRGBA(33, 99, 170, 1.0) forState:UIControlStateNormal];
+        [artiBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:artiBtn];
         [artiBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self.contentView);
         }];
-        __weak __typeof(self)weakSelf = self;
-        [artiBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-            if (weakSelf.actionClick) {
-                weakSelf.actionClick();
-            }
-        }];
     }
     return self;
+}
+
+- (void)btnClick {
+    if (self.actionClick) {
+        self.actionClick();
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

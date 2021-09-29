@@ -11,7 +11,6 @@
 #import "QMUIKit.h"
 #import "Masonry.h"
 #import "DDNetworkHelper.h"
-#import "YYCategories.h"
 #import "YHZEmotionsHelper.h"
 #import "TZImagePickerController/TZImagePickerController.h"
 
@@ -64,7 +63,7 @@
         _sendMessageBtn.clipsToBounds = YES;
         _sendMessageBtn.layer.cornerRadius = 2;
         [_sendMessageBtn setTitleColor:UIColorWhite forState:UIControlStateNormal];
-        [_sendMessageBtn setBackgroundImage:[UIImage imageWithColor:UIColorMakeWithRGBA(234, 102, 44, 1.0)] forState:UIControlStateNormal];
+        [_sendMessageBtn setBackgroundImage:[UIImage qmui_imageWithColor:UIColorMakeWithRGBA(234, 102, 44, 1.0)] forState:UIControlStateNormal];
         _sendMessageBtn.enabled = false;
         [_sendMessageBtn addTarget:self action:@selector(sendMessageClick) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -118,7 +117,6 @@
         make.centerY.equalTo(self.sendMessageBtn);
     }];
     
-    __weak __typeof(self)weakSelf = self;
     NSMutableArray *images = @[@"表情",@"发送图片",@"评价"].mutableCopy;
     UIView *lastView = self.yhz_toolBarView;
     for (int i = 0; i < images.count; i++) {
@@ -137,44 +135,11 @@
             }
             make.centerY.equalTo(self.yhz_toolBarView);
         }];
-        [btn addBlockForControlEvents:UIControlEventTouchUpInside block:^(QMUIButton * _Nonnull sender) {
-            if (i == 0) {
-                sender.selected = !sender.isSelected;
-                if (weakSelf.emotionCallBack) {
-                    weakSelf.emotionCallBack(sender);
-                }
-            }else if (i == 1) {
-                TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:nil];
-                imagePicker.allowPickingVideo = false;
-                imagePicker.allowTakeVideo = false;
-                imagePicker.didFinishPickingPhotosHandle = ^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-                    [DDNetworkHelper uploadImagesWithURL:@"https://newupload.dd373.com/Upload/UploadFile" parameters:@{@"fileInfoType":@"5"} headers:nil name:@"fileInfoType" images:photos fileNames:nil imageScale:0.5 imageType:@"jpg" progress:^(NSProgress *progress) {
-                        
-                    } success:^(id responseObject) {
-                        if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
-                            [QMUITips hideAllTips];
-                            [QMUITips showWithText:responseObject[@"msg"]];
-                        }else {
-                            if (weakSelf.sendImageCallBack) {
-                                weakSelf.sendImageCallBack(responseObject[@"StatusData"][@"ResultData"][@"FileUrl"]);
-                            }
-                        }
-                    } failure:^(NSError *error) {
-                        [QMUITips hideAllTips];
-                        [QMUITips showError:@"您的网络好像不太给力，请稍后重试" inView:DefaultTipsParentView hideAfterDelay:2.0];
-                    }];
-                };
-                imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
-                [[QMUIHelper visibleViewController] presentViewController:imagePicker animated:YES completion:NULL];
-            }else {
-                if (weakSelf.evalutionCallBack) {
-                    weakSelf.evalutionCallBack();
-                }
-            }
-        }];
+        [btn addTarget:self action:@selector(menuBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         lastView = btn;
     }
     
+    __weak __typeof(self)weakSelf = self;
     //处理会话结束
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"对话已结束，您可以 开始新的对话"];
     att.yy_color = UIColorMakeWithHex(@"666666");
@@ -204,6 +169,43 @@
 - (void)endSession {
     if (self.endSessionCallBack) {
         self.endSessionCallBack();
+    }
+}
+
+- (void)menuBtnClick:(QMUIButton *)sender {
+    NSInteger tage = sender.tag;
+    if (tage == 100) {
+        sender.selected = !sender.isSelected;
+        if (self.emotionCallBack) {
+            self.emotionCallBack(sender);
+        }
+    }else if (tage == 101) {
+        TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:nil];
+        imagePicker.allowPickingVideo = false;
+        imagePicker.allowTakeVideo = false;
+        imagePicker.didFinishPickingPhotosHandle = ^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+            [DDNetworkHelper uploadImagesWithURL:@"https://newupload.dd373.com/Upload/UploadFile" parameters:@{@"fileInfoType":@"5"} headers:nil name:@"fileInfoType" images:photos fileNames:nil imageScale:0.5 imageType:@"jpg" progress:^(NSProgress *progress) {
+                
+            } success:^(id responseObject) {
+                if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
+                    [QMUITips hideAllTips];
+                    [QMUITips showWithText:responseObject[@"msg"]];
+                }else {
+                    if (self.sendImageCallBack) {
+                        self.sendImageCallBack(responseObject[@"StatusData"][@"ResultData"][@"FileUrl"]);
+                    }
+                }
+            } failure:^(NSError *error) {
+                [QMUITips hideAllTips];
+                [QMUITips showError:@"您的网络好像不太给力，请稍后重试" inView:DefaultTipsParentView hideAfterDelay:2.0];
+            }];
+        };
+        imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
+        [[QMUIHelper visibleViewController] presentViewController:imagePicker animated:YES completion:NULL];
+    }else {
+        if (self.evalutionCallBack) {
+            self.evalutionCallBack();
+        }
     }
 }
 
