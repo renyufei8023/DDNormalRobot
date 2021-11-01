@@ -48,6 +48,15 @@
     return _instance;
 }
 
++ (NSString *)getRobotAppID {
+    NSString *bundleID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    if ([bundleID isEqualToString:@"com.gcl.youhaozhu"]) {
+        return @"02017E153B3D4E6D9E5A186F83D4D7E9";
+    }else {
+        return @"00c90442c2a3446d89eb80744bf88f73";
+    }
+}
+
 - (instancetype)init {
     if (self == [super init]) {
         self.isUserClose = NO;
@@ -67,7 +76,7 @@
     }
     ClientParamsModel *clientParams = [ClientParamsModel getClientParams];
     MessageHub *hub = [MessageHub getMessageHub];
-    NSString *wbUrl = [NSString stringWithFormat:@"wss://implus.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&tag=0&appid=00c90442c2a3446d89eb80744bf88f73&&dialogId=%@&senderId=%@&serviceType=null&connectionToken=%@&connectionData=%@&tid=6",clientParams.DialogId,clientParams.CustomerId,[self urlEncodedWithString:hub.ConnectionToken], [self urlEncodedWithString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
+    NSString *wbUrl = [NSString stringWithFormat:@"wss://implus.dd373.com/cors/connect?transport=webSockets&clientProtocol=1.5&tag=0&appid=%@&&dialogId=%@&senderId=%@&serviceType=null&connectionToken=%@&connectionData=%@&tid=6",[YHZSocketClientManager getRobotAppID],clientParams.DialogId,clientParams.CustomerId,[self urlEncodedWithString:hub.ConnectionToken], [self urlEncodedWithString:[@[@{@"name":@"implushub"}] yy_modelToJSONString]]];
     self.webSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:wbUrl]];
     self.webSocket.delegate = self;
     [self.webSocket open];
@@ -284,7 +293,9 @@
 }
 
 - (void)getUserMetaData {
-    [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/UserMetaData" parameters:nil headers:nil success:^(id responseObject) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"appid"] = [YHZSocketClientManager getRobotAppID];
+    [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/UserMetaData" parameters:params headers:nil success:^(id responseObject) {
         if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
             [QMUITips showWithText:responseObject[@"StatusData"][@"ResultMsg"]];
         }

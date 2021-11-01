@@ -11,6 +11,7 @@
 #import "YYModel.h"
 #import "QMUIKit.h"
 #import "NSString+Emoji.h"
+#import "YHZSocketClientManager.h"
 
 @implementation MessageItemModel
 
@@ -23,7 +24,7 @@
     }
     datas[@"M"] = methodName;
     if (!messageItem.AppId.dd_isNotBlank) {
-        messageItem.AppId = @"00c90442c2a3446d89eb80744bf88f73";
+        messageItem.AppId = [YHZSocketClientManager getRobotAppID];
     }
     if (!messageItem.DialogId.dd_isNotBlank) {
         messageItem.DialogId = [ClientParamsModel getClientParams].DialogId;

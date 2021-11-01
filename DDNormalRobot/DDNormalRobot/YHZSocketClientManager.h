@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) WebSocketConnectType connectType;
 
 + (instancetype)sharedInstanceManager;
++ (NSString *)getRobotAppID;
 - (void)yhz_connectServer;//建立长连接
 - (void)resetConnectServer;//重新连接
 - (void)yhz_closeSocket;//关闭长连接

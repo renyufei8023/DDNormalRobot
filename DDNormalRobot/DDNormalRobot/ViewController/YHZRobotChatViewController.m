@@ -32,6 +32,7 @@
 #import "SDWebImage.h"
 #import "DDNetworkHelper.h"
 #import "NSString+Emoji.h"
+#import "YHZSocketClientManager.h"
 
 @interface YHZRobotChatViewController () <UITableViewDelegate,UITableViewDataSource,DDChatDelegate>
 @property(nonatomic, strong) UIImageView *topContainerView;
@@ -577,7 +578,9 @@
 
 #pragma mark - 转人工第一步先调用接口
 - (void)turnArtificalClick {
-    [DDNetworkHelper GET:@"https://consult.dd373.com/CustomerBusinessTypeConfigApi/GetBusinessTypeConfigList" parameters:nil headers:nil success:^(id responseObject) {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"appid"] = [YHZSocketClientManager getRobotAppID];
+    [DDNetworkHelper GET:@"https://consult.dd373.com/CustomerBusinessTypeConfigApi/GetBusinessTypeConfigList" parameters:parameters headers:nil success:^(id responseObject) {
         if ([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"]) {
             NSArray *datas = [NSArray yy_modelArrayWithClass:[BusinessItemModel class] json:responseObject[@"StatusData"][@"ResultData"]];
             //创建一个空的model放到数组里面
@@ -610,7 +613,9 @@
 
 #pragma mark - 结束会话
 - (void)DialogOver {
-    [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/DialogOver" parameters:nil headers:nil success:^(id responseObject) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"appid"] = [YHZSocketClientManager getRobotAppID];
+    [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/DialogOver" parameters:params headers:nil success:^(id responseObject) {
         if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
             [QMUITips showWithText:responseObject[@"msg"]];
         }

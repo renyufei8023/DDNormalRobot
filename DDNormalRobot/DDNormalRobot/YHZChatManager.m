@@ -167,7 +167,7 @@
 - (void)webSocketDidOpen {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"tag"] = @"0";
-    parameters[@"appid"] = @"00c90442c2a3446d89eb80744bf88f73";
+    parameters[@"appid"] = [YHZSocketClientManager getRobotAppID];
     parameters[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
     parameters[@"senderId"] = [ClientParamsModel getClientParams].CustomerId;
     parameters[@"serviceType"] = @"1";
@@ -195,7 +195,9 @@
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_group_enter(group);
         NSString *name = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
-        [DDNetworkHelper GET:[NSString stringWithFormat:@"https://consult.dd373.com/UserMessageApi/UserFirstVisit?SourcePageTitle=%@&SourcePageUrl=iOS",[[self transform:name] stringByReplacingOccurrencesOfString:@" " withString:@""]] parameters:nil headers:nil success:^(id responseObject) {
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[@"appid"] = [YHZSocketClientManager getRobotAppID];
+        [DDNetworkHelper GET:[NSString stringWithFormat:@"https://consult.dd373.com/UserMessageApi/UserFirstVisit?SourcePageTitle=%@&SourcePageUrl=iOS",[[self transform:name] stringByReplacingOccurrencesOfString:@" " withString:@""]] parameters:params headers:nil success:^(id responseObject) {
             model = [ClientParamsModel yy_modelWithDictionary:responseObject[@"StatusData"][@"ResultData"]];
             [ClientParamsModel saveClientParams:model];
             dispatch_group_leave(group);
@@ -207,7 +209,7 @@
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         parameters[@"clientProtocol"] = @"1.5";
         parameters[@"tag"] = @"0";
-        parameters[@"appid"] = @"00c90442c2a3446d89eb80744bf88f73";
+        parameters[@"appid"] = [YHZSocketClientManager getRobotAppID];
         parameters[@"dialogId"] = model.DialogId;
         parameters[@"senderId"] = model.CustomerId;
         parameters[@"serviceType"] = @"1";
@@ -242,9 +244,10 @@
 - (void)yhz_getUnReadMessageCountWithComplete:(void(^)(NSString *count))completeBlock {
     ClientParamsModel *model = [ClientParamsModel getClientParams];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"Appid"] = @"00c90442c2a3446d89eb80744bf88f73";
+    params[@"Appid"] = [YHZSocketClientManager getRobotAppID];
     params[@"DialogId"] = model.DialogId;
     params[@"ReceiverId"] = model.CustomerId;
+    params[@"appid"] = [YHZSocketClientManager getRobotAppID];
     [DDNetworkHelper GET:@"https://implus.dd373.com/DialogRecordApi/GetTotalUnReadMsgs" parameters:params headers:nil success:^(id responseObject) {
         if ([responseObject[@"StatusCode"] isEqualToString:@"0"]) {
             completeBlock(responseObject[@"StatusData"][@"ResultData"][@"Total"]);
