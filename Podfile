@@ -14,4 +14,5 @@ target 'DDNormalRobot' do
     pod 'SocketRocket','0.5'
     pod 'YBImageBrowser','~>3.0.8'
     pod 'DDNetworkHelper'
+    pod 'TZImagePickerController'
 end

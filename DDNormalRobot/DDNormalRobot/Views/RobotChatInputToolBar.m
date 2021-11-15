@@ -12,7 +12,7 @@
 #import "Masonry.h"
 #import "DDNetworkHelper.h"
 #import "YHZEmotionsHelper.h"
-#import "DDNormalRobot-Bridging-Header.h"
+#import "TZImagePickerController/TZImagePickerController.h"
 
 @interface RobotChatInputToolBar () <QMUITextViewDelegate>
 @property(nonatomic, strong) UIView *yhz_toolBarView;
@@ -180,17 +180,11 @@
             self.emotionCallBack(sender);
         }
     }else if (tage == 101) {
-        ZLPhotoConfiguration *config = [ZLPhotoConfiguration default];
-        config.maxSelectCount = 1;
-        config.allowSelectGif = NO;
-        config.allowSelectVideo = NO;
-        config.allowEditVideo = NO;
-        config.allowRecordVideo = NO;
-        config.allowSelectLivePhoto = NO;
-        config.maxPreviewCount = 10;
-        ZLPhotoPreviewSheet *ac = [[ZLPhotoPreviewSheet alloc] init];
-        ac.selectImageBlock = ^(NSArray<UIImage *> * _Nonnull selectImageArray, NSArray<PHAsset *> * _Nonnull selectImageAssets, BOOL isOriginal) {
-            [DDNetworkHelper uploadImagesWithURL:@"https://newupload.dd373.com/Upload/UploadFile" parameters:@{@"fileInfoType":@"5"} headers:nil name:@"fileInfoType" images:selectImageArray fileNames:nil imageScale:0.5 imageType:@"jpg" progress:^(NSProgress *progress) {
+        TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:nil];
+        imagePicker.allowPickingVideo = false;
+        imagePicker.allowTakeVideo = false;
+        imagePicker.didFinishPickingPhotosHandle = ^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+            [DDNetworkHelper uploadImagesWithURL:@"https://newupload.dd373.com/Upload/UploadFile" parameters:@{@"fileInfoType":@"5"} headers:nil name:@"fileInfoType" images:photos fileNames:nil imageScale:0.5 imageType:@"jpg" progress:^(NSProgress *progress) {
                 
             } success:^(id responseObject) {
                 if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
@@ -206,7 +200,8 @@
                 [QMUITips showError:@"您的网络好像不太给力，请稍后重试" inView:DefaultTipsParentView hideAfterDelay:2.0];
             }];
         };
-        [ac showPhotoLibraryWithSender:[QMUIHelper visibleViewController]];
+        imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
+        [[QMUIHelper visibleViewController] presentViewController:imagePicker animated:YES completion:NULL];
     }else {
         if (self.evalutionCallBack) {
             self.evalutionCallBack();

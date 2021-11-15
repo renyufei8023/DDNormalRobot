@@ -42,7 +42,6 @@
 /* Begin PBXFileReference section */
 		3A8C4FFAB626F8B90C5F4A39 /* Pods-DDNormalRobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.debug.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.debug.xcconfig"; sourceTree = "<group>"; };
 		8700D5B02443F533002DD406 /* YHZRobotChat.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YHZRobotChat.bundle; sourceTree = "<group>"; };
-		87544201274223B30006216E /* DDNormalRobot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDNormalRobot-Bridging-Header.h"; sourceTree = "<group>"; };
 		876414F424400817001B0714 /* DDNormalRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDNormalRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876414F724400817001B0714 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		876414F824400817001B0714 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -162,7 +161,6 @@
 				876415392440085C001B0714 /* YHZSocketClientManager.m */,
 				876415572440335D001B0714 /* YHZEmotionsHelper.h */,
 				876415582440335D001B0714 /* YHZEmotionsHelper.m */,
-				87544201274223B30006216E /* DDNormalRobot-Bridging-Header.h */,
 			);
 			path = DDNormalRobot;
 			sourceTree = "<group>";
@@ -534,6 +532,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = C78VS796BF;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = DDNormalRobot/Info.plist;
@@ -544,7 +543,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dudu.DDNormalRobot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DDNormalRobot/DDNormalRobot/DDNormalRobot-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,6 +558,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = DDNormalRobot/Info.plist;
@@ -570,7 +570,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dudu.DDNormalRobot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "DDNormalRobot/DDNormalRobot/DDNormalRobot-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
