@@ -20,7 +20,6 @@ TODO: Add long description of the pod here.
   s.dependency 'Masonry'
   s.dependency 'YYText'
   s.dependency 'QMUIKit'
-  s.dependency 'TZImagePickerController'
   s.dependency 'SDWebImage'
   s.dependency 'SocketRocket'
   s.dependency 'YBImageBrowser'
