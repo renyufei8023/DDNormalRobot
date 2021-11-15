@@ -42,6 +42,7 @@
 /* Begin PBXFileReference section */
 		3A8C4FFAB626F8B90C5F4A39 /* Pods-DDNormalRobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDNormalRobot.debug.xcconfig"; path = "Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot.debug.xcconfig"; sourceTree = "<group>"; };
 		8700D5B02443F533002DD406 /* YHZRobotChat.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YHZRobotChat.bundle; sourceTree = "<group>"; };
+		87544201274223B30006216E /* DDNormalRobot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDNormalRobot-Bridging-Header.h"; sourceTree = "<group>"; };
 		876414F424400817001B0714 /* DDNormalRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDNormalRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876414F724400817001B0714 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		876414F824400817001B0714 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 				876415392440085C001B0714 /* YHZSocketClientManager.m */,
 				876415572440335D001B0714 /* YHZEmotionsHelper.h */,
 				876415582440335D001B0714 /* YHZEmotionsHelper.m */,
+				87544201274223B30006216E /* DDNormalRobot-Bridging-Header.h */,
 			);
 			path = DDNormalRobot;
 			sourceTree = "<group>";
@@ -259,7 +261,6 @@
 				876414F024400817001B0714 /* Sources */,
 				876414F124400817001B0714 /* Frameworks */,
 				876414F224400817001B0714 /* Resources */,
-				8D81F81EA10FA3949EADEFC9 /* [CP] Embed Pods Frameworks */,
 				B7F36203DFC23987FB73D83A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -282,6 +283,7 @@
 				TargetAttributes = {
 					876414F324400817001B0714 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1310;
 					};
 				};
 			};
@@ -338,23 +340,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D81F81EA10FA3949EADEFC9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DDNormalRobot/Pods-DDNormalRobot-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B7F36203DFC23987FB73D83A /* [CP] Copy Pods Resources */ = {
@@ -546,6 +531,7 @@
 			baseConfigurationReference = 3A8C4FFAB626F8B90C5F4A39 /* Pods-DDNormalRobot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C78VS796BF;
@@ -558,6 +544,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dudu.DDNormalRobot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DDNormalRobot/DDNormalRobot/DDNormalRobot-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -567,6 +556,7 @@
 			baseConfigurationReference = C83E347888C9011049BC1D23 /* Pods-DDNormalRobot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
@@ -580,6 +570,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dudu.DDNormalRobot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DDNormalRobot/DDNormalRobot/DDNormalRobot-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

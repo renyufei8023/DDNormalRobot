@@ -1,3 +1,4 @@
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 platform :ios, '11.0'
 inhibit_all_warnings!
 target 'DDNormalRobot' do
@@ -8,9 +9,9 @@ target 'DDNormalRobot' do
     pod 'IQKeyboardManager'
     pod 'QMUIKit'
     pod 'LookinServer', :configurations => ['Debug']
-    pod 'TZImagePickerController'
+    pod 'ZLPhotoBrowser'
     pod 'SDWebImage'
-    pod 'SocketRocket'
+    pod 'SocketRocket','0.5'
     pod 'YBImageBrowser','~>3.0.8'
     pod 'DDNetworkHelper'
 end
