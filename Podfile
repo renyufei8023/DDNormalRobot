@@ -9,7 +9,6 @@ target 'DDNormalRobot' do
     pod 'IQKeyboardManager'
     pod 'QMUIKit'
     pod 'LookinServer', :configurations => ['Debug']
-    pod 'ZLPhotoBrowser'
     pod 'SDWebImage'
     pod 'SocketRocket','0.5'
     pod 'YBImageBrowser','~>3.0.8'

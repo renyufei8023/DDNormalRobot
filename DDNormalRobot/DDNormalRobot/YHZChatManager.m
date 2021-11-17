@@ -197,6 +197,9 @@
         NSString *name = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[@"appid"] = [YHZSocketClientManager getRobotAppID];
+        params[@"customerIdold"] = [ClientParamsModel getClientParams].CustomerId;
+        params[@"dialogIdold"] = [ClientParamsModel getClientParams].DialogId;
+        params[@"customerNameold"] = [ClientParamsModel getClientParams].CustomerName;
         [DDNetworkHelper GET:[NSString stringWithFormat:@"https://consult.dd373.com/UserMessageApi/UserFirstVisit?SourcePageTitle=%@&SourcePageUrl=iOS",[[self transform:name] stringByReplacingOccurrencesOfString:@" " withString:@""]] parameters:params headers:nil success:^(id responseObject) {
             model = [ClientParamsModel yy_modelWithDictionary:responseObject[@"StatusData"][@"ResultData"]];
             [ClientParamsModel saveClientParams:model];

@@ -295,6 +295,9 @@
 - (void)getUserMetaData {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"appid"] = [YHZSocketClientManager getRobotAppID];
+    params[@"CustomerId"] = [ClientParamsModel getClientParams].CustomerId;
+    params[@"DialogId"] = [ClientParamsModel getClientParams].DialogId;
+    params[@"CustomerName"] = [ClientParamsModel getClientParams].CustomerName;
     [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/UserMetaData" parameters:params headers:nil success:^(id responseObject) {
         if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
             [QMUITips showWithText:responseObject[@"StatusData"][@"ResultMsg"]];

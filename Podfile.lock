@@ -348,9 +348,6 @@ PODS:
   - YYImage/Core (1.0.4)
   - YYModel (1.0.4)
   - YYText (1.0.7)
-  - ZLPhotoBrowser (4.1.9):
-    - ZLPhotoBrowser/Core (= 4.1.9)
-  - ZLPhotoBrowser/Core (4.1.9)
 
 DEPENDENCIES:
   - Bugly
@@ -365,7 +362,6 @@ DEPENDENCIES:
   - YBImageBrowser (~> 3.0.8)
   - YYModel
   - YYText
-  - ZLPhotoBrowser
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
@@ -384,7 +380,6 @@ SPEC REPOS:
     - YYImage
     - YYModel
     - YYText
-    - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -402,8 +397,7 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  ZLPhotoBrowser: 320aec37f64b0f58d40abd852956c64530011ea4
 
-PODFILE CHECKSUM: 9390cf44d85d6422c697cce317c8285dd96655e7
+PODFILE CHECKSUM: a02b0475f0ce3d5f230529a5727d7677084e7a33
 
 COCOAPODS: 1.11.2

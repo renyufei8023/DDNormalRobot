@@ -615,6 +615,9 @@
 - (void)DialogOver {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"appid"] = [YHZSocketClientManager getRobotAppID];
+    params[@"customerId"] = [ClientParamsModel getClientParams].CustomerId;
+    params[@"dialogId"] = [ClientParamsModel getClientParams].DialogId;
+    params[@"customerName"] = [ClientParamsModel getClientParams].CustomerName;
     [DDNetworkHelper POST:@"https://consult.dd373.com/UserMessageApi/DialogOver" parameters:params headers:nil success:^(id responseObject) {
         if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
             [QMUITips showWithText:responseObject[@"msg"]];
