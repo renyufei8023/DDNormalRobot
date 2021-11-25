@@ -184,7 +184,16 @@
         imagePicker.allowPickingVideo = false;
         imagePicker.allowTakeVideo = false;
         imagePicker.didFinishPickingPhotosHandle = ^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-            [DDNetworkHelper uploadImagesWithURL:@"https://newupload.dd373.com/Upload/UploadFile" parameters:@{@"fileInfoType":@"5"} headers:nil name:@"fileInfoType" images:photos fileNames:nil imageScale:0.5 imageType:@"jpg" progress:^(NSProgress *progress) {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"yyyyMMddHHmmss";
+            NSString *str = [formatter stringFromDate:[NSDate date]];
+            NSString *imageFileName = [NSString stringWithFormat:@"%@.jpg",str];
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"fileInfoType"] = @"5";
+            params[@"chunk"] = @"0";
+            params[@"chunks"] = @"1";
+            params[@"name"] = imageFileName;
+            [DDNetworkHelper uploadImagesWithURL:@"https://upload.dd373.com/Api/Upload/UploadFile" parameters:params headers:nil name:@"fileInfoType" images:photos fileNames:nil imageScale:0.5 imageType:@"jpg" progress:^(NSProgress *progress) {
                 
             } success:^(id responseObject) {
                 if (!([responseObject[@"StatusCode"] isEqualToString:@"0"] && [responseObject[@"StatusData"][@"ResultCode"] isEqualToString:@"0"])) {
