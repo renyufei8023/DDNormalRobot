@@ -507,6 +507,7 @@
                     if (message.ServiceType.integerValue == 2) { //如果是人工客服，隐藏转人工按钮
                         if (_queueModalVC.isVisible) {
                             [_queueModalVC hideWithAnimated:YES completion:NULL];
+                            _queueModalVC = nil;
                         }
                         //这里接入人工成功了
                         self.inputToolBar.hideGiftBtn = YES;
@@ -535,18 +536,24 @@
                     }
                 }else if (message.DialogType == 8) {//排队
                     NSDictionary *datas = [NSJSONSerialization JSONObjectWithData:[message.AdditionContent dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                    if ([datas[@"show"] boolValue] == false) {
+                    NSString *number = [NSString stringWithFormat:@"%@",datas[@"number"]];
+                    if (number.integerValue > 0) {
+                        if (!_queueModalVC) {
+                            QMUIModalPresentationViewController *modalVC = [QMUIModalPresentationViewController new];
+                            QueueView *waitingView = [[QueueView alloc] initWithFrame:self.view.bounds];
+                            waitingView.messageModel = message;
+                            modalVC.contentView = waitingView;
+                            modalVC.contentViewMargins = UIEdgeInsetsZero;
+                            [modalVC showWithAnimated:YES completion:NULL];
+                            _queueModalVC = modalVC;
+                        }else {
+                            QueueView *waitingView = (QueueView *)_queueModalVC.contentView;
+                            waitingView.messageModel = message;
+                        }
+                    }else {
                         if (_queueModalVC.isVisible) {
                             [_queueModalVC hideWithAnimated:YES completion:NULL];
                         }
-                    }else {
-                        QMUIModalPresentationViewController *modalVC = [QMUIModalPresentationViewController new];
-                        _queueModalVC = modalVC;
-                        QueueView *waitingView = [[QueueView alloc] initWithFrame:self.view.bounds];
-                        waitingView.messageModel = message;
-                        modalVC.contentView = waitingView;
-                        modalVC.contentViewMargins = UIEdgeInsetsZero;
-                        [modalVC showInView:self.view animated:YES completion:NULL];
                     }
                 }else if (message.DialogType == 7) {//结束会话
                     [self DialogOver];
