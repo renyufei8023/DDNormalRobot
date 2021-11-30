@@ -144,8 +144,6 @@
 - (void)yhz_endSession {
     [self sendDialogOver];
     [RobotDetailModel clearRobotDetail];
-    //需要把之前的dialogid置空，
-    [ClientParamsModel clearClientParams];
     [DDNetworkHelper setValue:@"" forHTTPHeaderField:@"Cookie"];
     [[YHZSocketClientManager sharedInstanceManager] yhz_closeSocket];
 }

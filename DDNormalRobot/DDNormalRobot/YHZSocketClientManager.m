@@ -34,7 +34,6 @@
 @property (nonatomic, assign) NSTimeInterval resetConnect; //重连时间
 @property (nonatomic, strong) NSMutableArray *dataArray; //存储要发送给服务端的数据
 @property (nonatomic, assign) BOOL isUserClose;//用于判断是否主动关闭长连接，如果是主动断开连接，连接失败的代理中，就不用执行 重新连接方法
-@property (nonatomic, assign) NSInteger connectIndex;
 
 @end
 @implementation YHZSocketClientManager
@@ -94,14 +93,8 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(webSocketDidOpen)]) {
         [self.delegate webSocketDidOpen];
     }
-    _connectIndex++;
-    if (_connectIndex == 1) {
-        
-        [self getUserMetaData];
-        if (_SocketDidOpenBlock) {
-            _SocketDidOpenBlock();
-        }
-    }
+
+    [self getUserMetaData];
     self.isConnect = YES;
     self.connectType = WebSocketConnect;
 }

@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 @property(nonatomic, copy) NSString *SenderName;
 @property(nonatomic, strong) NSArray<BusinessItemModel *> *chooseOptions;//问题类型（人工的时候用）
 @property(nonatomic, assign) MessageType messageType;
+@property(nonatomic, assign) BOOL isSolved;//标记是否反馈
 
 //content里面的字段
 @property(nonatomic, copy) NSString *Id;

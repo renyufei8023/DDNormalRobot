@@ -13,11 +13,31 @@
 #import "YYText.h"
 
 @interface ChatQuestionResolveCell ()
+@property(nonatomic, strong) UILabel *nameLab;
+@property(nonatomic, strong) UILabel *timeLab;
+@property(nonatomic, strong) UIView *topContentView;//时间和昵称的容器
 @property(nonatomic, strong) YYLabel *contentLab;
 @property(nonatomic, strong) UIView *chatBubbleImage;//气泡
+@property(nonatomic, strong) UILabel *tipLab;
 
 @end
 @implementation ChatQuestionResolveCell
+
+- (UILabel *)nameLab {
+    if (!_nameLab) {
+        _nameLab = [[UILabel alloc] qmui_initWithFont:UIFontMake(14) textColor:UIColorMakeWithHex(@"333333")];
+        _nameLab.text = @"机器人";
+    }
+    return _nameLab;
+}
+
+- (UILabel *)timeLab {
+    if (!_timeLab) {
+        _timeLab = [[UILabel alloc] qmui_initWithFont:UIFontMake(12) textColor:UIColorMakeWithRGBA(177, 178,180, 1.0)];
+        _timeLab.text = @"2019-12-23 10:00:00";
+    }
+    return _timeLab;
+}
 
 - (UIView *)chatBubbleImage {
     if (!_chatBubbleImage) {
@@ -42,6 +62,15 @@
     return _contentLab;
 }
 
+- (UILabel *)tipLab {
+    if (!_tipLab) {
+        _tipLab = [[UILabel alloc] qmui_initWithFont:UIFontMake(12) textColor:UIColorMakeWithHex(@"666666")];
+        _tipLab.text = @"已反馈";
+        _tipLab.hidden = YES;
+    }
+    return _tipLab;
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -51,12 +80,32 @@
 }
 
 - (void)initSubViews {
+    self.topContentView = [UIView new];
+    [self.contentView addSubview:self.topContentView];
+    [self.topContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView).offset(16);
+        make.top.equalTo(self.contentView);
+    }];
+    
+    [self.topContentView addSubview:self.nameLab];
+    [self.topContentView addSubview:self.timeLab];
+    
+    [self.nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.topContentView);
+        make.centerY.equalTo(self.topContentView);
+        make.bottom.top.equalTo(self.topContentView).inset(5);
+    }];
+    [self.timeLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.nameLab.mas_right).offset(10);
+        make.centerY.right.equalTo(self.topContentView);
+    }];
+    
     [self.contentView addSubview:self.chatBubbleImage];
     [self.chatBubbleImage mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.lessThanOrEqualTo(self.contentView).offset(-100);
         make.left.equalTo(self.contentView).offset(16);
         make.bottom.equalTo(self.contentView).inset(16);
-        make.top.equalTo(self.contentView).offset(10);
+        make.top.equalTo(self.topContentView.mas_bottom).offset(10);
     }];
     
     [self.chatBubbleImage addSubview:self.contentLab];
@@ -73,34 +122,21 @@
         make.height.mas_offset(0.5);
     }];
     
-    NSArray *titles = @[@"解决",@"未解决"];
-    for (int i = 0; i < titles.count; i++) {
-        QMUIButton *resolveBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
-        resolveBtn.tag = 100 + i;
-        [resolveBtn setTitle:titles[i] forState:UIControlStateNormal];
-        resolveBtn.titleLabel.font = UIFontMake(13);
-        [resolveBtn setTitleColor:UIColorMakeWithRGBA(33, 99, 170, 1.0) forState:UIControlStateNormal];
-        [resolveBtn addTarget:self action:@selector(resolveClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.chatBubbleImage addSubview:resolveBtn];
-        [resolveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.chatBubbleImage);
-            if (i == 0) {
-                make.left.equalTo(self.chatBubbleImage);
-            }else {
-                make.right.equalTo(self.chatBubbleImage);
-            }
-            make.top.equalTo(lineView.mas_bottom);
-            make.height.mas_offset(44);
-            make.width.equalTo(self.chatBubbleImage).multipliedBy(0.5);
-        }];
-    }
+    [self.chatBubbleImage addSubview:self.tipLab];
+    [self.tipLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.chatBubbleImage);
+        make.bottom.equalTo(self.chatBubbleImage.mas_bottom).inset(15);
+    }];
 }
 
 - (void)setModel:(MessageItemModel *)model {
     _model = model;
+    self.timeLab.text = model.CreateTime;
+    self.nameLab.text = model.SenderName;
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:model.Content];
     [self resolveUrlWithAtt:att];
     self.contentLab.attributedText = att;
+    [self updateUI];
 }
 
 - (void)resolveUrlWithAtt:(NSMutableAttributedString *)att {
@@ -117,20 +153,43 @@
 }
 
 - (void)resolveClick:(QMUIButton *)sender {
-    [self.chatBubbleImage.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[QMUIButton class]]) {
-            obj.hidden = YES;
-        }
-    }];
-    UILabel *tipLab = [[UILabel alloc] qmui_initWithFont:UIFontMake(12) textColor:UIColorMakeWithHex(@"666666")];
-    tipLab.text = @"已反馈";
-    [self.chatBubbleImage addSubview:tipLab];
-    [tipLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.chatBubbleImage);
-        make.centerY.equalTo(sender);
-    }];
+    self.model.isSolved = YES;
     if (self.chooseBlock) {
         self.chooseBlock(self.model,sender.tag == 100);
+    }
+}
+
+- (void)updateUI {
+    if (self.model.isSolved) {
+        [self.chatBubbleImage.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[QMUIButton class]]) {
+                obj.hidden = YES;
+            }
+        }];
+        self.tipLab.hidden = NO;
+    }else {
+        self.tipLab.hidden = YES;
+        NSArray *titles = @[@"解决",@"未解决"];
+        for (int i = 0; i < titles.count; i++) {
+            QMUIButton *resolveBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
+            resolveBtn.tag = 100 + i;
+            [resolveBtn setTitle:titles[i] forState:UIControlStateNormal];
+            resolveBtn.titleLabel.font = UIFontMake(13);
+            [resolveBtn setTitleColor:UIColorMakeWithRGBA(33, 99, 170, 1.0) forState:UIControlStateNormal];
+            [resolveBtn addTarget:self action:@selector(resolveClick:) forControlEvents:UIControlEventTouchUpInside];
+            [self.chatBubbleImage addSubview:resolveBtn];
+            [resolveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.chatBubbleImage);
+                if (i == 0) {
+                    make.left.equalTo(self.chatBubbleImage);
+                }else {
+                    make.right.equalTo(self.chatBubbleImage);
+                }
+                make.top.equalTo(self.contentLab.mas_bottom).offset(16.5);
+                make.height.mas_offset(44);
+                make.width.equalTo(self.chatBubbleImage).multipliedBy(0.5);
+            }];
+        }
     }
 }
 

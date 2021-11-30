@@ -25,7 +25,6 @@ typedef NS_ENUM(NSUInteger,WebSocketConnectType){
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YHZSocketClientManager : NSObject
-@property (nonatomic, copy) void(^SocketDidOpenBlock)(void);
 @property (nonatomic, strong) SRWebSocket *webSocket;
 @property (nonatomic, weak) id<WebSocketManagerDelegate> delegate;
 @property (nonatomic, assign) BOOL isConnect;  //是否连接

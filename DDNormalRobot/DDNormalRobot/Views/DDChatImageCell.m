@@ -99,7 +99,7 @@
     _model = model;
     self.nameLab.text = model.SenderName;
     self.timeLab.text = model.CreateTime;
-    if ([model.SenderName isEqualToString:[ClientParamsModel getClientParams].CustomerName]) {//自己发的
+    if (model.SenderType == 0) {//自己发的
         self.nameLab.text = @"我";
         [self.topContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView).offset(-16);
