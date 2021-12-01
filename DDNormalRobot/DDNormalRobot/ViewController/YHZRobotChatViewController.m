@@ -416,7 +416,7 @@
 }
 
 - (void)scrollToBottom:(BOOL)animation {
-    [self handleMessageDatas];
+    [self.listView reloadData];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSInteger row = [self.listView numberOfRowsInSection:0] - 1;
         if (row > 0){
@@ -426,25 +426,9 @@
     });
 }
 
-//处理数据源
-- (void)handleMessageDatas {
-    //先根据SerialNumber排序
-    NSArray *lastSortDatas = [self.messageDatas sortedArrayUsingComparator:^NSComparisonResult(MessageItemModel * _Nonnull obj1, MessageItemModel * _Nonnull obj2) {
-        return [obj1.SerialNumber compare:obj2.SerialNumber];
-    }];
-    //有的没有SerialNumber需要根据时间再次排序
-    NSArray *timeSortDatas = [lastSortDatas sortedArrayUsingComparator:^NSComparisonResult(MessageItemModel * _Nonnull obj1, MessageItemModel * _Nonnull obj2) {
-        return [obj1.sortTime compare:obj2.sortTime];
-    }];
-    
-    [self.messageDatas removeAllObjects];
-    [self.messageDatas addObjectsFromArray:timeSortDatas];
-    [self.listView reloadData];
-}
-
 - (void)chatManagerDidReceiveMessageWithMessageItem:(MessageItemModel *)message {
     __weak __typeof(self)weakSelf = self;
-    NSLog(@"---接收到消息%@",[message yy_modelDescription]);
+    NSLog(@"---接收到消息%@",message);
     if (message.SenderType != 0) {//这里判断下是不是用户发的消息，不是的话把之前记录的上个问题的id清空
         if (message.DialogType != 3) {//这个是智能提示
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"Pid"];
@@ -462,24 +446,37 @@
             }else {
                 needScrollBottom = YES;
             }
+            
+            NSMutableArray<MessageItemModel *> *tmpArray = [NSMutableArray array];
             [datas enumerateObjectsUsingBlock:^(MessageItemModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if (obj.AppType == 3) {
                     if (obj.DialogType == 5) {
                         if ([obj.Content length] > 0) {
-                            [self.messageDatas addObject:obj];
+                            [tmpArray addObject:obj];
                         }
                     }
                     if (obj.DialogType == 6) {
                         obj.messageType = MessageTypeEvalution;
                         if ([obj.ServiceType isEqualToString:@"1"]) {
-                            [self.messageDatas addObject:obj];
+                            [tmpArray addObject:obj];
                         }
                     }
                 }else {
-                    [self.messageDatas addObject:obj];
+                    [tmpArray addObject:obj];
                 }
             }];
-            needScrollBottom ? [self scrollToBottom:YES] : [self handleMessageDatas];
+            if (tmpArray.lastObject.SerialNumber.dd_isNotBlank) {//只有历史记录的时候才会有这个字段
+                if (tmpArray.lastObject.SerialNumber.integerValue < self.messageDatas.firstObject.SerialNumber.integerValue || (!self.messageDatas.firstObject.SerialNumber.dd_isNotBlank)) {//小于数据源或者数据源当前第一个是空的时候需要倒叙遍历插入到数据源
+                    [tmpArray enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(MessageItemModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [self.messageDatas insertObject:obj atIndex:0];
+                    }];
+                }else {
+                    [self.messageDatas addObjectsFromArray:tmpArray];
+                }
+            }else {
+                [self.messageDatas addObjectsFromArray:tmpArray];
+            }
+            needScrollBottom ? [self scrollToBottom:YES] : [self.listView reloadData];
         }else {
             if (message.AppType == 1) {
                 if ([message.AdditionContent dd_isNotBlank]) {

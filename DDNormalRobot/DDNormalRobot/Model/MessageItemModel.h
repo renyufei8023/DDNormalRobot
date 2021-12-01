@@ -40,7 +40,6 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 @property(nonatomic, copy) NSString *Id;
 @property(nonatomic, copy) NSString *ReceiverId;
 @property(nonatomic, copy) NSString *CreateTime;
-@property(nonatomic, copy) NSString *sortTime;//根据这个时间进行排序
 @property(nonatomic, copy) NSString *Readed;
 @property(nonatomic, copy) NSString *SerialNumber;
 
