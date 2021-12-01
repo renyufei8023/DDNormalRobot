@@ -154,6 +154,7 @@
 
 - (void)resolveClick:(QMUIButton *)sender {
     self.model.isSolved = YES;
+    [self updateUI];
     if (self.chooseBlock) {
         self.chooseBlock(self.model,sender.tag == 100);
     }

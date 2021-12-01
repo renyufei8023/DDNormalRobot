@@ -21,6 +21,7 @@ typedef void(^CompleteBlcok)(MessageItemModel *message);
 
 + (instancetype)shareInstance;
 - (void)yhz_getHistoryMessageWithComplete:(CompleteBlcok)completeBlock;//获取历史消息
+- (void)yhz_getMoreHistoryMessageWithDialogId:(NSString *)dialogId serialNumber:(NSString *)serialNumber;
 - (void)yhz_getRobotSmartTipsWithMessageContent:(NSString *)messageContent WithComplete:(CompleteBlcok)completeBlock;//获取智能提示
 - (void)yhz_questionMarkAsResolved:(BOOL)isResolved withAdditionContent:(NSString *)additionContent WithComplete:(CompleteBlcok)completeBlock;//标记问题是否解决
 - (void)yhz_sendNormalMessage:(NSString *)messageContent additionContent:(NSString *__nullable)additionContent isRobot:(BOOL)isRobot  WithComplete:(CompleteBlcok)completeBlock;

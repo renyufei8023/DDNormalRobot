@@ -10,7 +10,7 @@ target 'DDNormalRobot' do
     pod 'QMUIKit'
     pod 'LookinServer', :configurations => ['Debug']
     pod 'SDWebImage'
-    pod 'SocketRocket','0.5'
+    pod 'SocketRocket'
     pod 'YBImageBrowser','~>3.0.8'
     pod 'DDNetworkHelper'
     pod 'TZImagePickerController'

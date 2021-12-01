@@ -82,7 +82,7 @@
 }
 
 - (void)sendPing:(id)sender {
-    [_webSocket sendPing:sender];
+    [_webSocket sendPing:sender error:nil];
 }
 
 #pragma mark --------------------------------------------------
@@ -272,7 +272,7 @@
         if(self.webSocket != nil) {
             // 只有长连接OPEN开启状态才能调 send 方法，不然会Crash
             if (self.webSocket.readyState == SR_OPEN) {
-                [_webSocket send:data];
+                [_webSocket sendString:data error:nil];
             }else if (self.webSocket.readyState == SR_CONNECTING) {
                 NSLog(@"正在连接中，重连后会去自动同步数据");
             }else if (self.webSocket.readyState == SR_CLOSING || self.webSocket.readyState == SR_CLOSED) {
@@ -280,7 +280,7 @@
                 [self resetConnectServer];
             }
         }else {
-            [self yhz_connectServer]; //连接服务器
+//            [self yhz_connectServer]; //连接服务器
         }
     }
 }

@@ -42,10 +42,10 @@
 @property(nonatomic, strong) QMUIButton *onlineButton;
 @property(nonatomic, strong) UITableView *listView;
 @property(nonatomic, strong) RobotChatInputToolBar *inputToolBar;
-@property(nonatomic, strong) NSMutableArray *messageDatas;
+@property(nonatomic, strong) NSMutableArray<MessageItemModel *> *messageDatas;
 @property(nonatomic, strong) DDEmotionView *emotionView;
 @property(nonatomic, strong) SmartAlertView *tipsView;
-@property(nonatomic, strong) QMUIKeyboardManager *keyboardManager;
+@property(nonatomic, strong) UIRefreshControl *refreshControl;
 @property(nonatomic, weak) QMUIModalPresentationViewController *queueModalVC;
 
 @end
@@ -143,6 +143,14 @@
     return _emotionView;
 }
 
+- (UIRefreshControl *)refreshControl {
+    if (!_refreshControl) {
+        _refreshControl = [[UIRefreshControl alloc] init];
+        [_refreshControl addTarget:self action:@selector(loadMoreData) forControlEvents:UIControlEventValueChanged];
+    }
+    return _refreshControl;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.tipsView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -235,6 +243,7 @@
     
     //新对话回调
     self.inputToolBar.newSessionCallBack = ^{
+        [weakSelf.messageDatas removeAllObjects];//需要把之前数据清空，不然就会数据错乱
         [chatManager yhz_startNewSession];
     };
     
@@ -252,6 +261,12 @@
     };
     
     [self.onlineButton addTarget:self action:@selector(customerServiceClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)loadMoreData {
+    MessageItemModel *model = self.messageDatas.firstObject;
+    [[YHZChatManager shareInstance] yhz_getMoreHistoryMessageWithDialogId:model.DialogId serialNumber:model.SerialNumber];
+    [self.listView.refreshControl endRefreshing];
 }
 
 - (void)updateRobotInfo {
@@ -401,7 +416,7 @@
 }
 
 - (void)scrollToBottom:(BOOL)animation {
-    [self.listView reloadData];
+    [self handleMessageDatas];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSInteger row = [self.listView numberOfRowsInSection:0] - 1;
         if (row > 0){
@@ -409,6 +424,22 @@
             [self.listView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animation];
         }
     });
+}
+
+//处理数据源
+- (void)handleMessageDatas {
+    //先根据SerialNumber排序
+    NSArray *lastSortDatas = [self.messageDatas sortedArrayUsingComparator:^NSComparisonResult(MessageItemModel * _Nonnull obj1, MessageItemModel * _Nonnull obj2) {
+        return [obj1.SerialNumber compare:obj2.SerialNumber];
+    }];
+    //有的没有SerialNumber需要根据时间再次排序
+    NSArray *timeSortDatas = [lastSortDatas sortedArrayUsingComparator:^NSComparisonResult(MessageItemModel * _Nonnull obj1, MessageItemModel * _Nonnull obj2) {
+        return [obj1.sortTime compare:obj2.sortTime];
+    }];
+    
+    [self.messageDatas removeAllObjects];
+    [self.messageDatas addObjectsFromArray:timeSortDatas];
+    [self.listView reloadData];
 }
 
 - (void)chatManagerDidReceiveMessageWithMessageItem:(MessageItemModel *)message {
@@ -424,12 +455,18 @@
     if (message) {
         if ([NSArray yy_modelArrayWithClass:[MessageItemModel class] json:message.Content].count > 0) {
             NSArray<MessageItemModel *> *datas = [NSArray yy_modelArrayWithClass:[MessageItemModel class] json:message.Content];
+            //判断是否需要滑动到最下方
+            BOOL needScrollBottom = NO;
+            if (datas.lastObject.SerialNumber.integerValue < self.messageDatas.firstObject.SerialNumber.integerValue && self.messageDatas.count > 0) {
+                needScrollBottom = NO;
+            }else {
+                needScrollBottom = YES;
+            }
             [datas enumerateObjectsUsingBlock:^(MessageItemModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if (obj.AppType == 3) {
                     if (obj.DialogType == 5) {
                         if ([obj.Content length] > 0) {
                             [self.messageDatas addObject:obj];
-                            [self scrollToBottom:YES];
                         }
                     }
                     if (obj.DialogType == 6) {
@@ -437,14 +474,12 @@
                         if ([obj.ServiceType isEqualToString:@"1"]) {
                             [self.messageDatas addObject:obj];
                         }
-                        [self scrollToBottom:YES];
                     }
                 }else {
                     [self.messageDatas addObject:obj];
-                    [self scrollToBottom:YES];
                 }
             }];
-            
+            needScrollBottom ? [self scrollToBottom:YES] : [self handleMessageDatas];
         }else {
             if (message.AppType == 1) {
                 if ([message.AdditionContent dd_isNotBlank]) {
@@ -556,6 +591,8 @@
                         }
                     }
                 }else if (message.DialogType == 7) {//结束会话
+                    [self.messageDatas addObject:message];
+                    [self scrollToBottom:YES];
                     [self DialogOver];
                     if ([QMUIModalPresentationViewController isAnyModalPresentationViewControllerVisible]) {
                         [QMUIModalPresentationViewController hideAllVisibleModalPresentationViewControllerIfCan];
@@ -566,6 +603,7 @@
                     self.tipsView.hidden = YES;
                     self.inputToolBar.hideGiftBtn = false;
                     self.inputToolBar.hideEndSessionBtn = false;
+                    self.listView.refreshControl = nil;
                 }else if (message.DialogType == 6) {//评价消息
                     message.messageType = MessageTypeEvalution;
                     [self scrollToBottom:YES];
@@ -576,6 +614,7 @@
 }
 
 - (void)robotInfoChange {
+    self.listView.refreshControl = self.refreshControl;
     [self updateRobotInfo];
 }
 

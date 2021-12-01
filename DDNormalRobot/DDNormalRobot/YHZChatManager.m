@@ -47,6 +47,23 @@
     completeBlock(messageItem);
 }
 
+- (void)yhz_getMoreHistoryMessageWithDialogId:(NSString *)dialogId serialNumber:(NSString *)serialNumber {
+    MessageItemModel *messageItem = [MessageItemModel new];
+    messageItem.AppType = 1;
+    messageItem.Content = @"";
+    messageItem.ContentType = 1;
+    messageItem.AdditionContent = @"";
+    messageItem.DialogType = 2;
+    messageItem.ReceiveId = @"";
+    messageItem.ServiceType = @"1";
+    messageItem.SenderType = 0;
+    messageItem.SerialNumber = serialNumber;
+    messageItem.DialogId = dialogId;
+    
+    NSString *datas = [MessageItemModel messageWithHub:@"implushub" methodName:@"SendMsg" arguments:messageItem otherArgus:nil];
+    [[YHZSocketClientManager sharedInstanceManager] yhz_sendData:datas];
+}
+
 - (void)yhz_getRobotDetail {
     MessageItemModel *messageItem = [MessageItemModel new];
     messageItem.AppType = 1;

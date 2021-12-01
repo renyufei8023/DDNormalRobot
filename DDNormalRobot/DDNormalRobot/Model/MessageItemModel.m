@@ -46,4 +46,17 @@
     return [datas yy_modelToJSONString];
 }
 
+- (NSString *)sortTime {
+    if (_CreateTime.length == 19) {
+        return _CreateTime;
+    }else {
+        //返回的今天时间没有年月日
+        NSDate *todayDate = [NSDate date];
+        NSInteger year = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:todayDate] year];
+        NSInteger month = [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:todayDate] month];
+        NSInteger day = [[[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:todayDate] day];
+        return [NSString stringWithFormat:@"%@-%@-%@ %@",@(year),@(month),@(day),_CreateTime];
+    }
+}
+
 @end
